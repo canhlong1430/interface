@@ -30,6 +30,7 @@
 
 	<!-- YOUR CUSTOM CSS -->
 	<link href="css/custom.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="api/product-detail.js"></script>
 
 </head>
@@ -405,13 +406,13 @@
 						</div>
 						<!-- /page_header -->
 						<div class="prod_info">
-							<h1>Armor Air X Fear</h1>
+							<h1>Đang tải...</h1>
 							<span class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i
 									class="icon-star voted"></i><i class="icon-star voted"></i><i
 									class="icon-star"></i><em>4 reviews</em></span>
-							<p><small>SKU: MTKRY-001</small><br>Sed ex labitur adolescens scriptorem. Te saepe verear
-								tibique sed. Et wisi ridens vix, lorem iudico blandit mel cu. Ex vel sint zril oportere,
-								amet wisi aperiri te cum.</p>
+							<p><small>SKU: MTKRY-001</small><br>
+
+							</p>
 							<div class="prod_options">
 								<div class="row">
 									<label class="col-xl-5 col-lg-5  col-md-6 col-6 pt-0"><strong>Color</strong></label>
@@ -454,7 +455,7 @@
 											class="percentage">-20%</span> <span class="old_price">$160.00</span></div>
 								</div>
 								<div class="col-lg-4 col-md-6">
-									<div class="btn_add_to_cart"><a href="#0" class="btn_1">Add to Cart</a></div>
+									<div class="btn_add_to_cart"><a href="#0" class="btn_1">Thêm vào giỏ</a></div>
 								</div>
 							</div>
 						</div>
@@ -462,10 +463,10 @@
 						<div class="product_actions">
 							<ul>
 								<li>
-									<a href="#"><i class="ti-heart"></i><span>Add to Wishlist</span></a>
+									<a href="#"><i class="ti-heart"></i><span>Thêm vào yêu thích</span></a>
 								</li>
 								<li>
-									<a href="#"><i class="ti-control-shuffle"></i><span>Add to Compare</span></a>
+									<a href="#"><i class="ti-control-shuffle"></i><span>So sánh</span></a>
 								</li>
 							</ul>
 						</div>
@@ -480,11 +481,10 @@
 				<div class="container">
 					<ul class="nav nav-tabs" role="tablist">
 						<li class="nav-item">
-							<a id="tab-A" href="#pane-A" class="nav-link active" data-toggle="tab"
-								role="tab">Description</a>
+							<a id="tab-A" href="#pane-A" class="nav-link active" data-toggle="tab" role="tab">Mô tả</a>
 						</li>
 						<li class="nav-item">
-							<a id="tab-B" href="#pane-B" class="nav-link" data-toggle="tab" role="tab">Reviews</a>
+							<a id="tab-B" href="#pane-B" class="nav-link" data-toggle="tab" role="tab">Đánh giá</a>
 						</li>
 					</ul>
 				</div>
@@ -506,42 +506,17 @@
 								<div class="card-body">
 									<div class="row justify-content-between">
 										<div class="col-lg-6">
-											<h3>Details</h3>
-											<p>Lorem ipsum dolor sit amet, in eleifend <strong>inimicus
-													elaboraret</strong> his, harum efficiendi mel ne. Sale percipit
-												vituperata ex mel, sea ne essent aeterno sanctus, nam ea laoreet civibus
-												electram. Ea vis eius explicari. Quot iuvaret ad has.</p>
-											<p>Vis ei ipsum conclusionemque. Te enim suscipit recusabo mea, ne vis mazim
-												aliquando, everti insolens at sit. Cu vel modo unum quaestio, in vide
-												dicta has. Ut his laudem explicari adversarium, nisl <strong>laboramus
-													hendrerit</strong> te his, alia lobortis vis ea.</p>
-											<p>Perfecto eleifend sea no, cu audire voluptatibus eam. An alii praesent
-												sit, nobis numquam principes ea eos, cu autem constituto suscipiantur
-												eam. Ex graeci elaboraret pro. Mei te omnis tantas, nobis viderer
-												vivendo ex has.</p>
+											<h3>Chi tiết</h3>
+											<div id="detail">
+												<div>
+													<h3>Đang tải...</h3>
+												</div>
+											</div>
 										</div>
-										<div class="col-lg-5">
-											<h3>Specifications</h3>
+										<div class="col-lg-4">
+											<h3>Thông số kĩ thuật</h3>
 											<div class="table-responsive">
-												<table class="table table-sm table-striped">
-													<tbody>
-														<tr>
-															<td><strong>Color</strong></td>
-															<td>Blue, Purple</td>
-														</tr>
-														<tr>
-															<td><strong>Size</strong></td>
-															<td>150x100x100</td>
-														</tr>
-														<tr>
-															<td><strong>Weight</strong></td>
-															<td>0.6kg</td>
-														</tr>
-														<tr>
-															<td><strong>Manifacturer</strong></td>
-															<td>Manifacturer</td>
-														</tr>
-													</tbody>
+												<table class="table table-sm table-striped" id="specs">
 												</table>
 											</div>
 											<!-- /table-responsive -->
@@ -561,75 +536,11 @@
 								</h5>
 							</div>
 							<div id="collapse-B" class="collapse" role="tabpanel" aria-labelledby="heading-B">
-								<div class="card-body">
-									<div class="row justify-content-between">
-										<div class="col-lg-6">
-											<div class="review_content">
-												<div class="clearfix add_bottom_10">
-													<span class="rating"><i class="icon-star"></i><i
-															class="icon-star"></i><i class="icon-star"></i><i
-															class="icon-star"></i><i
-															class="icon-star"></i><em>5.0/5.0</em></span>
-													<em>Published 54 minutes ago</em>
-												</div>
-												<h4>"Commpletely satisfied"</h4>
-												<p>Eos tollit ancillae ea, lorem consulatu qui ne, eu eros eirmod
-													scaevola sea. Et nec tantas accusamus salutatus, sit commodo veritus
-													te, erat legere fabulas has ut. Rebum laudem cum ea, ius essent
-													fuisset ut. Viderer petentium cu his.</p>
-											</div>
-										</div>
-										<div class="col-lg-6">
-											<div class="review_content">
-												<div class="clearfix add_bottom_10">
-													<span class="rating"><i class="icon-star"></i><i
-															class="icon-star"></i><i class="icon-star"></i><i
-															class="icon-star empty"></i><i
-															class="icon-star empty"></i><em>4.0/5.0</em></span>
-													<em>Published 1 day ago</em>
-												</div>
-												<h4>"Always the best"</h4>
-												<p>Et nec tantas accusamus salutatus, sit commodo veritus te, erat
-													legere fabulas has ut. Rebum laudem cum ea, ius essent fuisset ut.
-													Viderer petentium cu his.</p>
-											</div>
-										</div>
+								<div class="card-body" id="rating">
+									<div>
+										<h3>Đang tải...</h3>
 									</div>
-									<!-- /row -->
-									<div class="row justify-content-between">
-										<div class="col-lg-6">
-											<div class="review_content">
-												<div class="clearfix add_bottom_10">
-													<span class="rating"><i class="icon-star"></i><i
-															class="icon-star"></i><i class="icon-star"></i><i
-															class="icon-star"></i><i
-															class="icon-star empty"></i><em>4.5/5.0</em></span>
-													<em>Published 3 days ago</em>
-												</div>
-												<h4>"Outstanding"</h4>
-												<p>Eos tollit ancillae ea, lorem consulatu qui ne, eu eros eirmod
-													scaevola sea. Et nec tantas accusamus salutatus, sit commodo veritus
-													te, erat legere fabulas has ut. Rebum laudem cum ea, ius essent
-													fuisset ut. Viderer petentium cu his.</p>
-											</div>
-										</div>
-										<div class="col-lg-6">
-											<div class="review_content">
-												<div class="clearfix add_bottom_10">
-													<span class="rating"><i class="icon-star"></i><i
-															class="icon-star"></i><i class="icon-star"></i><i
-															class="icon-star"></i><i
-															class="icon-star"></i><em>5.0/5.0</em></span>
-													<em>Published 4 days ago</em>
-												</div>
-												<h4>"Excellent"</h4>
-												<p>Sit commodo veritus te, erat legere fabulas has ut. Rebum laudem cum
-													ea, ius essent fuisset ut. Viderer petentium cu his.</p>
-											</div>
-										</div>
-									</div>
-									<!-- /row -->
-									<p class="text-right"><a href="leave-review.html" class="btn_1">Leave a review</a>
+									<p class="text-right"><a href="leave-review.html" class="btn_1">Viết đánh giá</a>
 									</p>
 								</div>
 								<!-- /card-body -->
