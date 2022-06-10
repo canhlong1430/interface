@@ -1,6 +1,12 @@
 $(document).ready(function () {
+	function get(name) {
+		if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
+			return decodeURIComponent(name[1]);
+	}
+
+	var page = get('page')
+
 	//Url của api
-	var page = 1
 	var limit = '9'
 	var offset = page - 1
 	url = 'https://electronics-api.herokuapp.com/products?limit=' + limit + '&offset=' + offset.toString()
