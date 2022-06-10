@@ -11,11 +11,11 @@ $(document).ready(function () {
 	}
 
 	var page = get('page')
-
+	var categoryId = get('category_id')
 	//Url của api
 	var limit = '9'
 	var offset = page - 1
-	url = 'https://electronics-api.herokuapp.com/products?limit=' + limit + '&offset=' + offset.toString()
+	url = 'https://electronics-api.herokuapp.com/products/list_by_category?limit=' + limit + '&offset=' + offset.toString() + '&category_id=' + categoryId
 
 	const options = {
 		method: 'GET', //tùy chọn method GET hoặc POST, PUT, DELETE
