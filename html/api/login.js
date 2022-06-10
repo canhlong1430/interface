@@ -36,8 +36,10 @@ $(document).ready(function () {
                     window.location.href = '/html/index.html';
                 }
                 if (status != 200) {
-                    alert("Email hoặc mật khẩu không đúng. Xin thử lại!")
-                    window.location.href = '/html/account.html';
+                    // alert("Email hoặc mật khẩu không đúng. Xin thử lại!")
+                    // window.location.href = '/html/account.html';
+
+                    $('.client').append(' <span style="color:red"> [Lỗi - Email hoặc mật khẩu không đúng!]</span>')
                 }
             })
             .catch(error => console.log('Error:', error));
