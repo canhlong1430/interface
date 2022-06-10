@@ -3,6 +3,12 @@ $(document).ready(function () {
 		if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
 			return decodeURIComponent(name[1]);
 	}
+	function truncate(source) {
+		return source.length > 40 ? source.slice(0, 40 - 1) + "…" : source;
+	}
+	function toVND(x) {
+		return x.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
+	}
 
 	var page = get('page')
 
@@ -46,11 +52,11 @@ $(document).ready(function () {
         								<!-- <div data-countdown="2019/05/15" class="countdown"></div> -->
         							</figure>
         							<a href="product-detail-2.html?product_id=` + obj.id + `">
-        								<h3>`+ obj.name + `</h3>
+        								<h3>`+ truncate(obj.name) + `</h3>
         							</a>
         							<div class="price_box">
-        								<span class="new_price">` + obj.price + ` đ</span>
-        								<span class="old_price">` + obj.price + ` đ</span>
+        								<span class="new_price">` + toVND(obj.price) + ` đ</span>
+        								<span class="old_price">` + toVND(obj.price) + ` đ</span>
         							</div>
         							<ul>
         								<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left"
