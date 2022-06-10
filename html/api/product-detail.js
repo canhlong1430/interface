@@ -26,31 +26,40 @@ $(document).ready(function () {
     fetch(url, options).then(res => res.json()).then(json => {
         brandId = json.data.brand_id
 
-        var newDiv = ``;
-        for (var i = 0; i < json.data.product_images.length; i++) {
-
-            var obj = json.data.product_images[i];
-
-            if (i == 0) {
-                newDiv += `
-                <div class="owl-item active" style="width: 438.4px;">
-												<div style="background-image: url(img/products/shoes/1.jpg);"
-													class="item-box">
-												</div>
-											</div>
-                `
+        $(json.data.product_images).each(function (i, v) {
+            switch (i) {
+                case 0:
+                    console.log(v.thumbnail_url)
+                    $("#img1").css('background-image', 'url(' + v.url + ')')
+                    $("#small-img1").css('background-image', 'url(' + v.url + ')')
+                    break;
+                case 1:
+                    console.log(v.thumbnail_url)
+                    $("#img2").css('background-image', 'url(' + v.url + ')')
+                    $("#small-img2").css('background-image', 'url(' + v.url + ')')
+                    break;
+                case 2:
+                    console.log(v.thumbnail_url)
+                    $("#img3").css('background-image', 'url(' + v.url + ')')
+                    $("#small-img3").css('background-image', 'url(' + v.url + ')')
+                    break;
+                case 3:
+                    console.log(v.thumbnail_url)
+                    $("#img4").css('background-image', 'url(' + v.url + ')')
+                    $("#small-img4").css('background-image', 'url(' + v.url + ')')
+                    break;
+                case 4:
+                    console.log(v.thumbnail_url)
+                    $("#img5").css('background-image', 'url(' + v.url + ')')
+                    $("#small-img5").css('background-image', 'url(' + v.url + ')')
+                    break;
+                case 5:
+                    console.log(v.thumbnail_url)
+                    $("#img6").css('background-image', 'url(' + v.url + ')')
+                    $("#small-img6").css('background-image', 'url(' + v.url + ')')
+                    break;
             }
-            else {
-                newDiv += `
-                <div class="owl-item" style="width: 438.4px;">
-												<div style="background-image: url(img/products/shoes/1.jpg);"
-													class="item-box">
-												</div>
-											</div>
-                `
-            }
-        }
-        // $("#test").children().children().children().append(newDiv)
+        });
 
 
         $(".prod_info h1").text(json.data.name)
@@ -113,7 +122,6 @@ $(document).ready(function () {
         urlBrand = 'https://electronics-api.herokuapp.com/products/list_by_brand?brand_id=' + brandId + '&limit=10&offset=0'
         fetch(urlBrand, options).then(res1 => res1.json()).then(json1 => {
 
-            var html = ""
             $(json1.data).each(function (i, v) {
                 switch (i) {
                     case 0:
