@@ -402,7 +402,7 @@
 									<div class="float-right"><a id="forgot" href="javascript:void(0);">Quên mật
 											khẩu?</a></div>
 								</div>
-								<div class="text-center"><input type="button" value="Log In" class="btn_1 full-width"
+								<div class="text-center"><input type="button" value="Đăng nhập" class="btn_1 full-width"
 										id="login-btn">
 								</div>
 								<div id="forgot_pw">
@@ -437,8 +437,7 @@
 					</div>
 					<div class="col-xl-6 col-lg-6 col-md-8">
 						<div class="box_account">
-							<h3 class="new_client">New Client</h3> <small class="float-right pt-2">* Required
-								Fields</small>
+							<h3 class="new_client">Đăng ký</h3> <small class="float-right pt-2">* Bắt buộc</small>
 							<div class="form_container">
 								<div class="form-group">
 									<input type="email" class="form-control" name="email" id="email_2"
@@ -446,17 +445,17 @@
 								</div>
 								<div class="form-group">
 									<input type="password" class="form-control" name="password_in_2" id="password_in_2"
-										value="" placeholder="Password*">
+										value="" placeholder="Mật khẩu*">
 								</div>
 								<hr>
 								<div class="form-group">
 									<label class="container_radio"
-										style="display: inline-block; margin-right: 15px;">Private
-										<input type="radio" name="client_type" checked value="private">
+										style="display: inline-block; margin-right: 15px;">Nam
+										<input type="radio" name="gender" checked value="male">
 										<span class="checkmark"></span>
 									</label>
-									<label class="container_radio" style="display: inline-block;">Company
-										<input type="radio" name="client_type" value="company">
+									<label class="container_radio" style="display: inline-block;">Nữ
+										<input type="radio" name="gender" value="female">
 										<span class="checkmark"></span>
 									</label>
 								</div>
@@ -464,125 +463,37 @@
 									<div class="row no-gutters">
 										<div class="col-6 pr-1">
 											<div class="form-group">
-												<input type="text" class="form-control" placeholder="Name*">
+												<input type="text" class="form-control" placeholder="SĐT*"
+													name="phone_number" id="phone_number">
 											</div>
 										</div>
 										<div class="col-6 pl-1">
 											<div class="form-group">
-												<input type="text" class="form-control" placeholder="Last Name*">
+												<input type="text" class="form-control"
+													placeholder="Sinh ngày: mm/dd/yyyy" name="birthday" id="birthday">
 											</div>
 										</div>
 										<div class="col-12">
 											<div class="form-group">
-												<input type="text" class="form-control" placeholder="Full Address*">
+												<input type="text" class="form-control" placeholder="Họ và Tên*"
+													name="name" id="name">
 											</div>
 										</div>
 									</div>
-									<!-- /row -->
-									<div class="row no-gutters">
-										<div class="col-6 pr-1">
-											<div class="form-group">
-												<input type="text" class="form-control" placeholder="City*">
-											</div>
-										</div>
-										<div class="col-6 pl-1">
-											<div class="form-group">
-												<input type="text" class="form-control" placeholder="Postal Code*">
-											</div>
-										</div>
-									</div>
-									<!-- /row -->
 
-									<div class="row no-gutters">
-										<div class="col-6 pr-1">
-											<div class="form-group">
-												<div class="custom-select-form">
-													<select class="wide add_bottom_10" name="country" id="country">
-														<option value="" selected>Country*</option>
-														<option value="Europe">Europe</option>
-														<option value="United states">United states</option>
-														<option value="Asia">Asia</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="col-6 pl-1">
-											<div class="form-group">
-												<input type="text" class="form-control" placeholder="Telephone *">
-											</div>
-										</div>
+									<hr>
+									<div class="text-center"><input type="button" value="Đăng ký"
+											class="btn_1 full-width" id="register-btn">
 									</div>
-									<!-- /row -->
-
 								</div>
-								<!-- /private -->
-								<div class="company box" style="display: none;">
-									<div class="row no-gutters">
-										<div class="col-12">
-											<div class="form-group">
-												<input type="text" class="form-control" placeholder="Company Name*">
-											</div>
-										</div>
-										<div class="col-12">
-											<div class="form-group">
-												<input type="text" class="form-control" placeholder="Full Address">
-											</div>
-										</div>
-									</div>
-									<!-- /row -->
-									<div class="row no-gutters">
-										<div class="col-6 pr-1">
-											<div class="form-group">
-												<input type="text" class="form-control" placeholder="City*">
-											</div>
-										</div>
-										<div class="col-6 pl-1">
-											<div class="form-group">
-												<input type="text" class="form-control" placeholder="Postal Code*">
-											</div>
-										</div>
-									</div>
-									<!-- /row -->
-									<div class="row no-gutters">
-										<div class="col-6 pr-1">
-											<div class="form-group">
-												<div class="custom-select-form">
-													<select class="wide add_bottom_10" name="country" id="country_2">
-														<option value="" selected>Country*</option>
-														<option value="Europe">Europe</option>
-														<option value="United states">United states</option>
-														<option value="Asia">Asia</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="col-6 pl-1">
-											<div class="form-group">
-												<input type="text" class="form-control" placeholder="Telephone *">
-											</div>
-										</div>
-									</div>
-									<!-- /row -->
-								</div>
-								<!-- /company -->
-								<hr>
-								<div class="form-group">
-									<label class="container_check">Accept <a href="#0">Terms and conditions</a>
-										<input type="checkbox">
-										<span class="checkmark"></span>
-									</label>
-								</div>
-								<div class="text-center"><input type="submit" value="Register" class="btn_1 full-width">
-								</div>
+								<!-- /form_container -->
 							</div>
-							<!-- /form_container -->
+							<!-- /box_account -->
 						</div>
-						<!-- /box_account -->
 					</div>
+					<!-- /row -->
 				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
+				<!-- /container -->
 		</main>
 		<!--/main-->
 
