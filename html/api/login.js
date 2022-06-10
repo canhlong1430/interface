@@ -45,12 +45,6 @@ $(document).ready(function () {
             .catch(error => console.log('Error:', error));
     });
 
-    $("#test").click(function () {
-        const token = localStorage.getItem('token')
-        console.log(token)
-    });
-
-
     $("#register-btn").click(function () {
         var email = $("#email_2").val()
         var password = $("#password_in_2").val()

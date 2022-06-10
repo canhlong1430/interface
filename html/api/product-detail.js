@@ -10,6 +10,29 @@ $(document).ready(function () {
         return x.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
     }
 
+    // Check login
+
+    var token = localStorage.getItem('token')
+    if (token == null) {
+        $('a[href="#logout"]').hide()
+    }
+
+    if (token != null) {
+        $("#login-btn").hide()
+    }
+
+    // End
+
+    $("#logout-btn").click(function () {
+    });
+
+    $('a[href="#logout"]').click(function () {
+        localStorage.removeItem('token');
+        location.reload();
+
+        // window.location.href = '/html/index.html';
+    });
+
     var productId = get('product_id')
 
     //Url của api
