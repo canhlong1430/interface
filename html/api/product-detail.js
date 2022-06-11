@@ -29,10 +29,6 @@ $(document).ready(function () {
     if (token != null) {
         $("#login-btn").hide()
     }
-    // End of checking login
-
-    $("#logout-btn").click(function () {
-    });
 
     $('a[href="#logout"]').click(function () {
         localStorage.removeItem('token');
@@ -40,6 +36,7 @@ $(document).ready(function () {
 
         // window.location.href = '/html/index.html';
     });
+    // End of checking login
 
     var productId = get('product_id')
 
