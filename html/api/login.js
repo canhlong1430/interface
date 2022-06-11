@@ -4,7 +4,7 @@ $(document).ready(function () {
             return decodeURIComponent(name[1]);
     }
 
-    $("#login-btn").click(function () {
+    $("#login-btnn").click(function () {
         var email = $("#email").val()
         var password = $("#password_in").val()
 
