@@ -67,8 +67,8 @@ $(document).ready(function () {
 								</div>
 							</td>
 							<td>
-								<strong>`+ toVND(product_option.price * v.quantity);
-            + `</strong>
+								<strong>`+ toVND(product_option.price * v.quantity)
+                + `</strong>
 							</td>
 							<td class="options">
 								<a href="#"><i class="ti-trash"></i></a>
