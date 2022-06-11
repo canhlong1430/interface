@@ -29,6 +29,39 @@ $(document).ready(function () {
     if (token != null) {
         $("#login-btn").hide()
     }
+
+    //Xử lí cart trên header
+    var cartUrl = 'https://electronics-api.herokuapp.com/sale/carts'
+    var bearer = 'Bearer ' + token;
+
+    const cartOptions = {
+        method: 'GET', //tùy chọn method GET hoặc POST, PUT, DELETE
+        headers: {
+            'Authorization': bearer,
+            'Content-Type': 'application/json'
+        },
+    }
+
+    fetch(cartUrl, cartOptions).then(res => res.json()).then(json => {
+        $(json.data.cart_items).each(function (i, v) {
+            var product = v.product
+            var product_option = v.product_option
+
+            var html = `
+            <li>
+                <a href="product-detail-1.html">
+                    <figure><img src="`+ product.thumbnail_url + `"
+                            data-src="`+ product.thumbnail_url + `" alt="" width="50"
+                            height="50" class="lazy"></figure>
+                    <strong><span>`+ v.quantity + `x ` + truncate(product_option.name) + `</span>` + toVND(product_option.price * v.quantity) + `</strong>
+                </a>
+                <a href="#0" class="action"><i class="ti-trash"></i></a>
+            </li>
+            `
+            $("#cart-menu > div > div > span").text(toVND(json.data.subtotal_price))
+            $("#cart-menu > ul").append(html)
+        });
+    });
     // End of checking login
 
     url = 'https://electronics-api.herokuapp.com/sale/carts'
