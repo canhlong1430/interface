@@ -29,6 +29,8 @@ $(document).ready(function () {
 
     //Gọi api => trả về dạng Json => chạy loop đổ json ra HTML
     fetch(url, options).then(res => res.json()).then(json => {
+
+        var categories = json.data.categories
         brandId = json.data.brand_id
 
         $(json.data.product_images).each(function (i, v) {
