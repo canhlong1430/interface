@@ -30,9 +30,9 @@ $(document).ready(function () {
                 return res.json();
             })
             .then(data => {
-                localStorage.setItem('token', data.token);
-                console.log('Success:', data.token)
                 if (status == 200) {
+                    localStorage.setItem('token', data.token);
+                    console.log('Success:', data.token)
                     window.location.href = '/html/index.html';
                 }
                 if (status != 200) {
