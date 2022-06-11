@@ -8,31 +8,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="Ansonika">
 	<title>Key Shop | Kênh phân phối thiết bị điện tử</title>
-	<script>
-		function includeHTML() {
-		  var z, i, elmnt, file, xhttp;
-		  z = document.getElementsByTagName("*");
-		  for (i = 0; i < z.length; i++) {
-			elmnt = z[i];
-			file = elmnt.getAttribute("include-html");
-			if (file) {
-			  xhttp = new XMLHttpRequest();
-			  xhttp.onreadystatechange = function() {
-				if (this.readyState == 4) {
-				  if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-				  if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-				  elmnt.removeAttribute("include-html");
-				  includeHTML();
-				}
-			  }      
-			  xhttp.open("GET", file, true);
-			  xhttp.send();
-			  /*exit the function:*/
-			  return;
-			}
-		  }
-		};
-	</script>
+	<script src="api/include.js"></script>
 	<!-- Favicons-->
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 	<link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
