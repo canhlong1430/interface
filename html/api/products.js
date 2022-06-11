@@ -10,6 +10,8 @@ $(document).ready(function () {
 		return x.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
 	}
 
+	var token = localStorage.getItem('token')
+
 	var page = get('page')
 	var categoryId = get('category_id')
 	//Url của api
