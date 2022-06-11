@@ -44,7 +44,7 @@ $(document).ready(function () {
         						<div class="grid_item">
         							<span class="ribbon off">-30%</span>
         							<figure>
-										<a href="product-detail-2.html?product_id=` + obj.id + `">
+										<a href="product-detail.html?product_id=` + obj.id + `">
         									<img class="img-fluid lazy"
         										src="` + obj.thumbnail_url + `"
         										data-src="` + obj.thumbnail_url + `" alt="">
