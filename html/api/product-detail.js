@@ -153,37 +153,37 @@ $(document).ready(function () {
             $(json1.data).each(function (i, v) {
                 switch (i) {
                     case 0:
-                        $("#related-item1 > div > a").attr("href", "product-detail-2.html?product_id=" + v.id);
+                        $("#related-item1 > div > a").attr("href", "product-detail.html?product_id=" + v.id);
                         $("#related-item1 > div > a > h3").text(truncate(v.name))
-                        $("#related-item1 > div > figure > a").attr("href", "product-detail-2.html?product_id=" + v.id);
+                        $("#related-item1 > div > figure > a").attr("href", "product-detail.html?product_id=" + v.id);
                         $("#related-item1 > div > figure > a > img").attr("src", v.thumbnail_url);
                         $("#related-item1 > div > .price_box > .new_price").text(toVND(v.price))
                         break;
                     case 1:
-                        $("#related-item2 > div > a").attr("href", "product-detail-2.html?product_id=" + v.id);
+                        $("#related-item2 > div > a").attr("href", "product-detail.html?product_id=" + v.id);
                         $("#related-item2 > div > a > h3").text(truncate(v.name))
-                        $("#related-item2 > div > figure > a").attr("href", "product-detail-2.html?product_id=" + v.id);
+                        $("#related-item2 > div > figure > a").attr("href", "product-detail.html?product_id=" + v.id);
                         $("#related-item2 > div > figure > a > img").attr("src", v.thumbnail_url);
                         $("#related-item2 > div > .price_box > .new_price").text(toVND(v.price))
                         break;
                     case 2:
-                        $("#related-item3 > div > a").attr("href", "product-detail-2.html?product_id=" + v.id);
+                        $("#related-item3 > div > a").attr("href", "product-detail.html?product_id=" + v.id);
                         $("#related-item3 > div > a > h3").text(truncate(v.name))
-                        $("#related-item3 > div > figure > a").attr("href", "product-detail-2.html?product_id=" + v.id);
+                        $("#related-item3 > div > figure > a").attr("href", "product-detail.html?product_id=" + v.id);
                         $("#related-item3 > div > figure > a > img").attr("src", v.thumbnail_url);
                         $("#related-item3 > div > .price_box > .new_price").text(toVND(v.price))
                         break;
                     case 3:
-                        $("#related-item4 > div > a").attr("href", "product-detail-2.html?product_id=" + v.id);
+                        $("#related-item4 > div > a").attr("href", "product-detail.html?product_id=" + v.id);
                         $("#related-item4 > div > a > h3").text(truncate(v.name))
-                        $("#related-item4 > div > figure > a").attr("href", "product-detail-2.html?product_id=" + v.id);
+                        $("#related-item4 > div > figure > a").attr("href", "product-detail.html?product_id=" + v.id);
                         $("#related-item4 > div > figure > a > img").attr("src", v.thumbnail_url);
                         $("#related-item4 > div > .price_box > .new_price").text(toVND(v.price))
                         break;
                     case 4:
-                        $("#related-item5 > div > a").attr("href", "product-detail-2.html?product_id=" + v.id);
+                        $("#related-item5 > div > a").attr("href", "product-detail.html?product_id=" + v.id);
                         $("#related-item5 > div > a > h3").text(truncate(v.name))
-                        $("#related-item5 > div > figure > a").attr("href", "product-detail-2.html?product_id=" + v.id);
+                        $("#related-item5 > div > figure > a").attr("href", "product-detail.html?product_id=" + v.id);
                         $("#related-item5 > div > figure > a > img").attr("src", v.thumbnail_url);
                         $("#related-item5 > div > .price_box > .new_price").text(v.price + " đ")
                         break;
