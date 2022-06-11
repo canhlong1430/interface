@@ -172,5 +172,46 @@ $(document).ready(function () {
     });
 
 
+    $(".btn_add_to_cart1").click(function () {
+        var optionId = productId
+        var quantity = $("#quantity_1").val()
 
+        var cartUrl = "https://electronics-api.herokuapp.com/add_to_cart"
+        var bearer = 'Bearer ' + token;
+
+        const cartOptions = {
+            method: 'POST', //tùy chọn method GET hoặc POST, PUT, DELETE
+            headers: {
+                'Authorization': bearer,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                data:
+                {
+                    product_option_id: parseInt(optionId),
+                    quantity: parseInt(quantity),
+                }
+            })
+        };
+
+        var status2
+        fetch(cartUrl, cartOptions)
+            .then((res) => {
+                console.log(res.status);
+                status2 = res.status
+                return res.json();
+            })
+            .then(data => {
+                if (status2 == 200) {
+                    $('#status').html(' <span style="color:green"> [Sản phẩm đã được thêm vào giỏ hàng!]</span>')
+                }
+                if (status2 != 200) {
+                    $('#status').html(' <span style="color:red"> [Lỗi - Có lỗi xảy ra!]</span>')
+                }
+                if (status2 == 401) {
+                    $('#status').html(' <span style="color:red"> [Lỗi - Bạn chưa đăng nhập!]</span>')
+                }
+            })
+            .catch(error => console.log('Error:', error));
+    });
 });
