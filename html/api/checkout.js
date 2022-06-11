@@ -47,56 +47,108 @@ $(document).ready(function () {
             $("#order-summary").children().eq(1).find("li").eq(2).find("span").text(toVND(discounts))
             $("#order-summary > div").eq(0).find("span").text(toVND(total_price))
 
-            //Xử lí đặt hàng
-            $('a[href="#confirm"]').click(function () {
-                if (i == 0) {
-                    var orderUrl = 'https://electronics-api.herokuapp.com/sale/orders/create'
-                    var bearer = 'Bearer ' + token;
-                    var payment_method = $('input[name="payment"]:checked').val();
-                    var payment_method_id
+        });
 
-                    if (payment_method == "cod") {
-                        payment_method_id = 1
+        //Xử lí đặt hàng
+        $('a[href="#confirm"]').click(function () {
+
+            //Tạo đơn hàng
+            var orderUrl = 'https://electronics-api.herokuapp.com/sale/orders/create'
+            var bearer = 'Bearer ' + token;
+            var payment_method = $('input[name="payment"]:checked').val();
+            var payment_method_id
+            var order_id
+            var discounts = 5000
+            var delivery_fee = 30000
+
+            if (payment_method == "cod") {
+                payment_method_id = 1
+            }
+
+            if (payment_method == "momo") {
+                payment_method_id = 2
+            }
+
+            const orderOptions = {
+                method: 'POST', //tùy chọn method GET hoặc POST, PUT, DELETE
+                headers: {
+                    'Authorization': bearer,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    data:
+                    {
+                        total_discounts: discounts,
+                        delivery_fee: delivery_fee,
+                        payment_method_id: payment_method_id,
                     }
+                })
+            }
 
-                    if (payment_method == "momo") {
-                        payment_method_id = 2
+            var status
+            fetch(orderUrl, orderOptions)
+                .then((res) => {
+                    console.log(res.status);
+                    status = res.status
+                    return res.json();
+                })
+                .then(data => {
+                    if (status == 200) {
+                        order_id = data.data.id
+
+                        //Thêm các items cho đơn hàng
+                        $(json.data.cart_items).each(function (i, v) {
+                            var product = v.product
+                            var product_option = v.product_option
+
+                            var itemUrl = 'https://electronics-api.herokuapp.com/sale/order/items/create'
+                            var bearer = 'Bearer ' + token;
+
+                            const itemOptions = {
+                                method: 'POST', //tùy chọn method GET hoặc POST, PUT, DELETE
+                                headers: {
+                                    'Authorization': bearer,
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    data:
+                                    {
+                                        product_id: product.id,
+                                        product_option_id: product_option.id,
+                                        order_id: order_id,
+                                        quantity: v.quantity,
+                                    }
+                                })
+                            }
+
+                            var status1
+                            fetch(itemUrl, itemOptions)
+                                .then((res) => {
+                                    console.log(res.status);
+                                    status1 = res.status
+                                    return res.json();
+                                })
+                                .then(data => {
+                                    if (status1 == 200) {
+                                        window.location.href = '/html/confirm.html'; //Chuyển hướng đến trang confirm
+                                    }
+                                    if (status1 != 200) {
+                                        $('#order-summary').append(' <span style="color:red"> [Lỗi - Có lỗi xảy ra khi đặt hàng!]</span>')
+                                    }
+                                })
+                                .catch(error => console.log('Error:', error));
+                        });
+
                     }
-
-                    const orderOptions = {
-                        method: 'POST', //tùy chọn method GET hoặc POST, PUT, DELETE
-                        headers: {
-                            'Authorization': bearer,
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            data:
-                            {
-                                total_discounts: discounts,
-                                delivery_fee: delivery_fee,
-                                payment_method_id: payment_method_id,
-                            }
-                        })
+                    if (status != 200) {
+                        $('#order-summary').append(' <span style="color:red"> [Lỗi - Có lỗi xảy ra khi đặt hàng!]</span>')
                     }
+                })
+                .catch(error => console.log('Error:', error));
 
-                    var status
-                    fetch(orderUrl, orderOptions)
-                        .then((res) => {
-                            console.log(res.status);
-                            status = res.status
-                            return res.json();
-                        })
-                        .then(data => {
-                            if (status == 200) {
-                                window.location.href = '/html/confirm.html';
-                            }
-                            if (status != 200) {
-                                $('#order-summary').append(' <span style="color:red"> [Lỗi - Có lỗi xảy ra khi đặt hàng!]</span>')
-                            }
-                        })
-                        .catch(error => console.log('Error:', error));
-                }
-            });
+
+
+
         });
     });
 });
