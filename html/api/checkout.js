@@ -150,6 +150,7 @@ $(document).ready(function () {
 
                                             if (payment_method_id == 2) {
                                                 sum = sum + delivery_fee - discounts
+                                                var host = window.location.host;
 
                                                 var momoUrl = 'https://electronics-api.herokuapp.com/sale/orders/momo_payment'
 
@@ -161,6 +162,7 @@ $(document).ready(function () {
                                                     body: JSON.stringify({
                                                         data:
                                                         {
+                                                            host_name: host,
                                                             amount: sum.toString(),
                                                         }
                                                     })
