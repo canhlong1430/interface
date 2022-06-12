@@ -143,6 +143,8 @@ $(document).ready(function () {
                                             }
 
                                             if (payment_method_id == 2) {
+                                                sum = sum + delivery_fee - discounts
+
                                                 var momoUrl = 'https://electronics-api.herokuapp.com/sale/orders/momo_payment'
 
                                                 const momoOptions = {
