@@ -61,6 +61,11 @@ $(document).ready(function () {
             var discounts = 5000
             var delivery_fee = 30000
 
+            var email_notify = false
+            if ($("#mailer").prop("checked") == true) {
+                email_notify = true
+            }
+
             //Xử lí thanh toán cod
             if (payment_method == "cod") {
                 payment_method_id = 1
@@ -80,6 +85,7 @@ $(document).ready(function () {
                 body: JSON.stringify({
                     data:
                     {
+                        email_notify: email_notify,
                         total_discounts: discounts,
                         delivery_fee: delivery_fee,
                         payment_method_id: payment_method_id,
