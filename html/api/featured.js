@@ -15,7 +15,7 @@ $(document).ready(function () {
 	var page = get('page')
 	var categoryId = get('category_id')
 	//Url của api
-	url = 'https://electronics-api.herokuapp.com/products?limit=3&offset=0&top_rating=true'
+	url = 'https://electronics-api.herokuapp.com/products?limit=3&page=1&top_rating=true'
 	const options = {
 		method: 'GET', //tùy chọn method GET hoặc POST, PUT, DELETE
 		headers: { 'Content-Type': 'application/json' },

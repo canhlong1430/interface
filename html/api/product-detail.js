@@ -126,7 +126,7 @@ $(document).ready(function () {
         $("#specs").html(str)
 
 
-        urlBrand = 'https://electronics-api.herokuapp.com/products/list_by_brand?brand_id=' + brandId + '&limit=10&offset=0'
+        urlBrand = 'https://electronics-api.herokuapp.com/products/list_by_brand?brand_id=' + brandId + '&limit=10&page=1'
         fetch(urlBrand, options).then(res1 => res1.json()).then(json1 => {
 
             $(json1.data).each(function (i, v) {

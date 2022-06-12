@@ -16,7 +16,7 @@ $(document).ready(function () {
     var token = localStorage.getItem('token')
 
     //Url của api
-    url = 'https://electronics-api.herokuapp.com/products?limit=900&offset=0'
+    url = 'https://electronics-api.herokuapp.com/products?limit=900&page=1'
 
     const options = {
         method: 'GET', //tùy chọn method GET hoặc POST, PUT, DELETE
