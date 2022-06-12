@@ -36,32 +36,26 @@ $(document).ready(function () {
         $(json.data.product_images).each(function (i, v) {
             switch (i) {
                 case 0:
-                    console.log(v.thumbnail_url)
                     $("#img1").css('background-image', 'url(' + v.url + ')')
                     $("#small-img1").css('background-image', 'url(' + v.url + ')')
                     break;
                 case 1:
-                    console.log(v.thumbnail_url)
                     $("#img2").css('background-image', 'url(' + v.url + ')')
                     $("#small-img2").css('background-image', 'url(' + v.url + ')')
                     break;
                 case 2:
-                    console.log(v.thumbnail_url)
                     $("#img3").css('background-image', 'url(' + v.url + ')')
                     $("#small-img3").css('background-image', 'url(' + v.url + ')')
                     break;
                 case 3:
-                    console.log(v.thumbnail_url)
                     $("#img4").css('background-image', 'url(' + v.url + ')')
                     $("#small-img4").css('background-image', 'url(' + v.url + ')')
                     break;
                 case 4:
-                    console.log(v.thumbnail_url)
                     $("#img5").css('background-image', 'url(' + v.url + ')')
                     $("#small-img5").css('background-image', 'url(' + v.url + ')')
                     break;
                 case 5:
-                    console.log(v.thumbnail_url)
                     $("#img6").css('background-image', 'url(' + v.url + ')')
                     $("#small-img6").css('background-image', 'url(' + v.url + ')')
                     break;
@@ -81,7 +75,13 @@ $(document).ready(function () {
         `
         for (var i = 0; i < 4; i++) {//Cho hiển thị 4 comment
             var obj = json.data.product_ratings[i];
-            var user = obj.created_by
+
+            if (obj) {
+                var user = obj.created_by
+            } else {
+                $("#rating div").html(' <h3>Sản phẩm chưa có đánh giá nào. Hãy để lại đánh giá của bạn!</h3>')
+            }
+
             str += `				
                 <div class="col-lg-6">
 											<div class="review_content">
