@@ -93,6 +93,8 @@ $(document).ready(function () {
                 })
             }
 
+            var host = window.location.host;
+            console.log(host)
             var status
             fetch(orderUrl, orderOptions)
                 .then((res) => {
@@ -150,7 +152,6 @@ $(document).ready(function () {
 
                                             if (payment_method_id == 2) {
                                                 sum = sum + delivery_fee - discounts
-                                                var host = window.location.host;
 
                                                 var momoUrl = 'https://electronics-api.herokuapp.com/sale/orders/momo_payment'
 
