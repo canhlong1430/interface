@@ -15,10 +15,7 @@ $(document).ready(function () {
 	var page = get('page')
 	var categoryId = get('category_id')
 	//Url của api
-	var limit = '4'
-	var offset = '5'
-    url = 'https://electronics-api.herokuapp.com/products?limit=8&offset=0'
-
+	url = 'https://electronics-api.herokuapp.com/products?limit=3&offset=0&top_rating=true'
 	const options = {
 		method: 'GET', //tùy chọn method GET hoặc POST, PUT, DELETE
 		headers: { 'Content-Type': 'application/json' },
@@ -41,38 +38,37 @@ $(document).ready(function () {
 			//Hiển thị tên sản phẩm mra HTML
 			var obj = json.data[i];
 			var newDiv = document.createElement('div');
-			newDiv.className = 'item'
+			newDiv.className = 'col-6 col-md-4'
 			newDiv.innerHTML = `
-            <div class="grid_item">
-                <span class="ribbon new">New</span>
-                <figure>
-                    <a href="product-detail-1.html">
-                        <img class="owl-lazy" src="img/products/product_placeholder_square_medium.jpg"
-                            data-src="img/products/shoes/4.jpg" alt="">
-                    </a>
-                </figure>
-                <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i
-                        class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i>
-                </div>
-                <a href="product-detail-1.html">
-                    <h3>ACG React Terra</h3>
-                </a>
-                <div class="price_box">
-                    <span class="new_price">$110.00</span>
-                </div>
-                <ul>
-                    <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left"
-                            title="Add to favorites"><i class="ti-heart"></i><span>Add to
-                                favorites</span></a></li>
-                    <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left"
-                            title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to
-                                compare</span></a></li>
-                    <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left"
-                            title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /grid_item -->
+        						<div class="grid_item">
+        						
+        							<figure>
+										<a href="product-detail.html?product_id=` + obj.id + `">
+        									<img class="img-fluid lazy"
+        										src="` + obj.thumbnail_url + `"
+        										data-src="` + obj.thumbnail_url + `" alt="">
+        								</a>
+        								<!-- <div data-countdown="2019/05/15" class="countdown"></div> -->
+        							</figure>
+        							<a href="product-detail-2.html?product_id=` + obj.id + `">
+        								<h3>`+ truncate(obj.name) + `</h3>
+        							</a>
+        							<div class="price_box">
+        								<span class="new_price">` + toVND(obj.price) + ` đ</span>
+        								<span class="old_price">` + toVND(obj.price) + ` đ</span>
+        							</div>
+        							<ul>
+        								<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left"
+        										title="Add to favorites"><i class="ti-heart"></i><span>Add to
+        											favorites</span></a></li>
+        								<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left"
+        										title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to
+        											compare</span></a></li>
+        								<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left"
+        										title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to
+        											cart</span></a></li>
+        							</ul>
+        						</div>     
         `;
 			document.getElementById("featured").appendChild(newDiv)
 		}

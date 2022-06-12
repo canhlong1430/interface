@@ -16,8 +16,7 @@ $(document).ready(function () {
 	var categoryId = get('category_id')
 	//Url của api
 	var limit = '8'
-	var offset = '5'
-    url = 'https://electronics-api.herokuapp.com/products?limit=8&offset=0'
+    url = 'https://electronics-api.herokuapp.com/products?limit='+limit+'&offset=0'
 
 	const options = {
 		method: 'GET', //tùy chọn method GET hoặc POST, PUT, DELETE
@@ -44,7 +43,7 @@ $(document).ready(function () {
 			newDiv.className = 'col-6 col-md-4 col-xl-3'
 			newDiv.innerHTML = `
         						<div class="grid_item">
-        							<span class="ribbon off">-30%</span>
+								
         							<figure>
 										<a href="product-detail.html?product_id=` + obj.id + `">
         									<img class="img-fluid lazy"

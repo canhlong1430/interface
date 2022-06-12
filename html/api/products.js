@@ -44,7 +44,7 @@ $(document).ready(function () {
 			newDiv.className = 'col-6 col-md-4'
 			newDiv.innerHTML = `
         						<div class="grid_item">
-        							<span class="ribbon off">-30%</span>
+        						
         							<figure>
 										<a href="product-detail.html?product_id=` + obj.id + `">
         									<img class="img-fluid lazy"
