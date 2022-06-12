@@ -94,7 +94,6 @@ $(document).ready(function () {
             }
 
             var host = window.location.host;
-            console.log(host)
             var status
             fetch(orderUrl, orderOptions)
                 .then((res) => {
