@@ -61,10 +61,12 @@ $(document).ready(function () {
             var discounts = 5000
             var delivery_fee = 30000
 
+            //Xử lí thanh toán cod
             if (payment_method == "cod") {
                 payment_method_id = 1
             }
 
+            //Xử lí thanh toán MoMo
             if (payment_method == "momo") {
                 payment_method_id = 2
             }
@@ -96,6 +98,7 @@ $(document).ready(function () {
                     if (status == 200) {
                         order_id = data.data.id
 
+                        var sum = 0
                         //Thêm các items cho đơn hàng
                         $(json.data.cart_items).each(function (i, v) {
                             var product = v.product
@@ -130,7 +133,40 @@ $(document).ready(function () {
                                 })
                                 .then(data => {
                                     if (status1 == 200) {
-                                        window.location.href = '/html/confirm.html'; //Chuyển hướng đến trang confirm
+                                        sum += product_option.price
+
+                                        //Sau khi insert item cuối cùng trong giỏ
+                                        if (i == json.data.cart_items.length - 1) {
+
+                                            if (payment_method_id == 1) {
+                                                window.location.href = '/html/confirm.html'; //Chuyển hướng đến trang confirm
+                                            }
+
+                                            if (payment_method_id == 2) {
+                                                sum = sum + delivery_fee - discounts
+
+                                                var momoUrl = 'https://electronics-api.herokuapp.com/sale/orders/momo_payment'
+
+                                                const momoOptions = {
+                                                    method: 'POST', //tùy chọn method GET hoặc POST, PUT, DELETE
+                                                    headers: {
+                                                        'Content-Type': 'application/json'
+                                                    },
+                                                    body: JSON.stringify({
+                                                        data:
+                                                        {
+                                                            amount: sum.toString(),
+                                                        }
+                                                    })
+                                                }
+                                                var momoStatus
+                                                fetch(momoUrl, momoOptions).then(res => res.text()).then(text => {
+                                                    console.log(text)
+                                                    window.location.href = text
+                                                });
+                                            }
+                                        }
+
                                     }
                                     if (status1 != 200) {
                                         $('#order-summary').append(' <span style="color:red"> [Lỗi - Có lỗi xảy ra khi đặt hàng!]</span>')
@@ -139,14 +175,13 @@ $(document).ready(function () {
                                 .catch(error => console.log('Error:', error));
                         });
 
+                        // window.location.href = '/html/confirm.html'; //Chuyển hướng đến trang confirm
                     }
                     if (status != 200) {
                         $('#order-summary').append(' <span style="color:red"> [Lỗi - Có lỗi xảy ra khi đặt hàng!]</span>')
                     }
                 })
                 .catch(error => console.log('Error:', error));
-
-
 
 
         });

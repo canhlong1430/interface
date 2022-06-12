@@ -34,9 +34,9 @@ $(document).ready(function () {
 
     $('a[href="#logout"]').click(function () {
         localStorage.removeItem('token');
-        location.reload();
+        // location.reload();
 
-        // window.location.href = '/html/index.html';
+        window.location.href = '/html/index.html';
     });
 
 
