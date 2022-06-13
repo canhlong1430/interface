@@ -89,6 +89,7 @@ $(document).ready(function () {
     }
 
     fetch(favUrl, favOptions).then(res => res.json()).then(json => {
+
         $(json.data).each(function (i, v) {
             var product = v.product
 
