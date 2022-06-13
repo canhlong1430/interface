@@ -108,7 +108,7 @@ $(document).ready(function () {
                         }
                         if (status3 != 200) {
                         }
-                        if (status2 == 401) {
+                        if (status3 == 401) {
                         }
                     })
                     .catch(error => console.log('Error:', error));

@@ -263,7 +263,7 @@ $(document).ready(function () {
                         $(".product_actions > span").hide()
                     }, 1000);
                 }
-                if (status2 == 401) {
+                if (status3 == 401) {
                     $(".product_actions").append(' <span style="color:red"> [Lỗi - Bạn chưa đăng nhập!]</span>')
                     setTimeout(function () {
                         $(".product_actions > span").hide()
