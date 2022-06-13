@@ -62,7 +62,7 @@ $(document).ready(function () {
 
             var html = `
         <li>
-            <a href="product-detail.html?product_id=`+ product_option.id + `">
+            <a href="product-detail.html?product_id=`+ product.id + `">
                 <figure><img src="`+ product.thumbnail_url + `"
                         data-src="`+ product.thumbnail_url + `" alt="" width="50"
                         height="50" class="lazy"></figure>
@@ -73,6 +73,37 @@ $(document).ready(function () {
         `
             $("#cart-menu > div > div > span").text(toVND(json.data.subtotal_price))
             $("#cart-menu > ul").append(html)
+        });
+    });
+
+    //Xử lí favorites trên header
+    var favUrl = 'https://electronics-api.herokuapp.com/user/favorites'
+    var bearer = 'Bearer ' + token;
+
+    const favOptions = {
+        method: 'GET', //tùy chọn method GET hoặc POST, PUT, DELETE
+        headers: {
+            'Authorization': bearer,
+            'Content-Type': 'application/json'
+        },
+    }
+
+    fetch(favUrl, favOptions).then(res => res.json()).then(json => {
+        $(json.data).each(function (i, v) {
+            var product = v.product
+
+            var html = `
+        <li>
+            <a href="product-detail.html?product_id=`+ product.id + `">
+                <figure><img src="`+ product.thumbnail_url + `"
+                        data-src="`+ product.thumbnail_url + `" alt="" width="50"
+                        height="50" class="lazy"></figure>
+                <strong><span>` + truncate(product.name) + `</span>` + `</strong>
+            </a>
+            <a href="#0" class="action"><i class="ti-trash"></i></a>
+        </li>
+        `
+            $("#wishlist-menu > ul").append(html)
         });
     });
 
