@@ -204,6 +204,7 @@ $(document).ready(function () {
             .then(data => {
                 if (status2 == 200) {
                     $('#status').html(' <span style="color:green"> [Sản phẩm đã được thêm vào giỏ hàng!]</span>')
+                    $(".cart_bt strong").text(parseInt($(".cart_bt strong").text()) + 1)
                 }
                 if (status2 != 200) {
                     $('#status').html(' <span style="color:red"> [Lỗi - Có lỗi xảy ra!]</span>')

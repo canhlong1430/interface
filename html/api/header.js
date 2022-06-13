@@ -62,7 +62,7 @@ $(document).ready(function () {
 
             var html = `
         <li>
-            <a href="product-detail-1.html">
+            <a href="product-detail.html?product_id=`+ product_option.id + `">
                 <figure><img src="`+ product.thumbnail_url + `"
                         data-src="`+ product.thumbnail_url + `" alt="" width="50"
                         height="50" class="lazy"></figure>
