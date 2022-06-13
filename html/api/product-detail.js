@@ -209,16 +209,67 @@ $(document).ready(function () {
                 if (status2 == 200) {
                     $('#status').html(' <span style="color:green"> [Sản phẩm đã được thêm vào giỏ hàng!]</span>')
                     $(".cart_bt strong").text(parseInt($(".cart_bt strong").text()) + 1)
+                    setTimeout(function () {
+                        $('#status').html('')
+                    }, 1000);
                 }
                 if (status2 != 200) {
                     $('#status').html(' <span style="color:red"> [Lỗi - Có lỗi xảy ra!]</span>')
+                    setTimeout(function () {
+                        $('#status').html('')
+                    }, 1000);
                 }
                 if (status2 == 401) {
                     $('#status').html(' <span style="color:red"> [Lỗi - Bạn chưa đăng nhập!]</span>')
+                    setTimeout(function () {
+                        $('#status').html('')
+                    }, 1000);
                 }
             })
             .catch(error => console.log('Error:', error));
     });
 
     $("#write-review").attr('href', 'leave-review.html?product_id=' + productId)
+
+    $('a[href="#add-to-wishlist"]').click(function () {
+
+        var bearer = 'Bearer ' + token;
+        var favUrl = "https://electronics-api.herokuapp.com/add_to_favorites/" + productId
+        var favOptions = {
+            method: 'POST', //tùy chọn method GET hoặc POST, PUT, DELETE
+            headers: {
+                'Authorization': bearer,
+                'Content-Type': 'application/json'
+            }
+        };
+
+        var status3
+        fetch(favUrl, favOptions)
+            .then((res) => {
+                console.log(res.status);
+                status3 = res.status
+                return res.json();
+            })
+            .then(data => {
+                if (status3 == 200) {
+                    $(".product_actions").append(' <span style="color:green"> [Sản phẩm đã được thêm vào danh sách yêu thích!]</span>')
+                    setTimeout(function () {
+                        $(".product_actions > span").hide()
+                    }, 1000);
+                }
+                if (status3 != 200) {
+                    $(".product_actions").append(' <span style="color:red"> [Lỗi - Có lỗi xảy ra!]</span>')
+                    setTimeout(function () {
+                        $(".product_actions > span").hide()
+                    }, 1000);
+                }
+                if (status2 == 401) {
+                    $(".product_actions").append(' <span style="color:red"> [Lỗi - Bạn chưa đăng nhập!]</span>')
+                    setTimeout(function () {
+                        $(".product_actions > span").hide()
+                    }, 1000);
+                }
+            })
+            .catch(error => console.log('Error:', error));
+    });
 });

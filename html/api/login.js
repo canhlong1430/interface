@@ -40,6 +40,9 @@ $(document).ready(function () {
                     // window.location.href = '/html/account.html';
 
                     $('.client').append(' <span style="color:red"> [Lỗi - Email hoặc mật khẩu không đúng!]</span>')
+                    setTimeout(function () {
+                        $('.client > span').hide()
+                    }, 1000);
                 }
             })
             .catch(error => console.log('Error:', error));
@@ -55,6 +58,9 @@ $(document).ready(function () {
         var name = $("#name").val()
         if (email == "" || password == "" || avatar == "" || gender == "" || phone_number == "") {
             $('.new_client').append(' <span style="color:red"> [Lỗi - Bạn cần điền đầy đủ thông tin!]</span>')
+            setTimeout(function () {
+                $('.new_client > span').hide()
+            }, 1000);
         } else {
             const options = {
                 method: 'POST',
@@ -88,19 +94,26 @@ $(document).ready(function () {
                     if (status == 200) {
                         $('.new_client').append(' <span style="color:green"> [Đăng ký thành công!]</span>')
                         setTimeout(function () {
+                            $('.new_client > span').hide()
+                            window.location.href = '/html/account.html';
                         }, 1000);
-                        window.location.href = '/html/account.html';
                     }
                     if (status != 200) {
                         // alert("Email hoặc mật khẩu không đúng. Xin thử lại!")
                         // window.location.href = '/html/account.html';
 
                         $('.new_client').append(' <span style="color:red"> [Lỗi - Đăng ký không thành công, thử lại với email khác!]</span>')
+                        setTimeout(function () {
+                            $('.new_client > span').hide()
+                        }, 1000);
                     }
                 })
                 .catch(error => {
                     console.log('Error:', error)
                     $('.new_client').append(' <span style="color:red"> [Lỗi - Đăng ký không thành công, Có lỗi xảy ra!]</span>')
+                    setTimeout(function () {
+                        $('.new_client > span').hide()
+                    }, 1000);
                 });
         }
     });
