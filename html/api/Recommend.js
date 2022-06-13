@@ -51,7 +51,7 @@ $(document).ready(function () {
         //Gọi api => trả về dạng Json => chạy loop đổ json ra HTML
         fetch(url, options).then(res => res.json()).then(json => {
             for (var i = 0; i < json.data.length; i++) {
-                if (i < 9) {
+                if (i < 8) {
                     //Hiển thị tên sản phẩm mra HTML
                     var obj = json.data[i];
                     var newDiv = document.createElement('div');
