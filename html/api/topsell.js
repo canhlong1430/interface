@@ -44,7 +44,7 @@ $(document).ready(function () {
         						<div class="grid_item">
 								
         							<figure>
-										<a href="product-detail.html?product_id=` + obj.id + `">
+										<a href="product-detail.html?product_id=` + obj.id + `" product_id="` + obj.id + `">
         									<img class="img-fluid lazy"
         										src="` + obj.thumbnail_url + `"
         										data-src="` + obj.thumbnail_url + `" alt="">
@@ -59,20 +59,43 @@ $(document).ready(function () {
         								<span class="old_price">` + toVND(obj.price) + ` đ</span>
         							</div>
         							<ul>
-        								<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left"
-        										title="Add to favorites"><i class="ti-heart"></i><span>Add to
-        											favorites</span></a></li>
-        								<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left"
-        										title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to
-        											compare</span></a></li>
-        								<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left"
-        										title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to
-        											cart</span></a></li>
+        								<li><a href="#add-to-cart" class="tooltip-1" data-toggle="tooltip" data-placement="left"
+        										title="Thêm vào giỏ hàng"><i class="ti-shopping-cart"></i><span>Thêm vào giỏ hàng</span></a></li>
         							</ul>
         						</div>     
         `;
 			document.getElementById("top_selling").appendChild(newDiv)
 		}
+
+		$('a[href="#add-to-cart"]').click(function () {
+			var productId = $(this).parent().parent().parent().find("figure").find("a").attr("product_id")
+			var bearer = 'Bearer ' + token;
+			var favUrl = "https://electronics-api.herokuapp.com/add_to_favorites/" + productId
+			var favOptions = {
+				method: 'POST', //tùy chọn method GET hoặc POST, PUT, DELETE
+				headers: {
+					'Authorization': bearer,
+					'Content-Type': 'application/json'
+				}
+			};
+
+			var status3
+			fetch(favUrl, favOptions)
+				.then((res) => {
+					console.log(res.status);
+					status3 = res.status
+					return res.json();
+				})
+				.then(data => {
+					if (status3 == 200) {
+					}
+					if (status3 != 200) {
+					}
+					if (status2 == 401) {
+					}
+				})
+				.catch(error => console.log('Error:', error));
+		});
 	});
 
 
