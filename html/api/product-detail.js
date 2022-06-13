@@ -17,6 +17,10 @@ $(document).ready(function () {
 
     var productId = get('product_id')
 
+    if (token == null) {
+        $('#write-review').hide()
+    }
+
     //Url của api
     url = 'https://electronics-api.herokuapp.com/products/' + productId
 

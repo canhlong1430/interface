@@ -101,7 +101,7 @@ $(document).ready(function () {
                         height="50" class="lazy"></figure>
                 <strong><span>` + truncate(product.name) + `</span>` + `</strong>
             </a>
-            <a href="#0" class="action"><i class="ti-trash"></i></a>
+            <a href="javascript:void(0)" class="action" fav_id="` + v.id + `" id="remove-fav"><i class="ti-trash"></i></a>
         </li>
         `
             $("#wishlist-menu > ul").append(html)

@@ -27,23 +27,24 @@ $(document).ready(function () {
             body: JSON.stringify({
                 data:
                 {
-                    product_id: productId,
-                    comment: commend,
-                    star_number: starNumber
+                    product_id: parseInt(productId),
+                    comment: commend.toString(),
+                    star_number: parseInt(starNumber)
                 }
             })
         };
 
         var ratingUrl = 'https://electronics-api.herokuapp.com/product/ratings/create'
-
+        var status
         fetch(ratingUrl, ratingOptions)
             .then((res) => {
                 console.log(res.status);
-                status = res.status
                 return res.json();
             })
             .then(data => {
-                window.location.href = '/html/product-detail.html?product_id=' + productId;
+                if (status == 200) {
+                    window.location.href = '/html/product-detail.html?product_id=' + productId;
+                }
             })
             .catch(error => console.log('Error:', error));
     });
