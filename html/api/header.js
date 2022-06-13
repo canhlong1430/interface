@@ -53,6 +53,9 @@ $(document).ready(function () {
     }
 
     fetch(cartUrl, cartOptions).then(res => res.json()).then(json => {
+        var count = json.data.cart_items.length
+        $(".cart_bt strong").text(count)
+
         $(json.data.cart_items).each(function (i, v) {
             var product = v.product
             var product_option = v.product_option
