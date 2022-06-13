@@ -13,6 +13,8 @@ $(document).ready(function () {
     var token = localStorage.getItem('token')
 
     var page = get('page')
+    var pageNumber
+
     //Url của api
     var limit = '9'
     var keyword = get('keyword')
@@ -24,6 +26,7 @@ $(document).ready(function () {
     }
 
     fetch(searchUrl, searchOptions).then(res => res.json()).then(json => {
+        pageNumber = Math.floor(json.count / limit)
         for (var i = 0; i < json.data.length; i++) {
 
             //Hiển thị tên sản phẩm mra HTML
@@ -41,7 +44,7 @@ $(document).ready(function () {
         								</a>
         								<!-- <div data-countdown="2019/05/15" class="countdown"></div> -->
         							</figure>
-        							<a href="product-detail-2.html?product_id=` + obj.id + `">
+        							<a href="product-detail.html?product_id=` + obj.id + `">
         								<h3>`+ truncate(obj.name) + `</h3>
         							</a>
         							<div class="price_box">
@@ -62,6 +65,42 @@ $(document).ready(function () {
         						</div>     
         `;
             document.getElementById("list_product").appendChild(newDiv)
+        }
+
+        //Pagination
+        var html = ""
+        if (pageNumber > 1) {
+
+            if (page != 1) {
+                var previous = page - 1
+                $(".pagination").append(`<li><a href="/html/search-results.html?keyword=` + keyword + `&page=` + previous + `" class="prev page" title="previous page">&#10094;</a></li>`)
+            }
+
+            for (var i = 1; i <= pageNumber; i++) {
+                console.log(i)
+                if (i == page) {
+                    html = `<li>
+								<a href="/html/search-results.html?keyword=` + keyword + `&page=` + i + `" class="active page">` + i + `</a>
+							</li>`
+                } else {
+                    html = `<li>
+								<a  href="/html/search-results.html?keyword=` + keyword + `&page=` + i + `" class="page">` + i + `</a>
+							</li>`
+                }
+                $(".pagination").append(html)
+            }
+            if (page != pageNumber) {
+                var next = parseInt(page) + 1
+                $(".pagination").append(`<li><a href="/html/search-results.html?keyword=` + keyword + `&page=` + next + `" class="next page" title="next page">&#10095;</a></li>`)
+            }
+        }
+        else {
+            $(".pagination").append(`<li><a  href="#0" class="prev page" title="previous page">&#10094;</a></li>`)
+            html = `<li>
+								<a  href="/html/search-results.html?keyword=` + keyword + `&page=1` + `" class="active page">1</a>
+							</li>`
+            $(".pagination").append(html)
+            $(".pagination").append(`<li><a href="#0" class="next page" title="next page">&#10095;</a></li>`)
         }
     });
 });

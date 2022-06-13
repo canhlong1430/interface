@@ -11,7 +11,7 @@ $(document).ready(function () {
 	}
 
 	var token = localStorage.getItem('token')
-
+	var pageNumber
 	var page = get('page')
 	var categoryId = get('category_id')
 	//Url của api
@@ -35,9 +35,10 @@ $(document).ready(function () {
 
 	//Gọi api => trả về dạng Json => chạy loop đổ json ra HTML
 	fetch(url, options).then(res => res.json()).then(json => {
+		pageNumber = Math.floor(json.count / limit)
 		for (var i = 0; i < json.data.length; i++) {
 
-			//Hiển thị tên sản phẩm mra HTML
+			//Hiển thị tên sản phẩm ra HTML
 			var obj = json.data[i];
 			var newDiv = document.createElement('div');
 			newDiv.className = 'col-6 col-md-4'
@@ -52,7 +53,7 @@ $(document).ready(function () {
         								</a>
         								<!-- <div data-countdown="2019/05/15" class="countdown"></div> -->
         							</figure>
-        							<a href="product-detail-2.html?product_id=` + obj.id + `">
+        							<a href="product-detail.html?product_id=` + obj.id + `">
         								<h3>`+ truncate(obj.name) + `</h3>
         							</a>
         							<div class="price_box">
@@ -74,8 +75,45 @@ $(document).ready(function () {
         `;
 			document.getElementById("list_product").appendChild(newDiv)
 		}
+
+		//Pagination
+		var html = ""
+		if (pageNumber > 1) {
+
+			if (page != 1) {
+				var previous = page - 1
+				$(".pagination").append(`<li><a href="/html/list-product.html?page=` + previous + `&category_id=` + categoryId + `" class="prev page" title="previous page">&#10094;</a></li>`)
+			}
+
+			for (var i = 1; i <= pageNumber; i++) {
+				if (i == page) {
+					html = `<li>
+								<a href="/html/list-product.html?page=`+ i + `&category_id=` + categoryId + `" class="active page">` + i + `</a>
+							</li>`
+				} else {
+					html = `<li>
+								<a  href="/html/list-product.html?page=`+ i + `&category_id=` + categoryId + `" class="page">` + i + `</a>
+							</li>`
+				}
+				$(".pagination").append(html)
+			}
+			if (page != pageNumber) {
+				var next = parseInt(page) + 1
+				$(".pagination").append(`<li><a href="/html/list-product.html?page=` + next + `&category_id=` + categoryId + `" class="next page" title="next page">&#10095;</a></li>`)
+			}
+		}
+		else {
+			$(".pagination").append(`<li><a  href="#0" class="prev page" title="previous page">&#10094;</a></li>`)
+			html = `<li>
+								<a  href="/html/list-product.html?page=1` + `&category_id=` + categoryId + `" class="active page">1</a>
+							</li>`
+			$(".pagination").append(html)
+			$(".pagination").append(`<li><a href="#0" class="next page" title="next page">&#10095;</a></li>`)
+		}
+
 	});
 
-
-
+	$(".pagination").on("click", ".page", function (event) {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
 });
