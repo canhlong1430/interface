@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="Ansonika">
+	<title>Key Shop | Kênh phân phối thiết bị điện tử</title>
+	<script src="api/include.js"></script>
+	<!-- Favicons-->
+	<!-- Favicons-->
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114"
+		href="img/apple-touch-icon-114x114-precomposed.png">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144"
+		href="img/apple-touch-icon-144x144-precomposed.png">
+
+	<!-- GOOGLE WEB FONT -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet">
+
+	<!-- BASE CSS -->
+	<link href="css/bootstrap.custom.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+
+	<!-- SPECIFIC CSS -->
+	<link href="css/listing.css" rel="stylesheet">
+
+	<!-- YOUR CUSTOM CSS -->
+	<link href="css/custom.css" rel="stylesheet">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="api/search.js"></script>
+	<script src="api/header.js"></script>
+</head>
+
+<body>
+
+	<div id="page" class="theia-exception">
+		<div include-html="header.html"></div>
+		<!-- <div include-html="categorycart.html"></div> -->
+		<script>
+			includeHTML();
+		</script>
+		<!-- /header -->
+
+		<main>
+			<div class="top_banner">
+				<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.3)">
+					<div class="container">
+						<div class="breadcrumbs">
+							<ul>
+								<li><a href="#">Trang chủ</a></li>
+								<li><a href="#">Danh mục</a></li>
+								<li>Thiết bị âm thanh và phụ kiện</li>
+							</ul>
+						</div>
+						<h1>Thiết Bị Âm Thanh và Phụ Kiện</h1>
+					</div>
+				</div>
+				<img src="img/bg_cat_shoes.jpg" class="img-fluid" alt="">
+			</div>
+			<!-- /top_banner -->
+			<div id="stick_here"></div>
+			<div class="toolbox elemento_stick">
+				<div class="container">
+					<ul class="clearfix">
+						<li>
+							<div class="sort_select">
+								<select name="sort" id="sort">
+									<option value="popularity" selected="selected">Sắp xếp theo mức độ phổ biến</option>
+									<option value="rating">Sắp xếp theo xếp hạng</option>
+									<option value="date">Sắp xếp theo độ mới</option>
+									<option value="price">Sắp xếp theo giá: thấp tới cao</option>
+									<option value="price-desc">Sắp xếp theo giá: cao xuống thấp
+								</select>
+							</div>
+						</li>
+						<li>
+							<a href="#0"><i class="ti-view-grid"></i></a>
+							<a href="listing-row-1-sidebar-left.html"><i class="ti-view-list"></i></a>
+						</li>
+						<li>
+							<a href="#0" class="open_filters">
+								<i class="ti-filter"></i><span>Bộ Lọc</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- /toolbox -->
+
+
+			<div class="container margin_30">
+
+				<div class="row">
+					<div class="col-lg-9">
+						<div class="row small-gutters" id=list_product>
+
+
+						</div>
+						<!-- /row -->
+						<div class="pagination__wrapper">
+							<ul class="pagination">
+								<li><a href="#0" class="prev" title="previous page">&#10094;</a></li>
+								<li>
+									<a href="#0" class="active">1</a>
+								</li>
+								<li>
+									<a href="#0">2</a>
+								</li>
+								<li>
+									<a href="#0">3</a>
+								</li>
+								<li>
+									<a href="#0">4</a>
+								</li>
+								<li><a href="#0" class="next" title="next page">&#10095;</a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- /col -->
+
+					<aside class="col-lg-3" id="sidebar_fixed">
+						<div class="filter_col">
+							<div class="inner_bt"><a href="#" class="open_filters"><i class="ti-close"></i></a></div>
+							<div class="filter_type version_2">
+								<h4><a href="#filter_1" data-toggle="collapse" class="opened">Nơi bán</a></h4>
+								<div class="collapse show" id="filter_1">
+									<ul>
+										<li>
+											<label class="container_check"> HCM <small>12</small>
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+										</li>
+									</ul>
+								</div>
+								<!-- /filter_type -->
+							</div>
+							<!-- /filter_type -->
+							<div class="filter_type version_2">
+								<h4><a href="#filter_2" data-toggle="collapse" class="opened">Màu sắc</a></h4>
+								<div class="collapse show" id="filter_2">
+									<ul>
+										<li>
+											<label class="container_check">Xanh <small>06</small>
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- /filter_type -->
+							<div class="filter_type version_2">
+								<h4><a href="#filter_3" data-toggle="collapse" class="closed">Danh mục</a></h4>
+								<div class="collapse" id="filter_3">
+									<ul>
+										<li>
+											<label class="container_check">Tai nghe có dây <small>11</small>
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+										</li>
+										<li>
+											<label class="container_check">Tai nghe không dây <small>5</small>
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- /filter_type -->
+							<div class="filter_type version_2">
+								<h4><a href="#filter_4" data-toggle="collapse" class="closed">Giá</a></h4>
+								<div class="collapse" id="filter_4">
+									<ul>
+										<li>
+											<label class="container_check">100.000 - 500.000 VNĐ<small>11</small>
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+										</li>
+										<li>
+											<label class="container_check">1.000.0000 - 5.000.0000 VNĐ<small>08</small>
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- /filter_type -->
+							<div class="buttons">
+								<a href="#0" class="btn_1">Lọc</a> <a href="#0" class="btn_1 gray">Làm mới</a>
+							</div>
+						</div>
+					</aside>
+					<!-- /col -->
+				</div>
+				<!-- /row -->
+
+			</div>
+			<!-- /container -->
+		</main>
+		<!-- /main -->
+
+		<footer class="revealed">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-md-6">
+						<h3 data-target="#collapse_1">Quick Links</h3>
+						<div class="collapse dont-collapse-sm links" id="collapse_1">
+							<ul>
+								<li><a href="about.html">About us</a></li>
+								<li><a href="help.html">Faq</a></li>
+								<li><a href="help.html">Help</a></li>
+								<li><a href="account.html">My account</a></li>
+								<li><a href="blog.html">Blog</a></li>
+								<li><a href="contacts.html">Contacts</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<h3 data-target="#collapse_2">Categories</h3>
+						<div class="collapse dont-collapse-sm links" id="collapse_2">
+							<ul>
+								<li><a href="listing-grid-1-full.html">Clothes</a></li>
+								<li><a href="listing-grid-2-full.html">Electronics</a></li>
+								<li><a href="listing-grid-1-full.html">Furniture</a></li>
+								<li><a href="listing-grid-3.html">Glasses</a></li>
+								<li><a href="listing-grid-1-full.html">Shoes</a></li>
+								<li><a href="listing-grid-1-full.html">Watches</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<h3 data-target="#collapse_3">Contacts</h3>
+						<div class="collapse dont-collapse-sm contacts" id="collapse_3">
+							<ul>
+								<li><i class="ti-home"></i>97845 Baker st. 567<br>Los Angeles - US</li>
+								<li><i class="ti-headphone-alt"></i>+94 423-23-221</li>
+								<li><i class="ti-email"></i><a href="#0">info@allaia.com</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<h3 data-target="#collapse_4">Keep in touch</h3>
+						<div class="collapse dont-collapse-sm" id="collapse_4">
+							<div id="newsletter">
+								<div class="form-group">
+									<input type="email" name="email_newsletter" id="email_newsletter"
+										class="form-control" placeholder="Your email">
+									<button type="submit" id="submit-newsletter"><i
+											class="ti-angle-double-right"></i></button>
+								</div>
+							</div>
+							<div class="follow_us">
+								<h5>Follow Us</h5>
+								<ul>
+									<li><a href="#0"><img
+												src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+												data-src="img/twitter_icon.svg" alt="" class="lazy"></a></li>
+									<li><a href="#0"><img
+												src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+												data-src="img/facebook_icon.svg" alt="" class="lazy"></a></li>
+									<li><a href="#0"><img
+												src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+												data-src="img/instagram_icon.svg" alt="" class="lazy"></a></li>
+									<li><a href="#0"><img
+												src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+												data-src="img/youtube_icon.svg" alt="" class="lazy"></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /row-->
+				<hr>
+				<div class="row add_bottom_25">
+					<div class="col-lg-6">
+						<ul class="footer-selector clearfix">
+							<li>
+								<div class="styled-select lang-selector">
+									<select>
+										<option value="English" selected>English</option>
+										<option value="French">French</option>
+										<option value="Spanish">Spanish</option>
+										<option value="Russian">Russian</option>
+									</select>
+								</div>
+							</li>
+							<li>
+								<div class="styled-select currency-selector">
+									<select>
+										<option value="US Dollars" selected>US Dollars</option>
+										<option value="Euro">Euro</option>
+									</select>
+								</div>
+							</li>
+							<li><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+									data-src="img/cards_all.svg" alt="" width="198" height="30" class="lazy"></li>
+						</ul>
+					</div>
+					<div class="col-lg-6">
+						<ul class="additional_links">
+							<li><a href="#0">Terms and conditions</a></li>
+							<li><a href="#0">Privacy</a></li>
+							<li><span>© 2020 Allaia</span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!--/footer-->
+	</div>
+	<!-- page -->
+
+	<div id="toTop"></div><!-- Back to top button -->
+
+	<!-- COMMON SCRIPTS -->
+	<script src="js/common_scripts.min.js"></script>
+	<script src="js/main.js"></script>
+
+	<!-- SPECIFIC SCRIPTS -->
+	<script src="js/sticky_sidebar.min.js"></script>
+	<script src="js/specific_listing.js"></script>
+
+</body>
+
+</html>

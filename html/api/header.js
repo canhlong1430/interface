@@ -107,7 +107,10 @@ $(document).ready(function () {
             $("#wishlist-menu > ul").append(html)
         });
     });
-
-
     // End of checking login
+
+    //Search
+    $('#search-btn').click(function () {
+        window.location.href = '/html/search-results.html?limit=9&page=1&keyword=' + $(this).parent().find('input').val()
+    });
 });
