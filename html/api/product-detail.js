@@ -215,4 +215,6 @@ $(document).ready(function () {
             })
             .catch(error => console.log('Error:', error));
     });
+
+    $("#write-review").attr('href', 'leave-review.html?product_id=' + productId)
 });
