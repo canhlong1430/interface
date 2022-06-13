@@ -68,29 +68,39 @@ $(document).ready(function () {
 
 		$('a[href="#add-to-cart"]').click(function () {
 			var productId = $(this).parent().parent().parent().find("figure").find("a").attr("product_id")
+			var quantity = 1
+
+			var cartUrl = "https://electronics-api.herokuapp.com/add_to_cart"
 			var bearer = 'Bearer ' + token;
-			var favUrl = "https://electronics-api.herokuapp.com/add_to_favorites/" + productId
-			var favOptions = {
+
+			const cartOptions = {
 				method: 'POST', //tùy chọn method GET hoặc POST, PUT, DELETE
 				headers: {
 					'Authorization': bearer,
 					'Content-Type': 'application/json'
-				}
+				},
+				body: JSON.stringify({
+					data:
+					{
+						product_option_id: parseInt(productId),
+						quantity: parseInt(quantity),
+					}
+				})
 			};
 
-			var status3
-			fetch(favUrl, favOptions)
+			var status2
+			fetch(cartUrl, cartOptions)
 				.then((res) => {
 					console.log(res.status);
-					status3 = res.status
+					status2 = res.status
 					return res.json();
 				})
 				.then(data => {
-					if (status3 == 200) {
+					if (status2 == 200) {
 					}
-					if (status3 != 200) {
+					if (status2 != 200) {
 					}
-					if (status3 == 401) {
+					if (status2 == 401) {
 					}
 				})
 				.catch(error => console.log('Error:', error));
