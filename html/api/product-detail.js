@@ -77,7 +77,7 @@ $(document).ready(function () {
         var str = `
         <div class="row justify-content-between">
         `
-        for (var i = 0; i < 4; i++) {//Cho hiển thị 4 comment
+        for (var i = 0; i < 8; i++) {//Cho hiển thị 8 comment
             var obj = json.data.product_ratings[i];
 
             if (obj) {
