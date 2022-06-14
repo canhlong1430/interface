@@ -14,8 +14,33 @@ $(document).ready(function () {
     }
 
     var token = localStorage.getItem('token')
+    var status = get('status')
 
-    url = 'https://electronics-api.herokuapp.com/sale/orders'
+    switch (status) {
+        case "pending":
+            $("#status-tab > li").find("a").removeClass("active")
+            $("#status-tab > li").find("a").eq(1).addClass("active")
+            break;
+        case "approved":
+            $("#status-tab > li").find("a").removeClass("active")
+            $("#status-tab > li").find("a").eq(2).addClass("active")
+            break;
+        case "shipping":
+            $("#status-tab > li").find("a").removeClass("active")
+            $("#status-tab > li").find("a").eq(3).addClass("active")
+            break;
+        case "delivered":
+            $("#status-tab > li").find("a").removeClass("active")
+            $("#status-tab > li").find("a").eq(4).addClass("active")
+            break;
+    }
+
+
+    var url = 'https://electronics-api.herokuapp.com/sale/orders'
+    if (status) {
+        url = 'https://electronics-api.herokuapp.com/sale/orders?status=' + status
+    }
+
     var bearer = 'Bearer ' + token;
 
     const options = {
@@ -27,6 +52,7 @@ $(document).ready(function () {
     }
 
     fetch(url, options).then(res => res.json()).then(json => {
+        $("#no-orders").hide()
         $(json.data).each(function (i, v) {
             var html = `
             <div class="bg-white card mb-4 order-list shadow-sm">

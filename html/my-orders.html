@@ -62,6 +62,26 @@
                                 <div class="tab-pane  fade  active show" id="orders" role="tabpanel"
                                     aria-labelledby="orders-tab">
                                     <h4 class="font-weight-bold mt-0 mb-4">Đơn hàng của bạn</h4>
+
+                                    <ul class="nav nav-tabs" id="status-tab">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" href="/html/my-orders.html">Tất cả</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="?status=pending">Đang chờ</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="?status=approved">Đã xác nhận</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="?status=shipping">Đang giao hàng</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="?status=delivered">Đã giao hàng</a>
+                                        </li>
+                                    </ul>
+                                    <br>
+                                    <h6 id="no-orders">Bạn chưa có đơn hàng nào.</h6>
                                     <!-- <div class="bg-white card mb-4 order-list shadow-sm">
                                         <div class="gold-members p-4">
                                             <a href="#">
