@@ -39,6 +39,7 @@ $(document).ready(function () {
         fetch(ratingUrl, ratingOptions)
             .then((res) => {
                 console.log(res.status);
+                window.location.href = '/html/product-detail.html?product_id=' + productId;
                 return res.json();
             })
             .then(data => {
