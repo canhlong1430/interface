@@ -27,7 +27,7 @@
 
 
     <!-- SPECIFIC CSS -->
-    <link href="css/my-order.css" rel="stylesheet">
+    <link href="css/my-orders.css" rel="stylesheet">
 
     <!-- YOUR CUSTOM CSS -->
     <link href="css/error_track.css" rel="stylesheet">
@@ -35,17 +35,17 @@
     <!-- YOUR CUSTOM CSS -->
     <link href="css/custom.css" rel="stylesheet">
 
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="api/header.js"></script>
-    <script src="api/order-detail.js"></script>
+    <script src="api/my-order.js"></script>
 
 </head>
 
 <body>
 
     <div id="page">
-
-
         <div include-html="header.html"></div>
         <!-- <div include-html="categorycart.html"></div> -->
         <script>
@@ -55,80 +55,66 @@
 
         <main>
             <div class="container">
-                <article class="card" style="margin:20px;">
-                    <header class="card-header" style="padding:20px;">
-                        <div class="breadcrumbs">
-                            <ul>
-                                <li><a href="/html/index.html">Trang chủ</a></li>
-                                <li><a href="/html/my-orders.html">Đơn hàng</a></li>
-                                <li>Chi tiết đơn hàng</li>
-                            </ul>
-                        </div>
-                    </header>
-                    <div class="card-body" id="order-id">
-                        <h6></h6>
-                        <article class="card">
-                            <div class="card-body row" id="order-info">
-                                <div class="col"> <strong>Ngày đặt hàng:</strong> <br> </div>
-                                <div class="col"> <strong>Địa chỉ:</strong> <br> </div>
-                                <div class="col"> <strong>Trạng thái:</strong> <br> </div>
-                                <div class="col"> <strong>Thanh toán:</strong> <br> </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane  fade  active show" id="orders" role="tabpanel"
+                                    aria-labelledby="orders-tab">
+                                    <h4 class="font-weight-bold mt-0 mb-4">Đơn hàng của bạn</h4>
+                                    <!-- <div class="bg-white card mb-4 order-list shadow-sm">
+                                        <div class="gold-members p-4">
+                                            <a href="#">
+                                            </a>
+                                            <div class="media">
+                                                <a href="#">
+                                                </a>
+                                                <div class="media-body">
+                                                    <a href="#">
+                                                        <span class="float-right text-info">Delivered on Mon, Nov 12,
+                                                            7:18 PM <i
+                                                                class="icofont-check-circled text-success"></i></span>
+                                                    </a>
+                                                    <h6 class="mb-2">
+                                                        <a href="#"></a>
+                                                        <a href="#" class="text-black">Gus's World Famous Fried
+                                                            Chicken</a>
+                                                    </h6>
+                                                    <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> 730
+                                                        S Mendenhall Rd, Memphis, TN 38117, USA
+                                                    </p>
+                                                    <p class="text-gray mb-3"><i class="icofont-list"></i> ORDER
+                                                        #25102589748 <i class="icofont-clock-time ml-2"></i> Mon, Nov
+                                                        12, 6:26 PM</p>
+                                                    <p class="text-dark">Veg Masala Roll x 1, Veg Burger x 1, Veg Penne
+                                                        Pasta in Red Sauce x 1
+                                                    </p>
+                                                    <hr>
+                                                    <div class="float-right">
+                                                        <a class="btn btn-sm btn-outline-primary" href="#"><i
+                                                                class="icofont-headphone-alt"></i> HELP</a>
+                                                        <a class="btn btn-sm btn-primary" href="#"><i
+                                                                class="icofont-refresh"></i> REORDER</a>
+                                                    </div>
+                                                    <p class="mb-0 text-black text-primary pt-2"><span
+                                                            class="text-black font-weight-bold"> Total Paid:</span> $300
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div> -->
+                                </div>
                             </div>
-                        </article>
-                        <div class="track">
-                            <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span
-                                    class="text"> Đang chờ xác nhận</span> </div>
-                            <div class="step"> <span class="icon"> <i class="fa fa-user"></i> </span> <span
-                                    class="text"> Đã xác nhận</span> </div>
-                            <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span
-                                    class="text"> Đang giao hàng </span> </div>
-                            <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span
-                                    class="text">Đã giao hàng</span> </div>
                         </div>
-                        <hr>
-                        <ul class="row" id="order-items">
-                            <!-- <li class="col-md-4">
-                                <figure class="itemside mb-3">
-                                    <div class="aside"><img src="https://i.imgur.com/iDwDQ4o.png" class="img-sm border">
-                                    </div>
-                                    <figcaption class="info align-self-center">
-                                        <p class="title">Dell Laptop with 500GB HDD <br> 8GB RAM</p> <span
-                                            class="text-muted">$950 </span>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                            <li class="col-md-4">
-                                <figure class="itemside mb-3">
-                                    <div class="aside"><img src="https://i.imgur.com/tVBy5Q0.png" class="img-sm border">
-                                    </div>
-                                    <figcaption class="info align-self-center">
-                                        <p class="title">HP Laptop with 500GB HDD <br> 8GB RAM</p> <span
-                                            class="text-muted">$850 </span>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                            <li class="col-md-4">
-                                <figure class="itemside mb-3">
-                                    <div class="aside"><img src="https://i.imgur.com/Bd56jKH.png" class="img-sm border">
-                                    </div>
-                                    <figcaption class="info align-self-center">
-                                        <p class="title">ACER Laptop with 500GB HDD <br> 8GB RAM</p> <span
-                                            class="text-muted">$650 </span>
-                                    </figcaption>
-                                </figure>
-                            </li> -->
-                        </ul>
-                        <hr>
-                        <a href="#" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Hủy đơn
-                            hàng</a>
                     </div>
-                </article>
+                </div>
             </div>
         </main>
     </div>
     <!-- page -->
 
-    <footer class="revealed">
+    <footer class="">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6">
