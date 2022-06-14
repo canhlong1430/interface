@@ -118,5 +118,43 @@ $(document).ready(function () {
         }
     });
 
+    $("#forget-password").click(function () {
+        var email = $("#email_forgot").val()
 
+        const fpOptions = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                data:
+                {
+                    email: email,
+                }
+            })
+        };
+
+        fpUrl = 'https://electronics-api.herokuapp.com/users/forget_password'
+
+        var status
+        fetch(fpUrl, fpOptions)
+            .then((res) => {
+                console.log(res.status);
+                status = res.status
+
+                if (status == 200) {
+                    $('.client').append(' <span style="color:green"> [Mật khẩu đã được gửi!]</span>')
+                    setTimeout(function () {
+                        $('.client > span').hide()
+                        window.location.reload()
+                    }, 1000);
+                }
+                if (status != 200) {
+                    $('.client').append(' <span style="color:red"> [Lỗi - Có lỗi xảy ra!]</span>')
+                    setTimeout(function () {
+                        $('.client > span').hide()
+                    }, 1000);
+                }
+
+                return res.json();
+            });
+    });
 });
