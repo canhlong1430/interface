@@ -20,11 +20,16 @@ $(document).ready(function () {
 
     //Chưa đăng nhập
     if (token == null) {
-        $('a[href="#logout"]').hide()
-        $('a[href="#track-order.html"]').hide()
-        $('a[href="#my-order.html"]').hide()
-        $('a[href="#my-profile.html"]').hide()
+        // $('a[href="#logout"]').hide()
+        // $('a[href="#track-order.html"]').hide()
+        // $('a[href="#my-order.html"]').hide()
+        // $('a[href="#my-profile.html"]').hide()
         $('.dropdown-cart').hide()
+
+        $("#menu-bar > ul").children().eq(0).hide()
+        $("#menu-bar > ul").children().eq(1).hide()
+        $("#menu-bar > ul").children().eq(2).hide()
+        $("#menu-bar > ul").children().eq(3).hide()
     }
 
     // Đã đăng nhập
