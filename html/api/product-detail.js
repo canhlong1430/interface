@@ -77,7 +77,11 @@ $(document).ready(function () {
         var str = `
         <div class="row justify-content-between">
         `
-        for (var i = 0; i < 8; i++) {//Cho hiển thị 8 comment
+        max_ratings = 8 //Cho hiển thị 8 comment
+        if (json.data.product_ratings.length < max_ratings) {
+            max_ratings = json.data.product_ratings.length
+        }
+        for (var i = 0; i < max_ratings; i++) {
             var obj = json.data.product_ratings[i];
 
             if (obj) {
