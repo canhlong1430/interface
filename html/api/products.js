@@ -37,8 +37,7 @@ $(document).ready(function () {
 	fetch(url, options).then(res => res.json()).then(json => {
 		pageNumber = Math.floor(json.count / limit)
 		for (var i = 0; i < json.data.length; i++) {
-
-			//Hiển thị tên sản phẩm ra HTML
+			//Hiển thị tên sản phẩm mra HTML
 			var obj = json.data[i];
 			var newDiv = document.createElement('div');
 			newDiv.className = 'col-6 col-md-4'
