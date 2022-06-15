@@ -17,7 +17,7 @@ $(document).ready(function () {
 
     var orderId = get('order_id')
 
-    url = 'https://electronics-api.herokuapp.com/sale/orders/' + orderId
+    url = 'http://localhost:1323/sale/orders/' + orderId
     var bearer = 'Bearer ' + token;
 
     const options = {

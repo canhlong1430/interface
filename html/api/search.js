@@ -18,7 +18,7 @@ $(document).ready(function () {
     //Url của api
     var limit = '9'
     var keyword = get('keyword')
-    var searchUrl = 'https://electronics-api.herokuapp.com/products/search?limit=' + limit + '&page=' + page.toString() + '&keyword=' + keyword
+    var searchUrl = 'http://localhost:1323/products/search?limit=' + limit + '&page=' + page.toString() + '&keyword=' + keyword
 
     const searchOptions = {
         method: 'GET', //tùy chọn method GET hoặc POST, PUT, DELETE

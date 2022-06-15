@@ -34,7 +34,7 @@ $(document).ready(function () {
             })
         };
 
-        var ratingUrl = 'https://electronics-api.herokuapp.com/product/ratings/create'
+        var ratingUrl = 'http://localhost:1323/product/ratings/create'
         var status
         fetch(ratingUrl, ratingOptions)
             .then((res) => {

@@ -22,7 +22,7 @@ $(document).ready(function () {
     }
 
     //Url của api
-    url = 'https://electronics-api.herokuapp.com/products/' + productId
+    url = 'http://localhost:1323/products/' + productId
 
     const options = {
         method: 'GET', //tùy chọn method GET hoặc POST, PUT, DELETE
@@ -130,7 +130,7 @@ $(document).ready(function () {
         $("#specs").html(str)
 
 
-        urlBrand = 'https://electronics-api.herokuapp.com/products/list_by_brand?brand_id=' + brandId + '&limit=10&page=1'
+        urlBrand = 'http://localhost:1323/products/list_by_brand?brand_id=' + brandId + '&limit=10&page=1'
         fetch(urlBrand, options).then(res1 => res1.json()).then(json1 => {
 
             $(json1.data).each(function (i, v) {
@@ -180,7 +180,7 @@ $(document).ready(function () {
         var optionId = productId
         var quantity = $("#quantity_1").val()
 
-        var cartUrl = "https://electronics-api.herokuapp.com/add_to_cart"
+        var cartUrl = "http://localhost:1323/add_to_cart"
         var bearer = 'Bearer ' + token;
 
         const cartOptions = {
@@ -234,7 +234,7 @@ $(document).ready(function () {
     $('a[href="#add-to-wishlist"]').click(function () {
 
         var bearer = 'Bearer ' + token;
-        var favUrl = "https://electronics-api.herokuapp.com/add_to_favorites/" + productId
+        var favUrl = "http://localhost:1323/add_to_favorites/" + productId
         var favOptions = {
             method: 'POST', //tùy chọn method GET hoặc POST, PUT, DELETE
             headers: {

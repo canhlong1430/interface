@@ -16,7 +16,7 @@ $(document).ready(function () {
 	var categoryId = get('category_id')
 	//Url của api
 	var limit = '9'
-	url = 'https://electronics-api.herokuapp.com/products/list_by_category?limit=' + limit + '&page=' + page.toString() + '&category_id=' + categoryId
+	url = 'http://localhost:1323/products/list_by_category?limit=' + limit + '&page=' + page.toString() + '&category_id=' + categoryId
 
 	const options = {
 		method: 'GET', //tùy chọn method GET hoặc POST, PUT, DELETE
@@ -107,7 +107,7 @@ $(document).ready(function () {
 			var productId = $(this).parent().parent().parent().find("figure").find("a").attr("product_id")
 			var quantity = 1
 
-			var cartUrl = "https://electronics-api.herokuapp.com/add_to_cart"
+			var cartUrl = "http://localhost:1323/add_to_cart"
 			var bearer = 'Bearer ' + token;
 
 			const cartOptions = {

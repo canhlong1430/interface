@@ -15,7 +15,7 @@ $(document).ready(function () {
 
     var token = localStorage.getItem('token')
 
-    var url = 'https://electronics-api.herokuapp.com/sale/carts'
+    var url = 'http://localhost:1323/sale/carts'
     var bearer = 'Bearer ' + token;
 
     const options = {
@@ -53,7 +53,7 @@ $(document).ready(function () {
         $('a[href="#confirm"]').click(function () {
 
             //Tạo đơn hàng
-            var orderUrl = 'https://electronics-api.herokuapp.com/sale/orders/create'
+            var orderUrl = 'http://localhost:1323/sale/orders/create'
             var bearer = 'Bearer ' + token;
             var payment_method = $('input[name="payment"]:checked').val();
             var payment_method_id
@@ -111,7 +111,7 @@ $(document).ready(function () {
                             var product = v.product
                             var product_option = v.product_option
 
-                            var itemUrl = 'https://electronics-api.herokuapp.com/sale/order/items/create'
+                            var itemUrl = 'http://localhost:1323/sale/order/items/create'
                             var bearer = 'Bearer ' + token;
 
                             const itemOptions = {
@@ -152,7 +152,7 @@ $(document).ready(function () {
                                             if (payment_method_id == 2) {
                                                 sum = sum + delivery_fee - discounts
 
-                                                var momoUrl = 'https://electronics-api.herokuapp.com/sale/orders/momo_payment'
+                                                var momoUrl = 'http://localhost:1323/sale/orders/momo_payment'
 
                                                 const momoOptions = {
                                                     method: 'POST', //tùy chọn method GET hoặc POST, PUT, DELETE

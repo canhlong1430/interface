@@ -16,7 +16,7 @@ $(document).ready(function () {
     var token = localStorage.getItem('token')
 
     //Url của api
-    url = 'https://electronics-api.herokuapp.com/products/recommend'
+    url = 'http://localhost:1323/products/recommend'
     var bearer = 'Bearer ' + token;
 
     const options = {
@@ -88,7 +88,7 @@ $(document).ready(function () {
                 var productId = $(this).parent().parent().parent().find("figure").find("a").attr("product_id")
                 var quantity = 1
 
-                var cartUrl = "https://electronics-api.herokuapp.com/add_to_cart"
+                var cartUrl = "http://localhost:1323/add_to_cart"
                 var bearer = 'Bearer ' + token;
 
                 const cartOptions = {

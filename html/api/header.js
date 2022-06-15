@@ -41,7 +41,7 @@ $(document).ready(function () {
 
 
     //Xử lí cart trên header
-    var cartUrl = 'https://electronics-api.herokuapp.com/sale/carts'
+    var cartUrl = 'http://localhost:1323/sale/carts'
     var bearer = 'Bearer ' + token;
 
     const cartOptions = {
@@ -77,7 +77,7 @@ $(document).ready(function () {
     });
 
     //Xử lí favorites trên header
-    var favUrl = 'https://electronics-api.herokuapp.com/user/favorites'
+    var favUrl = 'http://localhost:1323/user/favorites'
     var bearer = 'Bearer ' + token;
 
     const favOptions = {

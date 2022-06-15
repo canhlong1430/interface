@@ -36,9 +36,9 @@ $(document).ready(function () {
     }
 
 
-    var url = 'https://electronics-api.herokuapp.com/sale/orders'
+    var url = 'http://localhost:1323/sale/orders'
     if (status) {
-        url = 'https://electronics-api.herokuapp.com/sale/orders?status=' + status
+        url = 'http://localhost:1323/sale/orders?status=' + status
     }
 
     var bearer = 'Bearer ' + token;

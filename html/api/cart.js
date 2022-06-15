@@ -15,7 +15,7 @@ $(document).ready(function () {
 
     var token = localStorage.getItem('token')
 
-    var url = 'https://electronics-api.herokuapp.com/sale/carts'
+    var url = 'http://localhost:1323/sale/carts'
     var bearer = 'Bearer ' + token;
 
     const options = {
@@ -74,7 +74,7 @@ $(document).ready(function () {
 
         //Update cart
         $(".btn_inc").click(function () {
-            var urlItem = 'https://electronics-api.herokuapp.com/sale/cart/items/' + $(this).parent().attr('id') + '/add_one'
+            var urlItem = 'http://localhost:1323/sale/cart/items/' + $(this).parent().attr('id') + '/add_one'
             var bearer = 'Bearer ' + token;
 
             const itemOptions = {
@@ -95,7 +95,7 @@ $(document).ready(function () {
         });
 
         $(".btn_dec").click(function () {
-            var urlItem1 = 'https://electronics-api.herokuapp.com/sale/cart/items/' + $(this).parent().attr('id') + '/remove_one'
+            var urlItem1 = 'http://localhost:1323/sale/cart/items/' + $(this).parent().attr('id') + '/remove_one'
             var bearer = 'Bearer ' + token;
 
             const itemOptions = {
@@ -118,7 +118,7 @@ $(document).ready(function () {
         $('a[href="#remove-item"]').click(function () {
             var itemId = $(this).parent().parent().parent().find("td").eq(2).find("div").attr('id')
 
-            var removeUrl = 'https://electronics-api.herokuapp.com/sale/cart/items/' + itemId + '/delete'
+            var removeUrl = 'http://localhost:1323/sale/cart/items/' + itemId + '/delete'
             var bearer = 'Bearer ' + token;
 
             const removeoptions = {

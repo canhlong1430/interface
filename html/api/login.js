@@ -20,7 +20,7 @@ $(document).ready(function () {
             })
         };
 
-        url = 'https://electronics-api.herokuapp.com/login'
+        url = 'http://localhost:1323/login'
 
         var status
         fetch(url, options)
@@ -79,7 +79,7 @@ $(document).ready(function () {
                 })
             };
 
-            url = 'https://electronics-api.herokuapp.com/register'
+            url = 'http://localhost:1323/register'
 
             var status
             fetch(url, options)
@@ -132,7 +132,7 @@ $(document).ready(function () {
             })
         };
 
-        fpUrl = 'https://electronics-api.herokuapp.com/users/forget_password'
+        fpUrl = 'http://localhost:1323/users/forget_password'
 
         var status
         fetch(fpUrl, fpOptions)
