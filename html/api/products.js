@@ -14,9 +14,18 @@ $(document).ready(function () {
 	var pageNumber
 	var page = get('page')
 	var categoryId = get('category_id')
+
+	var filter = ''
+	if (get('brand_ids')) {
+		filter += '&brand_ids=' + get('brand_ids')
+	}
+	if (get('min_price') && get('max_price')) {
+		filter += '&min_price=' + get('min_price') + '&max_price=' + get('max_price')
+	}
+
 	//Url của api
 	var limit = '9'
-	url = 'http://localhost:1323/products/list_by_category?limit=' + limit + '&page=' + page.toString() + '&category_id=' + categoryId
+	url = 'http://localhost:1323/products/list_by_category?limit=' + limit + '&page=' + page.toString() + '&category_id=' + categoryId + filter
 
 	const options = {
 		method: 'GET', //tùy chọn method GET hoặc POST, PUT, DELETE
@@ -146,5 +155,30 @@ $(document).ready(function () {
 
 	$(".pagination").on("click", ".page", function (event) {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
+
+	brandUrl = 'http://localhost:1323/products/list_by_category?limit=' + limit + '&page=' + page.toString() + '&category_id=' + categoryId
+
+	const brandOptions = {
+		method: 'GET', //tùy chọn method GET hoặc POST, PUT, DELETE
+		headers: { 'Content-Type': 'application/json' },
+	}
+
+	fetch(brandUrl, brandOptions).then(res => res.json()).then(json => {
+		var clean = json.brands.filter((arr, index, self) =>
+			index === self.findIndex((t) => (t.id === arr.id)))
+
+		$(clean).each(function (i, v) {
+			var html = ''
+			html += `
+			<li>
+											<label class="container_check"> `+ v.name + ` <small>12</small>
+												<input type="checkbox" name="`+ v.name + `" value="` + v.id + `">
+												<span class="checkmark"></span>
+											</label>
+										</li>
+			`
+			$("#filter_brand > ul").append(html)
+		});
 	});
 });
