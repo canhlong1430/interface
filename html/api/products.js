@@ -171,7 +171,7 @@ $(document).ready(function () {
 		$(clean).each(function (i, v) {
 			var html = ''
 			html += `
-			<li>
+										<li>
 											<label class="container_check"> `+ v.name + ` <small>12</small>
 												<input type="checkbox" name="`+ v.name + `" value="` + v.id + `">
 												<span class="checkmark"></span>
@@ -181,4 +181,35 @@ $(document).ready(function () {
 			$("#filter_brand > ul").append(html)
 		});
 	});
+
+	//xử lí filter
+	$("#apply").click(function () {
+		var brand_ids = [];
+		$('ul.brands').find("input[type='checkbox']:checked").each(function () {
+			brand_ids.push($(this).val());
+		});
+
+		var min = 999999999
+		var max = 0
+		$('ul.prices').find("input[type='checkbox']:checked").each(function () {
+			min = $(this).attr("min")
+			max = $(this).attr("max")
+		});
+
+		var url = "/html/list-product.html?page=" + page + "&category_id=" + categoryId
+
+		if (brand_ids.length > 0) {
+			url += "&brand_ids=" + brand_ids.toString()
+		}
+		if (min && max) {
+			url += "&min_price=" + min + "&max_price=" + max
+		}
+
+		window.location.href = url;
+	});
+	$("#reset").click(function () {
+		var url = "/html/list-product.html?page=" + page + "&category_id=" + categoryId
+		window.location.href = url;
+	});
+
 });
