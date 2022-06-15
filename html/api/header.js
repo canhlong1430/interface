@@ -53,13 +53,16 @@ $(document).ready(function () {
     }
 
     fetch(cartUrl, cartOptions).then(res => res.json()).then(json => {
+        var count = json.data.cart_items.length
+        $(".cart_bt strong").text(count)
+
         $(json.data.cart_items).each(function (i, v) {
             var product = v.product
             var product_option = v.product_option
 
             var html = `
         <li>
-            <a href="product-detail-1.html">
+            <a href="product-detail.html?product_id=`+ product.id + `">
                 <figure><img src="`+ product.thumbnail_url + `"
                         data-src="`+ product.thumbnail_url + `" alt="" width="50"
                         height="50" class="lazy"></figure>
@@ -73,6 +76,41 @@ $(document).ready(function () {
         });
     });
 
+    //Xử lí favorites trên header
+    var favUrl = 'https://electronics-api.herokuapp.com/user/favorites'
+    var bearer = 'Bearer ' + token;
 
+    const favOptions = {
+        method: 'GET', //tùy chọn method GET hoặc POST, PUT, DELETE
+        headers: {
+            'Authorization': bearer,
+            'Content-Type': 'application/json'
+        },
+    }
+
+    fetch(favUrl, favOptions).then(res => res.json()).then(json => {
+
+        $(json.data).each(function (i, v) {
+            var product = v.product
+
+            var html = `
+        <li>
+            <a href="product-detail.html?product_id=`+ product.id + `">
+                <figure><img src="`+ product.thumbnail_url + `"
+                        data-src="`+ product.thumbnail_url + `" alt="" width="50"
+                        height="50" class="lazy"></figure>
+                <strong><span>` + truncate(product.name) + `</span>` + `</strong>
+            </a>
+            <a href="javascript:void(0)" class="action" fav_id="` + v.id + `" id="remove-fav"><i class="ti-trash"></i></a>
+        </li>
+        `
+            $("#wishlist-menu > ul").append(html)
+        });
+    });
     // End of checking login
+
+    //Search
+    $('#search-btn').click(function () {
+        window.location.href = '/html/search-results.html?limit=9&page=1&keyword=' + $(this).parent().find('input').val()
+    });
 });

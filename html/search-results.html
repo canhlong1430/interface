@@ -10,6 +10,7 @@
 	<title>Key Shop | Kênh phân phối thiết bị điện tử</title>
 	<script src="api/include.js"></script>
 	<!-- Favicons-->
+	<!-- Favicons-->
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 	<link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
 	<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
@@ -26,171 +27,190 @@
 	<link href="css/style.css" rel="stylesheet">
 
 	<!-- SPECIFIC CSS -->
-	<link href="css/account.css" rel="stylesheet">
+	<link href="css/listing.css" rel="stylesheet">
 
 	<!-- YOUR CUSTOM CSS -->
 	<link href="css/custom.css" rel="stylesheet">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="api/login.js"></script>
-
+	<script src="api/search.js"></script>
+	<script src="api/header.js"></script>
 </head>
 
 <body>
 
-	<div id="page">
-
-
+	<div id="page" class="theia-exception">
 		<div include-html="header.html"></div>
 		<!-- <div include-html="categorycart.html"></div> -->
 		<script>
 			includeHTML();
 		</script>
-
 		<!-- /header -->
 
-		<main class="bg_gray">
+		<main>
+			<div class="top_banner">
+				<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.3)">
+					<div class="container">
+						<div class="breadcrumbs">
+							<ul>
+								<li><a href="#">Trang chủ</a></li>
+								<li><a href="#">Danh mục</a></li>
+								<li>Thiết bị âm thanh và phụ kiện</li>
+							</ul>
+						</div>
+						<h1>Thiết Bị Âm Thanh và Phụ Kiện</h1>
+					</div>
+				</div>
+				<img src="img/bg_cat_shoes.jpg" class="img-fluid" alt="">
+			</div>
+			<!-- /top_banner -->
+			<div id="stick_here"></div>
+			<div class="toolbox elemento_stick">
+				<div class="container">
+					<ul class="clearfix">
+						<li>
+							<div class="sort_select">
+								<select name="sort" id="sort">
+									<option value="popularity" selected="selected">Sắp xếp theo mức độ phổ biến</option>
+									<option value="rating">Sắp xếp theo xếp hạng</option>
+									<option value="date">Sắp xếp theo độ mới</option>
+									<option value="price">Sắp xếp theo giá: thấp tới cao</option>
+									<option value="price-desc">Sắp xếp theo giá: cao xuống thấp
+								</select>
+							</div>
+						</li>
+						<li>
+							<a href="#0"><i class="ti-view-grid"></i></a>
+							<a href="listing-row-1-sidebar-left.html"><i class="ti-view-list"></i></a>
+						</li>
+						<li>
+							<a href="#0" class="open_filters">
+								<i class="ti-filter"></i><span>Bộ Lọc</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- /toolbox -->
+
 
 			<div class="container margin_30">
-				<div class="page_header">
-					<div class="breadcrumbs">
-						<ul>
-							<li><a href="/html/index.html">Trang chủ</a></li>
-							<li>Đăng nhập</li>
-						</ul>
-					</div>
-					<h1>Đăng nhập hoặc đăng ký tài khoản</h1>
-				</div>
-				<!-- /page_header -->
-				<div class="row justify-content-center">
-					<div class="col-xl-6 col-lg-6 col-md-8">
-						<div class="box_account">
-							<h3 class="client">Đăng nhập với tài khoản</h3>
-							<div class="form_container">
-								<!-- <div class="row no-gutters">
-									<div class="col-lg-6 pr-lg-1">
-										<a href="#0" class="social_bt facebook">Login with Facebook</a>
-									</div>
-									<div class="col-lg-6 pl-lg-1">
-										<a href="#0" class="social_bt google">Login with Google</a>
-									</div>
-								</div>
-								<div class="divider"><span>Or</span></div> -->
-								<div class="form-group">
-									<input type="email" class="form-control" name="email" id="email"
-										placeholder="Email*">
-								</div>
-								<div class="form-group">
-									<input type="password" class="form-control" name="password_in" id="password_in"
-										value="" placeholder="Mật khẩu*">
-								</div>
-								<div class="clearfix add_bottom_15">
-									<div class="checkboxes float-left">
-										<label class="container_check">Ghi nhớ
-											<input type="checkbox">
-											<span class="checkmark"></span>
-										</label>
-									</div>
-									<div class="float-right"><a id="forgot" href="javascript:void(0);">Quên mật
-											khẩu?</a></div>
-								</div>
-								<div class="text-center"><input type="button" value="Đăng nhập" class="btn_1 full-width"
-										id="login-btnn">
-								</div>
-								<div id="forgot_pw">
-									<div class="form-group">
-										<input type="email" class="form-control" name="email_forgot" id="email_forgot"
-											placeholder="Nhập email của bạn">
-									</div>
-									<p>Mật khẩu sẽ được gửi đến email của bạn.</p>
-									<div class="text-center"><input type="button" value="Gửi mật khẩu" class="btn_1"
-											id="forget-password">
-									</div>
-								</div>
-							</div>
-							<!-- /form_container -->
-						</div>
-						<!-- /box_account -->
-						<div class="row">
-							<div class="col-md-6 d-none d-lg-block">
-								<ul class="list_ok">
-									<li>Find Locations</li>
-									<li>Quality Location check</li>
-									<li>Data Protection</li>
-								</ul>
-							</div>
-							<div class="col-md-6 d-none d-lg-block">
-								<ul class="list_ok">
-									<li>Secure Payments</li>
-									<li>H24 Support</li>
-								</ul>
-							</div>
+
+				<div class="row">
+					<div class="col-lg-9">
+						<div class="row small-gutters" id=list_product>
+
+
 						</div>
 						<!-- /row -->
-					</div>
-					<div class="col-xl-6 col-lg-6 col-md-8">
-						<div class="box_account">
-							<h3 class="new_client">Đăng ký</h3> <small class="float-right pt-2">* Bắt buộc</small>
-							<div class="form_container">
-								<div class="form-group">
-									<input type="email" class="form-control" name="email" id="email_2"
-										placeholder="Email*">
-								</div>
-								<div class="form-group">
-									<input type="password" class="form-control" name="password_in_2" id="password_in_2"
-										value="" placeholder="Mật khẩu*">
-								</div>
-								<hr>
-								<div class="form-group">
-									<label class="container_radio"
-										style="display: inline-block; margin-right: 15px;">Nam
-										<input type="radio" name="gender" checked value="male">
-										<span class="checkmark"></span>
-									</label>
-									<label class="container_radio" style="display: inline-block;">Nữ
-										<input type="radio" name="gender" value="female">
-										<span class="checkmark"></span>
-									</label>
-								</div>
-								<div class="private box">
-									<div class="row no-gutters">
-										<div class="col-6 pr-1">
-											<div class="form-group">
-												<input type="text" class="form-control" placeholder="SĐT*"
-													name="phone_number" id="phone_number">
-											</div>
-										</div>
-										<div class="col-6 pl-1">
-											<div class="form-group">
-												<input type="text" class="form-control"
-													placeholder="Sinh ngày: mm/dd/yyyy" name="birthday" id="birthday">
-											</div>
-										</div>
-										<div class="col-12">
-											<div class="form-group">
-												<input type="text" class="form-control" placeholder="Họ và Tên*"
-													name="name" id="name">
-											</div>
-										</div>
-									</div>
-
-									<hr>
-									<div class="text-center"><input type="button" value="Đăng ký"
-											class="btn_1 full-width" id="register-btn">
-									</div>
-								</div>
-								<!-- /form_container -->
-							</div>
-							<!-- /box_account -->
+						<div class="pagination__wrapper">
+							<ul class="pagination">
+								<!-- <li><a href="#0" class="prev" title="previous page">&#10094;</a></li>
+								<li>
+									<a href="#0" class="active">1</a>
+								</li>
+								<li>
+									<a href="#0">2</a>
+								</li>
+								<li>
+									<a href="#0">3</a>
+								</li>
+								<li>
+									<a href="#0">4</a>
+								</li>
+								<li><a href="#0" class="next" title="next page">&#10095;</a></li> -->
+							</ul>
 						</div>
 					</div>
-					<!-- /row -->
-				</div>
-				<!-- /container -->
-		</main>
-		<!--/main-->
+					<!-- /col -->
 
-		<footer>
+					<aside class="col-lg-3" id="sidebar_fixed">
+						<div class="filter_col">
+							<div class="inner_bt"><a href="#" class="open_filters"><i class="ti-close"></i></a></div>
+							<div class="filter_type version_2">
+								<h4><a href="#filter_1" data-toggle="collapse" class="opened">Nơi bán</a></h4>
+								<div class="collapse show" id="filter_1">
+									<ul>
+										<li>
+											<label class="container_check"> HCM <small>12</small>
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+										</li>
+									</ul>
+								</div>
+								<!-- /filter_type -->
+							</div>
+							<!-- /filter_type -->
+							<div class="filter_type version_2">
+								<h4><a href="#filter_2" data-toggle="collapse" class="opened">Màu sắc</a></h4>
+								<div class="collapse show" id="filter_2">
+									<ul>
+										<li>
+											<label class="container_check">Xanh <small>06</small>
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- /filter_type -->
+							<div class="filter_type version_2">
+								<h4><a href="#filter_3" data-toggle="collapse" class="closed">Danh mục</a></h4>
+								<div class="collapse" id="filter_3">
+									<ul>
+										<li>
+											<label class="container_check">Tai nghe có dây <small>11</small>
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+										</li>
+										<li>
+											<label class="container_check">Tai nghe không dây <small>5</small>
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- /filter_type -->
+							<div class="filter_type version_2">
+								<h4><a href="#filter_4" data-toggle="collapse" class="closed">Giá</a></h4>
+								<div class="collapse" id="filter_4">
+									<ul>
+										<li>
+											<label class="container_check">100.000 - 500.000 VNĐ<small>11</small>
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+										</li>
+										<li>
+											<label class="container_check">1.000.0000 - 5.000.0000 VNĐ<small>08</small>
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- /filter_type -->
+							<div class="buttons">
+								<a href="#0" class="btn_1">Lọc</a> <a href="#0" class="btn_1 gray">Làm mới</a>
+							</div>
+						</div>
+					</aside>
+					<!-- /col -->
+				</div>
+				<!-- /row -->
+
+			</div>
+			<!-- /container -->
+		</main>
+		<!-- /main -->
+
+		<footer class="revealed">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-3 col-md-6">
@@ -307,15 +327,9 @@
 	<script src="js/common_scripts.min.js"></script>
 	<script src="js/main.js"></script>
 
-	<script>
-		// Client type Panel
-		$('input[name="client_type"]').on("click", function () {
-			var inputValue = $(this).attr("value");
-			var targetBox = $("." + inputValue);
-			$(".box").not(targetBox).hide();
-			$(targetBox).show();
-		});
-	</script>
+	<!-- SPECIFIC SCRIPTS -->
+	<script src="js/sticky_sidebar.min.js"></script>
+	<script src="js/specific_listing.js"></script>
 
 </body>
 

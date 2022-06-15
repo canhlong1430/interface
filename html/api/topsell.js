@@ -15,7 +15,7 @@ $(document).ready(function () {
 	var page = get('page')
 	var categoryId = get('category_id')
 	//Url của api
-	url = 'https://electronics-api.herokuapp.com/products?limit=8&offset=0&top_seller=true'
+	url = 'https://electronics-api.herokuapp.com/products?limit=8&page=1&top_seller=true'
 
 	const options = {
 		method: 'GET', //tùy chọn method GET hoặc POST, PUT, DELETE
@@ -44,7 +44,7 @@ $(document).ready(function () {
         						<div class="grid_item">
 								
         							<figure>
-										<a href="product-detail.html?product_id=` + obj.id + `">
+										<a href="product-detail.html?product_id=` + obj.id + `" product_id="` + obj.id + `">
         									<img class="img-fluid lazy"
         										src="` + obj.thumbnail_url + `"
         										data-src="` + obj.thumbnail_url + `" alt="">
@@ -59,20 +59,53 @@ $(document).ready(function () {
         								<span class="old_price">` + toVND(obj.price) + ` đ</span>
         							</div>
         							<ul>
-        								<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left"
-        										title="Add to favorites"><i class="ti-heart"></i><span>Add to
-        											favorites</span></a></li>
-        								<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left"
-        										title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to
-        											compare</span></a></li>
-        								<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left"
-        										title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to
-        											cart</span></a></li>
+        								<li><a href="#add-to-cart" class="tooltip-1" data-toggle="tooltip" data-placement="left"
+        										title="Thêm vào giỏ hàng"><i class="ti-shopping-cart"></i><span>Thêm vào giỏ hàng</span></a></li>
         							</ul>
         						</div>     
         `;
 			document.getElementById("top_selling").appendChild(newDiv)
 		}
+
+		$('a[href="#add-to-cart"]').click(function () {
+			var productId = $(this).parent().parent().parent().find("figure").find("a").attr("product_id")
+			var quantity = 1
+
+			var cartUrl = "https://electronics-api.herokuapp.com/add_to_cart"
+			var bearer = 'Bearer ' + token;
+
+			const cartOptions = {
+				method: 'POST', //tùy chọn method GET hoặc POST, PUT, DELETE
+				headers: {
+					'Authorization': bearer,
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					data:
+					{
+						product_option_id: parseInt(productId),
+						quantity: parseInt(quantity),
+					}
+				})
+			};
+
+			var status2
+			fetch(cartUrl, cartOptions)
+				.then((res) => {
+					console.log(res.status);
+					status2 = res.status
+					return res.json();
+				})
+				.then(data => {
+					if (status2 == 200) {
+					}
+					if (status2 != 200) {
+					}
+					if (status2 == 401) {
+					}
+				})
+				.catch(error => console.log('Error:', error));
+		});
 	});
 
 

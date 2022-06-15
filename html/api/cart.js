@@ -55,7 +55,7 @@ $(document).ready(function () {
                 + `</strong>
 							</td>
 							<td class="options">
-								<a href="#"><i class="ti-trash"></i></a>
+								<a href="#remove-item"><i class="ti-trash"></i></a>
 							</td>
 			</tr>
             `
@@ -110,6 +110,27 @@ $(document).ready(function () {
                 if (res.status == 200) {
                     var val = $(this).parent().find("input").val()
                     $(this).parent().find("input").val((parseInt(val, 10) - 1).toString())
+                    location.reload()
+                }
+            });
+        });
+
+        $('a[href="#remove-item"]').click(function () {
+            var itemId = $(this).parent().parent().parent().find("td").eq(2).find("div").attr('id')
+
+            var removeUrl = 'https://electronics-api.herokuapp.com/sale/cart/items/' + itemId + '/delete'
+            var bearer = 'Bearer ' + token;
+
+            const removeoptions = {
+                method: 'DELETE', //tùy chọn method GET hoặc POST, PUT, DELETE
+                headers: {
+                    'Authorization': bearer,
+                    'Content-Type': 'application/json'
+                },
+            }
+
+            fetch(removeUrl, removeoptions).then(res => {
+                if (res.status == 200) {
                     location.reload()
                 }
             });

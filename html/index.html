@@ -36,7 +36,8 @@
 	<script src="api/topsell.js"></script>
 	<script src="api/header.js"></script>
 	<script src="api/featured.js"></script>
-	
+	<script src="api/recommend.js"></script>
+
 </head>
 
 <body>
@@ -63,7 +64,7 @@
 									<div class="col-lg-6 static">
 										<div class="slide-text text-right white">
 											<h2 class="owl-slide-animated owl-slide-title"><br></h2>
-											
+
 											<div class="owl-slide-animated owl-slide-cta"><a class="btn_1"
 													href="listing-grid-1-full.html" role="button">Mua Ngay</a></div>
 										</div>
@@ -150,14 +151,20 @@
 			</ul>
 			<!--/banners_grid -->
 
+			<div class="container margin_60_35" id="recommender">
+
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+
 			<div class="container margin_60_35">
 				<div class="main_title">
 					<h2>Sản phẩm bán chạy</h2>
-					<span>KeyShop</span>
-					<p>abc</p>
+					<span>Các sản phẩm bán chạy</span>
+					<p>Các sản phẩm bán chạy nhất</p>
 				</div>
 				<div class="row small-gutters" id=top_selling>
-				
+
 					<!-- /col -->
 				</div>
 				<!-- /row -->
@@ -191,10 +198,10 @@
 					<span>Products</span>
 					<p>Cum doctus civibus efficiantur in imperdiet deterruisset</p>
 				</div>
-				<div class="row small-gutters" id="featured" >
-				
+				<div class="row small-gutters" id="featured">
+
 					<!-- /col -->
-				</div> 
+				</div>
 				<!-- /products_carousel -->
 			</div>
 			<!-- /container -->
@@ -317,43 +324,43 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-3 col-md-6">
-						<h3 data-target="#collapse_1">Quick Links</h3>
+						<h3 data-target="#collapse_1">KHÁCH HÀNG</h3>
 						<div class="collapse dont-collapse-sm links" id="collapse_1">
 							<ul>
-								<li><a href="about.html">About us</a></li>
-								<li><a href="help.html">Faq</a></li>
-								<li><a href="help.html">Help</a></li>
-								<li><a href="account.html">My account</a></li>
-								<li><a href="blog.html">Blog</a></li>
-								<li><a href="contacts.html">Contacts</a></li>
+								<li><a href="about.html">Về chúng tôi - Key Shop</a></li>
+								<li><a href="help.html">Gửi yêu cầu hỗ trợ</a></li>
+								<li><a href="help.html">Hướng dẫn đặt hàng</a></li>
+								<li><a href="account.html">Hướng dẫn thanh toán</a></li>
+								<li><a href="blog.html">Tin tức</a></li>
+								<li><a href="contacts.html">Kết nối</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-lg-3 col-md-6">
-						<h3 data-target="#collapse_2">Categories</h3>
+						<h3 data-target="#collapse_2">DANH MỤC SẢN PHẨM</h3>
 						<div class="collapse dont-collapse-sm links" id="collapse_2">
 							<ul>
-								<li><a href="listing-grid-1-full.html">Clothes</a></li>
-								<li><a href="listing-grid-2-full.html">Electronics</a></li>
-								<li><a href="listing-grid-1-full.html">Furniture</a></li>
-								<li><a href="listing-grid-3.html">Glasses</a></li>
-								<li><a href="listing-grid-1-full.html">Shoes</a></li>
-								<li><a href="listing-grid-1-full.html">Watches</a></li>
+								<li><a href="listing-grid-1-full.html">Laptop - Máy tính văn phòng</a></li>
+								<li><a href="listing-grid-2-full.html">Điện thoại - Máy tính bảng</a></li>
+								<li><a href="listing-grid-1-full.html">Màn hình</a></li>
+								<li><a href="listing-grid-3.html">Phụ kiện di động</a></li>
+								<li><a href="listing-grid-1-full.html">Thiết bị âm thanh</a></li>
+								<li><a href="listing-grid-1-full.html">Đồng hồ</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-lg-3 col-md-6">
-						<h3 data-target="#collapse_3">Contacts</h3>
+						<h3 data-target="#collapse_3">Liên hệ</h3>
 						<div class="collapse dont-collapse-sm contacts" id="collapse_3">
 							<ul>
-								<li><i class="ti-home"></i>97845 Baker st. 567<br>Los Angeles - US</li>
-								<li><i class="ti-headphone-alt"></i>+94 423-23-221</li>
-								<li><i class="ti-email"></i><a href="#0">info@allaia.com</a></li>
+								<li><i class="ti-home"></i>Khu Phố 6, Phường Linh Trung<br>Thành phố Thủ Đức</li>
+								<li><i class="ti-headphone-alt"></i>+888 66 3210</li>
+								<li><i class="ti-email"></i><a href="#0">info@keyshop.com</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-lg-3 col-md-6">
-						<h3 data-target="#collapse_4">Keep in touch</h3>
+						<h3 data-target="#collapse_4">ĐĂNG KÝ THÔNG TIN KHUYẾN MÃI</h3>
 						<div class="collapse dont-collapse-sm" id="collapse_4">
 							<div id="newsletter">
 								<div class="form-group">
@@ -364,20 +371,11 @@
 								</div>
 							</div>
 							<div class="follow_us">
-								<h5>Follow Us</h5>
+								<h3>KẾT NỐI VỚI CHÚNG TÔI</h3>
 								<ul>
 									<li><a href="#0"><img
 												src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-												data-src="img/twitter_icon.svg" alt="" class="lazy"></a></li>
-									<li><a href="#0"><img
-												src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
 												data-src="img/facebook_icon.svg" alt="" class="lazy"></a></li>
-									<li><a href="#0"><img
-												src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-												data-src="img/instagram_icon.svg" alt="" class="lazy"></a></li>
-									<li><a href="#0"><img
-												src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-												data-src="img/youtube_icon.svg" alt="" class="lazy"></a></li>
 								</ul>
 							</div>
 						</div>
@@ -393,19 +391,17 @@
 									<select>
 										<option value="English" selected>Tiếng việt</option>
 										<option value="French">English</option>
-										<option value="Spanish">Spanish</option>
-										<option value="Russian">Russian</option>
 									</select>
 								</div>
 							</li>
-							<li>
+							<!-- <li>
 								<div class="styled-select currency-selector">
 									<select>
 										<option value="US Dollars" selected>US Dollars</option>
 										<option value="Euro">Euro</option>
 									</select>
 								</div>
-							</li>
+							</li> -->
 							<li><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
 									data-src="img/cards_all.svg" alt="" width="198" height="30" class="lazy"></li>
 						</ul>

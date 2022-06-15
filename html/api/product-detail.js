@@ -17,6 +17,10 @@ $(document).ready(function () {
 
     var productId = get('product_id')
 
+    if (token == null) {
+        $('#write-review').hide()
+    }
+
     //Url của api
     url = 'https://electronics-api.herokuapp.com/products/' + productId
 
@@ -36,32 +40,26 @@ $(document).ready(function () {
         $(json.data.product_images).each(function (i, v) {
             switch (i) {
                 case 0:
-                    console.log(v.thumbnail_url)
                     $("#img1").css('background-image', 'url(' + v.url + ')')
                     $("#small-img1").css('background-image', 'url(' + v.url + ')')
                     break;
                 case 1:
-                    console.log(v.thumbnail_url)
                     $("#img2").css('background-image', 'url(' + v.url + ')')
                     $("#small-img2").css('background-image', 'url(' + v.url + ')')
                     break;
                 case 2:
-                    console.log(v.thumbnail_url)
                     $("#img3").css('background-image', 'url(' + v.url + ')')
                     $("#small-img3").css('background-image', 'url(' + v.url + ')')
                     break;
                 case 3:
-                    console.log(v.thumbnail_url)
                     $("#img4").css('background-image', 'url(' + v.url + ')')
                     $("#small-img4").css('background-image', 'url(' + v.url + ')')
                     break;
                 case 4:
-                    console.log(v.thumbnail_url)
                     $("#img5").css('background-image', 'url(' + v.url + ')')
                     $("#small-img5").css('background-image', 'url(' + v.url + ')')
                     break;
                 case 5:
-                    console.log(v.thumbnail_url)
                     $("#img6").css('background-image', 'url(' + v.url + ')')
                     $("#small-img6").css('background-image', 'url(' + v.url + ')')
                     break;
@@ -79,9 +77,15 @@ $(document).ready(function () {
         var str = `
         <div class="row justify-content-between">
         `
-        for (var i = 0; i < 4; i++) {//Cho hiển thị 4 comment
+        for (var i = 0; i < 8; i++) {//Cho hiển thị 8 comment
             var obj = json.data.product_ratings[i];
-            var user = obj.created_by
+
+            if (obj) {
+                var user = obj.created_by
+            } else {
+                $("#rating div").html(' <h3>Sản phẩm chưa có đánh giá nào. Hãy để lại đánh giá của bạn!</h3>')
+            }
+
             str += `				
                 <div class="col-lg-6">
 											<div class="review_content">
@@ -126,7 +130,7 @@ $(document).ready(function () {
         $("#specs").html(str)
 
 
-        urlBrand = 'https://electronics-api.herokuapp.com/products/list_by_brand?brand_id=' + brandId + '&limit=10&offset=0'
+        urlBrand = 'https://electronics-api.herokuapp.com/products/list_by_brand?brand_id=' + brandId + '&limit=10&page=1'
         fetch(urlBrand, options).then(res1 => res1.json()).then(json1 => {
 
             $(json1.data).each(function (i, v) {
@@ -204,12 +208,66 @@ $(document).ready(function () {
             .then(data => {
                 if (status2 == 200) {
                     $('#status').html(' <span style="color:green"> [Sản phẩm đã được thêm vào giỏ hàng!]</span>')
+                    $(".cart_bt strong").text(parseInt($(".cart_bt strong").text()) + 1)
+                    setTimeout(function () {
+                        $('#status').html('')
+                    }, 1000);
                 }
                 if (status2 != 200) {
                     $('#status').html(' <span style="color:red"> [Lỗi - Có lỗi xảy ra!]</span>')
+                    setTimeout(function () {
+                        $('#status').html('')
+                    }, 1000);
                 }
                 if (status2 == 401) {
                     $('#status').html(' <span style="color:red"> [Lỗi - Bạn chưa đăng nhập!]</span>')
+                    setTimeout(function () {
+                        $('#status').html('')
+                    }, 1000);
+                }
+            })
+            .catch(error => console.log('Error:', error));
+    });
+
+    $("#write-review").attr('href', 'leave-review.html?product_id=' + productId)
+
+    $('a[href="#add-to-wishlist"]').click(function () {
+
+        var bearer = 'Bearer ' + token;
+        var favUrl = "https://electronics-api.herokuapp.com/add_to_favorites/" + productId
+        var favOptions = {
+            method: 'POST', //tùy chọn method GET hoặc POST, PUT, DELETE
+            headers: {
+                'Authorization': bearer,
+                'Content-Type': 'application/json'
+            }
+        };
+
+        var status3
+        fetch(favUrl, favOptions)
+            .then((res) => {
+                console.log(res.status);
+                status3 = res.status
+                return res.json();
+            })
+            .then(data => {
+                if (status3 == 200) {
+                    $(".product_actions").append(' <span style="color:green"> [Sản phẩm đã được thêm vào danh sách yêu thích!]</span>')
+                    setTimeout(function () {
+                        $(".product_actions > span").hide()
+                    }, 1000);
+                }
+                if (status3 != 200) {
+                    $(".product_actions").append(' <span style="color:red"> [Lỗi - Có lỗi xảy ra!]</span>')
+                    setTimeout(function () {
+                        $(".product_actions > span").hide()
+                    }, 1000);
+                }
+                if (status3 == 401) {
+                    $(".product_actions").append(' <span style="color:red"> [Lỗi - Bạn chưa đăng nhập!]</span>')
+                    setTimeout(function () {
+                        $(".product_actions > span").hide()
+                    }, 1000);
                 }
             })
             .catch(error => console.log('Error:', error));
