@@ -67,7 +67,7 @@ $(document).ready(function () {
         								</a>
         								<!-- <div data-countdown="2019/05/15" class="countdown"></div> -->
         							</figure>
-        							<a href="product-detail-2.html?product_id=` + obj.id + `">
+        							<a href="product-detail.html?product_id=` + obj.id + `">
         								<h3>`+ truncate(obj.name) + `</h3>
         							</a>
         							<div class="price_box">
