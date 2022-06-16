@@ -25,7 +25,7 @@ $(document).ready(function () {
             'Content-Type': 'application/json'
         },
     }
-
+    var S = 0
     fetch(url, options).then(res => res.json()).then(json => {
         $(json.data.cart_items).each(function (i, v) {
 
@@ -40,6 +40,7 @@ $(document).ready(function () {
             var delivery_fee = 30000
             var subtotal_price = json.data.subtotal_price
             var total_price = json.data.subtotal_price + 30000 - 5000
+            S = total_price
 
             $("#order-summary > ul").eq(0).append(html)
             $("#order-summary").children().eq(1).find("li").eq(0).find("span").text(toVND(subtotal_price))
@@ -86,6 +87,7 @@ $(document).ready(function () {
                     data:
                     {
                         email_notify: email_notify,
+                        total_price: S,
                         total_discounts: discounts,
                         delivery_fee: delivery_fee,
                         payment_method_id: payment_method_id,
