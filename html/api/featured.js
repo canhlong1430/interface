@@ -55,7 +55,7 @@ $(document).ready(function () {
         							</a>
         							<div class="price_box">
         								<span class="new_price">` + toVND(obj.price) + ` đ</span>
-        								<span class="old_price">` + toVND(obj.price) + ` đ</span>
+        								<span class="old_price">` + toVND(obj.price + obj.price * 0.2) + ` đ</span>
         							</div>
         							<ul>
         								<li><a href="#add-to-cart" class="tooltip-1" data-toggle="tooltip" data-placement="left"

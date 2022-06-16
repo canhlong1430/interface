@@ -71,7 +71,7 @@ $(document).ready(function () {
         $(".prod_info p small").text("SKU: " + json.data.sku)
         $(".prod_info p").append(json.data.short_description)
         $(".price_main .new_price").text(toVND(json.data.price))
-        $(".price_main .old_price").text(toVND(json.data.price))
+        $(".price_main .old_price").text(toVND(json.data.price + json.data.price * 0.2))
         $("#detail div").html(json.data.description)
 
         var str = `
