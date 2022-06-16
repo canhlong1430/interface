@@ -13,12 +13,21 @@ $(document).ready(function () {
     var token = localStorage.getItem('token')
 
     var page = get('page')
+
     var pageNumber
+
+    var filter = ''
+    if (get('brand_ids')) {
+        filter += '&brand_ids=' + get('brand_ids')
+    }
+    if (get('min_price') && get('max_price')) {
+        filter += '&min_price=' + get('min_price') + '&max_price=' + get('max_price')
+    }
 
     //Url của api
     var limit = '9'
     var keyword = get('keyword')
-    var searchUrl = 'http://localhost:1323/products/search?limit=' + limit + '&page=' + page.toString() + '&keyword=' + keyword
+    var searchUrl = 'http://localhost:1323/products/search?limit=' + limit + '&page=' + page.toString() + '&keyword=' + keyword + filter
 
     const searchOptions = {
         method: 'GET', //tùy chọn method GET hoặc POST, PUT, DELETE
@@ -26,7 +35,7 @@ $(document).ready(function () {
     }
 
     fetch(searchUrl, searchOptions).then(res => res.json()).then(json => {
-        pageNumber = Math.floor(json.count / limit)
+        pageNumber = Math.ceil(json.count / parseInt(limit))
         for (var i = 0; i < json.data.length; i++) {
 
             //Hiển thị tên sản phẩm mra HTML
@@ -70,7 +79,6 @@ $(document).ready(function () {
         //Pagination
         var html = ""
         if (pageNumber > 1) {
-
             if (page != 1) {
                 var previous = page - 1
                 $(".pagination").append(`<li><a href="/html/search-results.html?keyword=` + keyword + `&page=` + previous + `" class="prev page" title="previous page">&#10094;</a></li>`)
@@ -95,12 +103,111 @@ $(document).ready(function () {
             }
         }
         else {
-            $(".pagination").append(`<li><a  href="#0" class="prev page" title="previous page">&#10094;</a></li>`)
+            // $(".pagination").append(`<li><a  href="#0" class="prev page" title="previous page">&#10094;</a></li>`)
             html = `<li>
 								<a  href="/html/search-results.html?keyword=` + keyword + `&page=1` + `" class="active page">1</a>
 							</li>`
             $(".pagination").append(html)
-            $(".pagination").append(`<li><a href="#0" class="next page" title="next page">&#10095;</a></li>`)
+            // $(".pagination").append(`<li><a href="#0" class="next page" title="next page">&#10095;</a></li>`)
         }
+
+        $('a[href="#add-to-cart"]').click(function () {
+            var productId = $(this).parent().parent().parent().find("figure").find("a").attr("product_id")
+            var quantity = 1
+
+            var cartUrl = "http://localhost:1323/add_to_cart"
+            var bearer = 'Bearer ' + token;
+
+            const cartOptions = {
+                method: 'POST', //tùy chọn method GET hoặc POST, PUT, DELETE
+                headers: {
+                    'Authorization': bearer,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    data:
+                    {
+                        product_option_id: parseInt(productId),
+                        quantity: parseInt(quantity),
+                    }
+                })
+            };
+
+            var status2
+            fetch(cartUrl, cartOptions)
+                .then((res) => {
+                    console.log(res.status);
+                    status2 = res.status
+                    return res.json();
+                })
+                .then(data => {
+                    if (status2 == 200) {
+                    }
+                    if (status2 != 200) {
+                    }
+                    if (status2 == 401) {
+                    }
+                })
+                .catch(error => console.log('Error:', error));
+        });
+    });
+
+    $(".pagination").on("click", ".page", function (event) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    brandUrl = 'http://localhost:1323/products/search?limit=' + limit + '&page=' + page.toString() + '&keyword=' + keyword
+
+    const brandOptions = {
+        method: 'GET', //tùy chọn method GET hoặc POST, PUT, DELETE
+        headers: { 'Content-Type': 'application/json' },
+    }
+
+    fetch(brandUrl, brandOptions).then(res => res.json()).then(json => {
+        var clean = json.brands.filter((arr, index, self) =>
+            index === self.findIndex((t) => (t.id === arr.id)))
+
+        $(clean).each(function (i, v) {
+            var html = ''
+            html += `
+										<li>
+											<label class="container_check"> `+ v.name + ` <small>12</small>
+												<input type="checkbox" name="`+ v.name + `" value="` + v.id + `">
+												<span class="checkmark"></span>
+											</label>
+										</li>
+			`
+            $("#filter_brand > ul").append(html)
+        });
+    });
+
+    //xử lí filter
+    $("#apply").click(function () {
+        var brand_ids = [];
+        $('ul.brands').find("input[type='checkbox']:checked").each(function () {
+            brand_ids.push($(this).val());
+        });
+
+        var min = 999999999
+        var max = 0
+        $('ul.prices').find("input[type='checkbox']:checked").each(function () {
+            min = $(this).attr("min")
+            max = $(this).attr("max")
+        });
+
+        var url = "/html/search-results.html?page=" + page + "&limit=" + limit + "&keyword=" + keyword
+
+        if (brand_ids.length > 0) {
+            url += "&brand_ids=" + brand_ids.toString()
+        }
+        if (min && max) {
+            url += "&min_price=" + min + "&max_price=" + max
+        }
+
+        window.location.href = url;
+    });
+    $("#reset").click(function () {
+        var url = "/html/list-product.html?page=" + page
+        window.location.href = url;
     });
 });

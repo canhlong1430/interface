@@ -44,7 +44,7 @@ $(document).ready(function () {
 
 	//Gọi api => trả về dạng Json => chạy loop đổ json ra HTML
 	fetch(url, options).then(res => res.json()).then(json => {
-		pageNumber = Math.floor(json.count / limit)
+		pageNumber = Math.ceil(json.count / limit)
 		for (var i = 0; i < json.data.length; i++) {
 			//Hiển thị tên sản phẩm mra HTML
 			var obj = json.data[i];
@@ -104,12 +104,12 @@ $(document).ready(function () {
 			}
 		}
 		else {
-			$(".pagination").append(`<li><a  href="#0" class="prev page" title="previous page">&#10094;</a></li>`)
+			// $(".pagination").append(`<li><a  href="#0" class="prev page" title="previous page">&#10094;</a></li>`)
 			html = `<li>
 								<a  href="/html/list-product.html?page=1` + `&category_id=` + categoryId + `" class="active page">1</a>
 							</li>`
 			$(".pagination").append(html)
-			$(".pagination").append(`<li><a href="#0" class="next page" title="next page">&#10095;</a></li>`)
+			// $(".pagination").append(`<li><a href="#0" class="next page" title="next page">&#10095;</a></li>`)
 		}
 
 		$('a[href="#add-to-cart"]').click(function () {
