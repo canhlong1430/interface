@@ -195,7 +195,7 @@ $(document).ready(function () {
             max = $(this).attr("max")
         });
 
-        var url = "/html/search-results.html?page=" + page + "&limit=" + limit + "&keyword=" + keyword
+        var url = "/html/search-results.html?page=1" + "&limit=" + limit + "&keyword=" + keyword
 
         if (brand_ids.length > 0) {
             url += "&brand_ids=" + brand_ids.toString()

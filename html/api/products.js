@@ -196,7 +196,7 @@ $(document).ready(function () {
 			max = $(this).attr("max")
 		});
 
-		var url = "/html/list-product.html?page=" + page + "&category_id=" + categoryId
+		var url = "/html/list-product.html?page=1" + "&category_id=" + categoryId
 
 		if (brand_ids.length > 0) {
 			url += "&brand_ids=" + brand_ids.toString()
