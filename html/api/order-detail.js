@@ -58,7 +58,7 @@ $(document).ready(function () {
 
         $(json.data.order_items).each(function (i, v) {
             var html = `
-            <div class="card grid_item">
+            <div class="card grid_item"  style="margin-right: 84px;">
             <figure>
                 <a href="product-detail.html?product_id=`+ v.product_option.id + `" product_id="124742926">
                 <img class="img-fluid lazy" src="`+ v.product.thumbnail_url + `" alt="">
