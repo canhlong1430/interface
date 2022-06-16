@@ -187,6 +187,20 @@ $(document).ready(function () {
         var cartUrl = "http://localhost:1323/add_to_cart"
         var bearer = 'Bearer ' + token;
 
+        //frontend
+        $("#cart-menu > ul").append(`
+        <li>
+        <a href="product-detail.html?product_id=`+ productId + `">
+            <figure><img src="img/products/shoes/1.jpg"
+                    data-src="img/products/shoes/1.jpg" alt="" width="50"
+                    height="50" class="lazy"></figure>
+            <strong><span>`+ quantity + `x ` + productId + `</span>` + toVND(100000) + `</strong>
+        </a>
+        <a href="#0" class="action"><i class="ti-trash"></i></a>
+    </li>
+        `)
+        //
+
         const cartOptions = {
             method: 'POST', //tùy chọn method GET hoặc POST, PUT, DELETE
             headers: {

@@ -116,7 +116,7 @@ $(document).ready(function () {
         });
 
         $('a[href="#remove-item"]').click(function () {
-            var itemId = $(this).parent().parent().parent().find("td").eq(2).find("div").attr('id')
+            var itemId = $(this).parent().parent().find("td").eq(2).find("div").attr('id')
 
             var removeUrl = 'http://localhost:1323/sale/cart/items/' + itemId + '/delete'
             var bearer = 'Bearer ' + token;

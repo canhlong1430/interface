@@ -88,6 +88,20 @@ $(document).ready(function () {
                 var productId = $(this).parent().parent().parent().find("figure").find("a").attr("product_id")
                 var quantity = 1
 
+                //frontend
+                $("#cart-menu > ul").append(`
+                    <li>
+                    <a href="product-detail.html?product_id=`+ productId + `">
+                        <figure><img src="img/products/shoes/1.jpg"
+                                data-src="img/products/shoes/1.jpg" alt="" width="50"
+                                height="50" class="lazy"></figure>
+                        <strong><span>`+ quantity + `x ` + productId + `</span>` + toVND(100000) + `</strong>
+                    </a>
+                    <a href="#0" class="action"><i class="ti-trash"></i></a>
+                </li>
+                `)
+                //
+
                 var cartUrl = "http://localhost:1323/add_to_cart"
                 var bearer = 'Bearer ' + token;
 
@@ -115,6 +129,7 @@ $(document).ready(function () {
                     })
                     .then(data => {
                         if (status2 == 200) {
+                            $(".cart_bt strong").text(parseInt($(".cart_bt strong").text()) + 1)
                         }
                         if (status2 != 200) {
                         }
