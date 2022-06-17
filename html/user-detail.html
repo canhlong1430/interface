@@ -34,6 +34,7 @@
 	<script src="api/include.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="api/header.js"></script>
+	<script src="api/user-detail.js"></script>
 
 </head>
 
@@ -50,7 +51,7 @@
 
 		<!-- /header -->
 
-		<main class="bg_gray">
+		<main>
 
 			<div class="container margin_30">
 				<div class="page_header">
@@ -104,8 +105,10 @@
 							<div class="col-md-4">
 								<div class="profile-work">
 									<p>Thông tin khác</p>
+									<a href="/html/my-orders.html">Sản phẩm yêu thích</a><br />
 									<a href="/html/my-orders.html">Đơn hàng của tôi</a><br />
 									<a href="/html/my-orders.html">Lịch sử đánh giá</a><br />
+									<a href="/html/my-addresses.html">Địa chỉ</a><br />
 								</div>
 							</div>
 							<div class="col-md-8">
@@ -207,35 +210,34 @@
 						</div>
 					</form>
 				</div>
+				<!-- /container -->
 			</div>
-			<!-- /container -->
-	</div>
-	</main>
-	<!--/main-->
+		</main>
+		<!--/main-->
 
 
 
-	<div id="toTop"></div><!-- Back to top button -->
+		<div id="toTop"></div><!-- Back to top button -->
 
-	<!-- COMMON SCRIPTS -->
-	<script src="js/common_scripts.min.js"></script>
-	<script src="js/main.js"></script>
+		<!-- COMMON SCRIPTS -->
+		<script src="js/common_scripts.min.js"></script>
+		<script src="js/main.js"></script>
 
-	<script>
-		// Client type Panel
-		$('input[name="client_type"]').on("click", function () {
-			var inputValue = $(this).attr("value");
-			var targetBox = $("." + inputValue);
-			$(".box").not(targetBox).hide();
-			$(targetBox).show();
-		});
-	</script>
-	<div include-html="footer.html"></div>
-	<!-- <div include-html="categorycart.html"></div> -->
-	<script>
-		includeHTML();
-	</script>
-	<!--/footer-->
+		<script>
+			// Client type Panel
+			$('input[name="client_type"]').on("click", function () {
+				var inputValue = $(this).attr("value");
+				var targetBox = $("." + inputValue);
+				$(".box").not(targetBox).hide();
+				$(targetBox).show();
+			});
+		</script>
+		<div include-html="footer.html"></div>
+		<!-- <div include-html="categorycart.html"></div> -->
+		<script>
+			includeHTML();
+		</script>
+		<!--/footer-->
 	</div>
 	<!-- page -->
 
