@@ -103,4 +103,49 @@ $(document).ready(function () {
             $("#orders").append(html)
         });
     });
+
+    var ratingUrl = 'http://localhost:1323/product/ratings?limit=99&page=1'
+
+    const ratingOptions = {
+        method: 'GET', //tùy chọn method GET hoặc POST, PUT, DELETE
+        headers: {
+            'Authorization': bearer,
+            'Content-Type': 'application/json'
+        },
+    }
+
+    fetch(ratingUrl, ratingOptions).then(res => res.json()).then(json => {
+        $(json.data).each(function (i, v) {
+            var html = `
+            <div class="review_content">
+                            <div class="clearfix add_bottom_10">
+                                <span class="rating">`
+
+
+            for (var j = 0; j < v.star_number; j++) {
+                html += `
+                <i class="icon-star voted"></i>
+                    `
+            }
+            if (v.star_number < 5) {
+                var unvoted = 5 - v.star_number
+                for (var k = 0; k < unvoted; k++) {
+                    html += `<i class="icon-star"></i>`
+                }
+            }
+
+            html += `
+                                    <em>`+ v.star_number + `/5</em></span>
+                                <br>
+                                <em>`+ v.created_at + `</em>
+                            </div>
+                            <h6>`+ v.product_id + `</h6>
+                            <p>`+ v.comment + `</p>
+                        </div>
+                        <hr>
+            `
+
+            $("#reviews").append(html)
+        });
+    });
 });
