@@ -139,7 +139,7 @@ $(document).ready(function () {
                                 <br>
                                 <em>`+ v.created_at + `</em>
                             </div>
-                            <h6>`+ v.product_id + `</h6>
+                            <h6>`+ truncate(v.product.name) + `</h6>
                             <p>`+ v.comment + `</p>
                         </div>
                         <hr>
