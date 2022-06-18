@@ -74,4 +74,57 @@ $(document).ready(function () {
         });
     });
 
+    var wardUrl = 'http://localhost:1323/address/wards?limit=1000&page=1'
+
+    const wardOptions = {
+        method: 'GET', //tùy chọn method GET hoặc POST, PUT, DELETE
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    }
+
+    fetch(wardUrl, wardOptions).then(res => res.json()).then(json => {
+        $(json.data).each(function (i, v) {
+            $("#ward").append(`<option value="` + v.id + `">` + v.name + `</option>`)
+        });
+    });
+
+    $("#add-address").click(function () {
+        var name = $("#name").val()
+        var phone = $("#phone").val()
+        var address = $("#address").val()
+        var wardId = $('#ward').find(":selected").val();
+        var isDefault = 0
+        if ($("#is-default").prop("checked") == true) {
+            isDefault = 1
+        }
+
+        var addUrl = 'http://localhost:1323/user/addresses/create'
+        var bearer = 'Bearer ' + token;
+
+        const addOptions = {
+            method: 'POST', //tùy chọn method GET hoặc POST, PUT, DELETE
+            headers: {
+                'Authorization': bearer,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                data:
+                {
+                    ward_id: parseInt(wardId),
+                    phone_number: phone,
+                    name: name,
+                    specific_address: address,
+                    is_default: isDefault
+                }
+            })
+        }
+
+        fetch(addUrl, addOptions).then(res => {
+            if (res.status == 200) {
+                window.location.reload()
+            }
+        });
+
+    });
 });
