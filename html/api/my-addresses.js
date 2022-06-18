@@ -29,7 +29,7 @@ $(document).ready(function () {
     fetch(url, options).then(res => res.json()).then(json => {
         $(json.data).each(function (i, v) {
             var html = `
-        <div class="col-md-6">
+                                <div class="col-md-6">
                                     <div class="bg-white card addresses-item mb-4 border border-primary">
                                         <div class="gold-members p-4">
                                             <div class="media">
@@ -37,13 +37,8 @@ $(document).ready(function () {
                                                 <div class="media-body">
                                                     <h6 class="mb-1 text-secondary">`+ v.name + `</h6>
                                                     <p class="text-black">`+ v.specific_address + `</p>
-                                                    <p class="mb-0 text-black font-weight-bold"><a
-                                                            class="text-primary mr-3" data-toggle="modal"
-                                                            data-target="#add-address-modal" href="#"><i
-                                                                class="icofont-ui-edit"></i> Sửa</a> <a
-                                                            class="text-danger" data-toggle="modal"
-                                                            data-target="#delete-address-modal" href="#"><i
-                                                                class="icofont-ui-delete"></i> Xóa</a></p>
+                                                    <a class="btn_1 mr-2" href="#edit-address" address_id="`+ v.id + `">Sửa</a> 
+                                                    <a class="btn_1" href="#del-address" address_id="`+ v.id + `">Xóa</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -52,6 +47,31 @@ $(document).ready(function () {
         `
 
             $("#addresses").append(html)
+
+            $('a[href="#edit-address"]').click(function () {
+                var addressId = $(this).attr("address_id")
+            });
+
+            $('a[href="#del-address"]').click(function () {
+                var addressId = $(this).attr("address_id")
+
+                var delUrl = 'http://localhost:1323/user/addresses/' + addressId + '/delete'
+
+                const delOptions = {
+                    method: 'DELETE', //tùy chọn method GET hoặc POST, PUT, DELETE
+                    headers: {
+                        'Authorization': bearer,
+                        'Content-Type': 'application/json'
+                    },
+                }
+
+                fetch(delUrl, delOptions).then(res => {
+                    if (res.status == 200) {
+                        window.location.reload()
+                    }
+                });
+            });
         });
     });
+
 });
