@@ -118,4 +118,10 @@ $(document).ready(function () {
     $('#search-btn').click(function () {
         window.location.href = '/html/search-results.html?limit=9&page=1&keyword=' + $(this).parent().find('input').val()
     });
+    $('.custom-search-input > input').keypress(function (e) {
+        if (e.which == 13) {
+            window.location.href = '/html/search-results.html?limit=9&page=1&keyword=' + $(this).val()
+            return false;    //<---- Add this line
+        }
+    });
 });
