@@ -42,7 +42,7 @@ $(document).ready(function () {
                 delivery_fee = 0
             }
             var subtotal_price = json.data.subtotal_price
-            var total_price = json.data.subtotal_price + 30000 - 5000
+            var total_price = json.data.subtotal_price + delivery_fee - discounts
             S = total_price
 
             $("#order-summary > ul").eq(0).append(html)
@@ -52,6 +52,10 @@ $(document).ready(function () {
             $("#order-summary > div").eq(0).find("span").text(toVND(total_price))
 
         });
+
+        if (json.data.cart_items.length == 0) {
+            $("#checkout-info").html("<h4>Bạn chưa có sản phẩm nào trong giỏ hàng</h4>")
+        }
 
         //Xử lí đặt hàng
         $('a[href="#confirm"]').click(function () {
