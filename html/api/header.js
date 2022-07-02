@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     // Get data từ url. Ví dụ google.com?search=abc lấy theo từ khóa: get('search') => 'abc'
     function get(name) {
         if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
