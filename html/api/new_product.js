@@ -15,7 +15,7 @@ $(document).ready(function () {
 	var page = get('page')
 	var categoryId = get('category_id')
 	//Url của api
-	url = 'http://localhost:1323/products?limit=8&page=1&top_seller=true'
+	url = 'http://localhost:1323/products?limit=8&page=1'
 
 	const options = {
 		method: 'GET', //tùy chọn method GET hoặc POST, PUT, DELETE
@@ -64,24 +64,21 @@ $(document).ready(function () {
         							</ul>
         						</div>     
         `;
-			document.getElementById("top_selling").appendChild(newDiv)
+			document.getElementById("new_product").appendChild(newDiv)
 		}
 
 		$('a[href="#add-to-cart"]').click(function () {
 			var productId = $(this).parent().parent().parent().find("figure").find("a").attr("product_id")
 			var quantity = 1
-			var n = $(this).parent().parent().parent().find("a").find("h3").text()
-			var g = $(this).parent().parent().parent().parent().find(".price_box").find(".new_price").text()
-			var u = $(this).parent().parent().parent().parent().find("figure").find("a").find("img").attr("src")
 
 			//frontend
 			$("#cart-menu > ul").append(`
 			<li>
 			<a href="product-detail.html?product_id=`+ productId + `">
-				<figure><img src="`+ u + `"
+				<figure><img src="img/products/shoes/1.jpg"
 						data-src="img/products/shoes/1.jpg" alt="" width="50"
 						height="50" class="lazy"></figure>
-				<strong><span>`+ quantity + `x ` + n + `</span>` + g + `</strong>
+				<strong><span>`+ quantity + `x ` + productId + `</span>` + toVND(100000) + `</strong>
 			</a>
 			<a href="#0" class="action"><i class="ti-trash"></i></a>
 			</li>

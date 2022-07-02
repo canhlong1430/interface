@@ -36,8 +36,11 @@ $(document).ready(function () {
             <li class="clearfix"><em>`+ v.quantity + `x ` + truncate(product_option.name) + `</em> <span>` + toVND(product_option.price) + `</span></li>
             `
 
-            var discounts = 5000
+            var discounts = 0
             var delivery_fee = 30000
+            if (json.data.subtotal_price > 200000) {
+                delivery_fee = 0
+            }
             var subtotal_price = json.data.subtotal_price
             var total_price = json.data.subtotal_price + 30000 - 5000
             S = total_price

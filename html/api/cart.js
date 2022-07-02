@@ -67,10 +67,14 @@ $(document).ready(function () {
         $("#payment").children().children().eq(1).children().get(0).nextSibling.remove()
         $("#payment").children().children().eq(2).children().get(0).nextSibling.remove()
 
-        //Gắn phí ship cứng (30k)
+        //Gắn phí ship
+        var deliFee = 30000
+        if (json.data.subtotal_price > 200000) {
+            deliFee = 0
+        }
         $("#payment").children().children().eq(0).append(toVND(json.data.subtotal_price))
-        $("#payment").children().children().eq(1).append(toVND(30000))
-        $("#payment").children().children().eq(2).append(toVND(json.data.subtotal_price + 30000))
+        $("#payment").children().children().eq(1).append(toVND(deliFee))
+        $("#payment").children().children().eq(2).append(toVND(json.data.subtotal_price + deliFee))
 
         //Update cart
         $(".btn_inc").click(function () {
