@@ -63,7 +63,6 @@ $(document).ready(function () {
         $(json.data.cart_items).each(function (i, v) {
             var product = v.product
             var product_option = v.product_option
-
             var html = `
         <li>
             <a href="product-detail.html?product_id=`+ product.id + `">
@@ -72,13 +71,33 @@ $(document).ready(function () {
                         height="50" class="lazy"></figure>
                 <strong><span>`+ v.quantity + `x ` + truncate(product_option.name) + `</span>` + toVND(product_option.price * v.quantity) + `</strong>
             </a>
-            <a href="#0" class="action"><i class="ti-trash"></i></a>
+            <a href="#remove-item" class="action" item-id="`+v.id+`"><i class="ti-trash"></i></a>
         </li>
         `
             $("#cart-menu > div > div > span").text(toVND(json.data.subtotal_price))
             $("#cart-menu > ul").append(html)
         });
+        $('a[href="#remove-item"]').click(function () {
+            var itemId=$(this).attr("item-id")
+            var removeUrl = 'http://localhost:1323/sale/cart/items/' + itemId + '/delete'
+            var bearer = 'Bearer ' + token;
+        
+            const removeoptions = {
+                method: 'DELETE', //tùy chọn method GET hoặc POST, PUT, DELETE
+                headers: {
+                    'Authorization': bearer,
+                    'Content-Type': 'application/json'
+                },
+            }
+        
+            fetch(removeUrl, removeoptions).then(res => {
+                if (res.status == 200) {
+                    location.reload()
+                }
+            });
+        });
     });
+    
 
     //Xử lí favorites trên header
     var favUrl = 'http://localhost:1323/user/favorites'
@@ -96,7 +115,7 @@ $(document).ready(function () {
 
         $(json.data).each(function (i, v) {
             var product = v.product
-
+            
             var html = `
         <li>
             <a href="product-detail.html?product_id=`+ product.id + `">
@@ -105,10 +124,30 @@ $(document).ready(function () {
                         height="50" class="lazy"></figure>
                 <strong><span>` + truncate(product.name) + `</span>` + `</strong>
             </a>
-            <a href="javascript:void(0)" class="action" fav_id="` + v.id + `" id="remove-fav"><i class="ti-trash"></i></a>
+            <a href="#remove-item1" class="action" fav_id="` + product.id + `"><i class="ti-trash"></i></a>
         </li>
         `
             $("#wishlist-menu > ul").append(html)
+        });
+        $('a[href="#remove-item1"]').click(function () {
+            var itemId=$(this).attr("fav_id")
+            alert(itemId)
+            var removeUrl = 'http://localhost:1323/user/favorite/' + itemId + '/delete'
+            var bearer = 'Bearer ' + token;
+        
+            const removeoptions = {
+                method: 'DELETE', //tùy chọn method GET hoặc POST, PUT, DELETE
+                headers: {
+                    'Authorization': bearer,
+                    'Content-Type': 'application/json'
+                },
+            }
+        
+            fetch(removeUrl, removeoptions).then(res => {
+                if (res.status == 200) {
+                    location.reload()
+                }
+            });
         });
     });
     // End of checking login
@@ -124,3 +163,4 @@ $(document).ready(function () {
         }
     });
 });
+
