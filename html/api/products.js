@@ -146,7 +146,7 @@ $(document).ready(function () {
 				})
 				.then(data => {
 					if (status2 == 200) {
-						location.load()
+						location.reload()
 					}
 					if (status2 != 200) {
 					}
