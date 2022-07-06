@@ -187,25 +187,7 @@ $(document).ready(function () {
         var cartUrl = "http://localhost:1323/add_to_cart"
         var bearer = 'Bearer ' + token;
 
-        var n = $(this).parent().parent().parent().find("a").find("h3").text()
-        var g = $(this).parent().parent().parent().find("h1").text()
-        var u = $(this).parent().parent().parent().parent().parent().find("div").find(".all").find(".slider").find("div").find("div").find("div").find("div").find("div").attr("style")
-        u = u.replace(`background-image: url("`, ``)
-        u = u.replace(`");`, ``)
 
-        //frontend
-        $("#cart-menu > ul").append(`
-        <li>
-        <a href="product-detail.html?product_id=`+ productId + `">
-            <figure><img src="`+ u + `"
-                    data-src="img/products/shoes/1.jpg" alt="" width="50"
-                    height="50" class="lazy"></figure>
-            <strong><span>`+ quantity + `x ` + n + `</span>` + g + `</strong>
-        </a>
-        <a href="#0" class="action"><i class="ti-trash"></i></a>
-    </li>
-        `)
-        //
 
         const cartOptions = {
             method: 'POST', //tùy chọn method GET hoặc POST, PUT, DELETE
@@ -232,10 +214,14 @@ $(document).ready(function () {
             .then(data => {
                 if (status2 == 200) {
                     $('#status').html(' <span style="color:green"> [Sản phẩm đã được thêm vào giỏ hàng!]</span>')
-                    $(".cart_bt strong").text(parseInt($(".cart_bt strong").text()) + 1)
+                   
                     setTimeout(function () {
                         $('#status').html('')
                     }, 1000);
+                    setTimeout(function(){
+                        window.location.reload(1);
+                     }, 1200);
+
                 }
                 if (status2 != 200) {
                     $('#status').html(' <span style="color:red"> [Lỗi - Có lỗi xảy ra!]</span>')
