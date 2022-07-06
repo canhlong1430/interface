@@ -59,7 +59,7 @@ $(document).ready(function () {
         								<span class="old_price">` + toVND(obj.price + obj.price * 0.2) + ` đ</span>
         							</div>
         							<ul>
-        								<li><a href="#add-to-cart" class="tooltip-1" data-toggle="tooltip" data-placement="left"
+        								<li><a href="#add-to-carttop" class="tooltip-1" data-toggle="tooltip" data-placement="left"
         										title="Thêm vào giỏ hàng"><i class="ti-shopping-cart"></i><span>Thêm vào giỏ hàng</span></a></li>
         							</ul>
         						</div>     
@@ -67,26 +67,9 @@ $(document).ready(function () {
 			document.getElementById("top_selling").appendChild(newDiv)
 		}
 
-		$('a[href="#add-to-cart"]').click(function () {
+		$('a[href="#add-to-carttop"]').click(function () {
 			var productId = $(this).parent().parent().parent().find("figure").find("a").attr("product_id")
 			var quantity = 1
-			var n = $(this).parent().parent().parent().find("a").find("h3").text()
-			var g = $(this).parent().parent().parent().parent().find(".price_box").find(".new_price").text()
-			var u = $(this).parent().parent().parent().parent().find("figure").find("a").find("img").attr("src")
-
-			//frontend
-			$("#cart-menu > ul").append(`
-			<li>
-			<a href="product-detail.html?product_id=`+ productId + `">
-				<figure><img src="`+ u + `"
-						data-src="img/products/shoes/1.jpg" alt="" width="50"
-						height="50" class="lazy"></figure>
-				<strong><span>`+ quantity + `x ` + n + `</span>` + g + `</strong>
-			</a>
-			<a href="#0" class="action"><i class="ti-trash"></i></a>
-			</li>
-			`)
-			//
 
 			var cartUrl = "http://localhost:1323/add_to_cart"
 			var bearer = 'Bearer ' + token;
@@ -115,8 +98,7 @@ $(document).ready(function () {
 				})
 				.then(data => {
 					if (status2 == 200) {
-						$(".cart_bt strong").text(parseInt($(".cart_bt strong").text()) + 1)
-
+						location.reload()
 					}
 					if (status2 != 200) {
 					}

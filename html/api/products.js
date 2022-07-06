@@ -115,10 +115,6 @@ $(document).ready(function () {
 		$('a[href="#add-to-cart"]').click(function () {
 			var productId = $(this).parent().parent().parent().find("figure").find("a").attr("product_id")
 			var quantity = 1
-			var n = $(this).parent().parent().parent().find("a").find("h3").text()
-			var g = $(this).parent().parent().parent().parent().find(".price_box").find(".new_price").text()
-			var u = $(this).parent().parent().parent().parent().find("figure").find("a").find("img").attr("src")
-
 			var cartUrl = "http://localhost:1323/add_to_cart"
 			var bearer = 'Bearer ' + token;
 
@@ -146,7 +142,7 @@ $(document).ready(function () {
 				})
 				.then(data => {
 					if (status2 == 200) {
-						location.reload()
+						window.location.reload()
 					}
 					if (status2 != 200) {
 					}
