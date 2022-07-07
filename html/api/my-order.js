@@ -63,10 +63,10 @@ $(document).ready(function () {
                                                 <a href="/html/order-detail.html?order_id=` + v.id + `">
                                                 </a>
                                                 <div class="media-body">
-                                                    <a href="#">
+                                                    
                                                         <span class="float-right text-info">Ngày đặt hàng ` + v.created_at + ` <i
                                                                 class="icofont-check-circled text-success"></i></span>
-                                                    </a>
+                                                 
                                                     <h6 class="mb-2">
                                                         <a href="/html/order-detail.html?order_id=` + v.id + `"></a>
                                                         <a href="/html/order-detail.html?order_id=` + v.id + `" class="text-black">Mã đơn hàng: ` + v.id + `</a>
