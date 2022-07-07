@@ -131,7 +131,6 @@ $(document).ready(function () {
         });
         $('a[href="#remove-item1"]').click(function () {
             var itemId=$(this).attr("fav_id")
-            alert(itemId)
             var removeUrl = 'http://localhost:1323/user/favorite/' + itemId + '/delete'
             var bearer = 'Bearer ' + token;
         

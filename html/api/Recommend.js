@@ -31,8 +31,7 @@ $(document).ready(function () {
     var token = localStorage.getItem('token')
 
     //Chưa đăng nhập
-    if (token == null) {
-    }
+ 
 
     // Đã đăng nhập
     if (token != null) {
@@ -85,44 +84,52 @@ $(document).ready(function () {
             }
 
             $('a[href="#add-to-cartrec"]').click(function () {
-                var productId = $(this).parent().parent().parent().find("figure").find("a").attr("product_id")
-                var quantity = 1
-
-                var cartUrl = "http://localhost:1323/add_to_cart"
-                var bearer = 'Bearer ' + token;
-
-                const cartOptions = {
-                    method: 'POST', //tùy chọn method GET hoặc POST, PUT, DELETE
-                    headers: {
-                        'Authorization': bearer,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        data:
-                        {
-                            product_option_id: parseInt(productId),
-                            quantity: parseInt(quantity),
-                        }
-                    })
-                };
-
-                var status2
-                fetch(cartUrl, cartOptions)
-                    .then((res) => {
-                        console.log(res.status);
-                        status2 = res.status
-                        return res.json();
-                    })
-                    .then(data => {
-                        if (status2 == 200) {
-                            location.reload()
-                        }
-                        if (status2 != 200) {
-                        }
-                        if (status2 == 401) {
-                        }
-                    })
-                    .catch(error => console.log('Error:', error));
+                if (token == null) {
+                    window.location.href("account.html");
+                    var productId = $(this).parent().parent().parent().find("figure").find("a").attr("product_id")
+                    var quantity = 1
+                }
+                else{
+                    var productId = $(this).parent().parent().parent().find("figure").find("a").attr("product_id")
+                    var quantity = 1
+    
+                    var cartUrl = "http://localhost:1323/add_to_cart"
+                    var bearer = 'Bearer ' + token;
+    
+                    const cartOptions = {
+                        method: 'POST', //tùy chọn method GET hoặc POST, PUT, DELETE
+                        headers: {
+                            'Authorization': bearer,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            data:
+                            {
+                                product_option_id: parseInt(productId),
+                                quantity: parseInt(quantity),
+                            }
+                        })
+                    };
+    
+                    var status2
+                    fetch(cartUrl, cartOptions)
+                        .then((res) => {
+                            console.log(res.status);
+                            status2 = res.status
+                            return res.json();
+                        })
+                        .then(data => {
+                            if (status2 == 200) {
+                                location.reload()
+                            }
+                            if (status2 != 200) {
+                            }
+                            if (status2 == 401) {
+                            }
+                        })
+                        .catch(error => console.log('Error:', error));
+                }
+               
             });
         });
     }

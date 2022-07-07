@@ -68,6 +68,17 @@ $(document).ready(function () {
 		}
 
 		$('a[href="#add-to-cartnew"]').click(function () {
+			if (token == null) {
+				var productId = $(this).parent().parent().parent().find("figure").find("a").attr("product_id")
+				var quantity = 1
+				localStorage.setItem('productId', data.productId);
+				localStorage.setItem('quantity', data.quantity);
+
+				window.open('account.html','_self')
+
+
+			}
+			else{
 			var productId = $(this).parent().parent().parent().find("figure").find("a").attr("product_id")
 			var quantity = 1
 
@@ -107,6 +118,8 @@ $(document).ready(function () {
 					}
 				})
 				.catch(error => console.log('Error:', error));
+			}
+			
 		});
 	});
 

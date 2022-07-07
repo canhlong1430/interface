@@ -34,6 +34,7 @@ $(document).ready(function () {
                     localStorage.setItem('token', data.token);
                     console.log('Success:', data.token)
                     window.location.href = '/html/index.html';
+                    
                 }
                 if (status != 200) {
                     // alert("Email hoặc mật khẩu không đúng. Xin thử lại!")
@@ -99,6 +100,7 @@ $(document).ready(function () {
                             setTimeout(function () {
                                 $('.new_client > span').hide()
                                 window.location.href = '/html/account.html';
+                                
                             }, 1000);
                         }
                         if (status != 200) {
