@@ -15,7 +15,7 @@ $(document).ready(function () {
 	var page = get('page')
 	var categoryId = get('category_id')
 	//Url của api
-	url = 'http://localhost:1323/products?limit=3&page=1&top_rating=true'
+	url = 'http://localhost:1323/products?limit=3&page=4&top_rating=true'
 	const options = {
 		method: 'GET', //tùy chọn method GET hoặc POST, PUT, DELETE
 		headers: { 'Content-Type': 'application/json' },
