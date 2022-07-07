@@ -64,7 +64,10 @@ $(document).ready(function () {
                     })
                     .then(data => {
                         if (status2 == 200) {
-                            window.location.href = localStorage.getItem('link');
+                            if(localStorage.getItem('link') != null){
+                                window.location.href = localStorage.getItem('link');
+                            }
+                            window.location.href="/html/index.html";
                         }
                         if (status2 != 200) {
                         }
