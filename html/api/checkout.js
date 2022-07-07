@@ -38,7 +38,7 @@ $(document).ready(function () {
 
             var discounts = 0
             var delivery_fee = 30000
-            if (json.data.subtotal_price > 200000) {
+            if (json.data.subtotal_price > 300000) {
                 delivery_fee = 0
             }
             var subtotal_price = json.data.subtotal_price
