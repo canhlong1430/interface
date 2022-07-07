@@ -181,6 +181,7 @@ $(document).ready(function () {
 
 
     $(".btn_add_to_cart1").click(function () {
+       
         var optionId = productId
         var quantity = $("#quantity_1").val()
 
@@ -234,6 +235,20 @@ $(document).ready(function () {
                     setTimeout(function () {
                         $('#status').html('')
                     }, 1000);
+                    setTimeout(function () {
+                        if (token == null) {
+                           
+                            localStorage.setItem('productId', optionId);
+                            localStorage.setItem('quantity', quantity);
+                            localStorage.setItem('link', window.location.href);
+
+                            window.location.href = '/html/account.html';
+                
+                
+                        }
+                    }, 1200);
+                   
+                   
                 }
             })
             .catch(error => console.log('Error:', error));

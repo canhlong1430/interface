@@ -85,9 +85,12 @@ $(document).ready(function () {
 
             $('a[href="#add-to-cartrec"]').click(function () {
                 if (token == null) {
-                    window.location.href("account.html");
                     var productId = $(this).parent().parent().parent().find("figure").find("a").attr("product_id")
                     var quantity = 1
+                    localStorage.setItem('productId', data.productId);
+                    localStorage.setItem('quantity', data.quantity);
+                    window.location.href("account.html");
+                    
                 }
                 else{
                     var productId = $(this).parent().parent().parent().find("figure").find("a").attr("product_id")

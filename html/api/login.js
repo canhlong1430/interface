@@ -33,8 +33,45 @@ $(document).ready(function () {
                 if (status == 200) {
                     localStorage.setItem('token', data.token);
                     console.log('Success:', data.token)
-                    window.location.href = '/html/index.html';
-                    
+                
+                    var productId =localStorage.getItem('productId')
+                    var quantity = localStorage.getItem('quantity')
+                    var token = localStorage.getItem('token')
+                var cartUrl = "http://localhost:1323/add_to_cart"
+                var bearer = 'Bearer ' + token;
+    
+                const cartOptions = {
+                    method: 'POST', //tùy chọn method GET hoặc POST, PUT, DELETE
+                    headers: {
+                        'Authorization': bearer,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        data:
+                        {
+                            product_option_id: parseInt(productId),
+                            quantity: parseInt(quantity),
+                        }
+                    })
+                };
+    
+                var status2
+                fetch(cartUrl, cartOptions)
+                    .then((res) => {
+                        console.log(res.status);
+                        status2 = res.status
+                        return res.json();
+                    })
+                    .then(data => {
+                        if (status2 == 200) {
+                            window.location.href = localStorage.getItem('link');
+                        }
+                        if (status2 != 200) {
+                        }
+                        if (status2 == 401) {
+                        }
+                    })
+                    .catch(error => console.log('Error:', error));                               
                 }
                 if (status != 200) {
                     // alert("Email hoặc mật khẩu không đúng. Xin thử lại!")

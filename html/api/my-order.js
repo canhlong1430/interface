@@ -85,10 +85,10 @@ $(document).ready(function () {
                                                     </p>
                                                     <hr>
                                                     <div class="float-right">
-                                                        <a class="btn btn-sm btn-outline-primary" href="#"><i
-                                                                class="icofont-headphone-alt"></i>Trạng thái: </a>
-                                                        <a class="btn btn-sm btn-primary" href="#"><i
-                                                                class="icofont-refresh"></i> ` + v.status + `</a>
+                                                        <i
+                                                                class="icofont-headphone-alt"></i>Trạng thái:
+                                                       <i
+                                                                class="icofont-refresh"></i> ` + v.status + `
                                                     </div>
                                                     <p class="mb-0 text-black text-primary pt-2"><span
                                                             class="text-black font-weight-bold"> Tổng tiền:</span> ` + toVND(v.total_price) + `

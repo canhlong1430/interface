@@ -11,6 +11,7 @@ $(document).ready(function () {
 	}
 
 	var token = localStorage.getItem('token')
+	
 
 	var page = get('page')
 	var categoryId = get('category_id')
@@ -71,10 +72,11 @@ $(document).ready(function () {
 			if (token == null) {
 				var productId = $(this).parent().parent().parent().find("figure").find("a").attr("product_id")
 				var quantity = 1
-				localStorage.setItem('productId', data.productId);
-				localStorage.setItem('quantity', data.quantity);
+				localStorage.setItem('productId', productId);
+				localStorage.setItem('quantity', quantity);
+				localStorage.setItem('link', window.location.href);
 
-				window.open('account.html','_self')
+				window.location.href = '/html/account.html';
 
 
 			}

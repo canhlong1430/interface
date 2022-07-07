@@ -69,7 +69,7 @@ $(document).ready(function () {
 
         //Gắn phí ship
         var deliFee = 30000
-        if (json.data.subtotal_price > 200000) {
+        if (json.data.subtotal_price > 300000 || json.data.subtotal_price == 0) {
             deliFee = 0
         }
         $("#payment").children().children().eq(0).append(toVND(json.data.subtotal_price))

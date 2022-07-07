@@ -113,6 +113,18 @@ $(document).ready(function () {
 		}
 
 		$('a[href="#add-to-cart"]').click(function () {
+			if (token == null) {
+				var productId = $(this).parent().parent().parent().find("figure").find("a").attr("product_id")
+				var quantity = 1
+				localStorage.setItem('productId', productId);
+				localStorage.setItem('quantity', quantity);
+				localStorage.setItem('link', window.location.href);
+
+				window.location.href = '/html/account.html';
+
+
+			}
+
 			var productId = $(this).parent().parent().parent().find("figure").find("a").attr("product_id")
 			var quantity = 1
 			var cartUrl = "http://localhost:1323/add_to_cart"
