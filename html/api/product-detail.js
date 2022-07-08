@@ -134,7 +134,7 @@ $(document).ready(function () {
         $("#specs").html(str)
 
 
-        urlBrand = 'http://localhost:1323/products/list_by_brand?brand_id=' + brandId + '&limit=10&page=1'
+        urlBrand = 'http://localhost:1323/products/cb_recommend?product_id=' + productId
         fetch(urlBrand, options).then(res1 => res1.json()).then(json1 => {
 
             $(json1.data).each(function (i, v) {
@@ -181,7 +181,7 @@ $(document).ready(function () {
 
 
     $(".btn_add_to_cart1").click(function () {
-       
+
         var optionId = productId
         var quantity = $("#quantity_1").val()
 
@@ -215,13 +215,13 @@ $(document).ready(function () {
             .then(data => {
                 if (status2 == 200) {
                     $('#status').html(' <span style="color:green"> [Sản phẩm đã được thêm vào giỏ hàng!]</span>')
-                   
+
                     setTimeout(function () {
                         $('#status').html('')
                     }, 1000);
-                    setTimeout(function(){
+                    setTimeout(function () {
                         window.location.reload(1);
-                     }, 1200);
+                    }, 1200);
 
                 }
                 if (status2 != 200) {
@@ -237,18 +237,18 @@ $(document).ready(function () {
                     }, 1000);
                     setTimeout(function () {
                         if (token == null) {
-                           
+
                             localStorage.setItem('productId', optionId);
                             localStorage.setItem('quantity', quantity);
                             localStorage.setItem('link', window.location.href);
 
                             window.location.href = '/html/account.html';
-                
-                
+
+
                         }
                     }, 1200);
-                   
-                   
+
+
                 }
             })
             .catch(error => console.log('Error:', error));
