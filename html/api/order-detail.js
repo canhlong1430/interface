@@ -36,23 +36,30 @@ $(document).ready(function () {
         $("#order-info").find("div").eq(3).find('br').after(toVND(json.data.total_price))
 
         switch (json.data.status) {
-            case "pending":
+            case "đang chờ":
                 $(".track > div").eq(0).addClass("active")
                 break;
-            case "approved":
+            case "đã xác nhận":
                 $(".track > div").eq(0).addClass("active")
                 $(".track > div").eq(1).addClass("active")
                 break;
-            case "shipping":
+            case "đang giao hàng":
                 $(".track > div").eq(0).addClass("active")
                 $(".track > div").eq(1).addClass("active")
                 $(".track > div").eq(2).addClass("active")
                 break;
-            case "delivered":
+            case "đã giao hàng":
                 $(".track > div").eq(0).addClass("active")
                 $(".track > div").eq(1).addClass("active")
                 $(".track > div").eq(2).addClass("active")
                 $(".track > div").eq(3).addClass("active")
+                break;
+            case "đã hủy":
+                $(".track > div").eq(0).addClass("active")
+                $(".track > div").eq(1).addClass("active")
+                $(".track > div").eq(2).addClass("active")
+                $(".track > div").eq(3).addClass("active")
+                $(".track > div").eq(4).addClass("active")
                 break;
         }
 

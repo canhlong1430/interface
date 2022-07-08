@@ -17,21 +17,25 @@ $(document).ready(function () {
     var status = get('status')
 
     switch (status) {
-        case "pending":
+        case "đang chờ":
             $("#status-tab > li").find("a").removeClass("active")
             $("#status-tab > li").find("a").eq(1).addClass("active")
             break;
-        case "approved":
+        case "đã xác nhận":
             $("#status-tab > li").find("a").removeClass("active")
             $("#status-tab > li").find("a").eq(2).addClass("active")
             break;
-        case "shipping":
+        case "đang giao hàng":
             $("#status-tab > li").find("a").removeClass("active")
             $("#status-tab > li").find("a").eq(3).addClass("active")
             break;
-        case "delivered":
+        case "đã giao hàng":
             $("#status-tab > li").find("a").removeClass("active")
             $("#status-tab > li").find("a").eq(4).addClass("active")
+            break;
+        case "đã hủy":
+            $("#status-tab > li").find("a").removeClass("active")
+            $("#status-tab > li").find("a").eq(5).addClass("active")
             break;
     }
 
