@@ -44,6 +44,9 @@ $(document).ready(function () {
 
 	//Gọi api => trả về dạng Json => chạy loop đổ json ra HTML
 	fetch(url, options).then(res => res.json()).then(json => {
+		$(".breadcrumbs").parent().find("h1").text(json.category_name)
+		$(".breadcrumbs > ul").find("li").eq(2).text(json.category_name)
+
 		pageNumber = Math.ceil(json.count / limit)
 		for (var i = 0; i < json.data.length; i++) {
 			//Hiển thị tên sản phẩm mra HTML
