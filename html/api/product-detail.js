@@ -6,7 +6,7 @@ $(document).ready(function () {
     }
     // Truncate text nếu quá dài
     function truncate(source) {
-        return source.length > 30 ? source.slice(0, 30 - 1) + "…" : source;
+        return source.length > 70 ? source.slice(0, 70 - 1) + "…" : source;
     }
     // Convert từ số sang hiển thị dạng VND
     function toVND(x) {
@@ -36,6 +36,8 @@ $(document).ready(function () {
 
         var categories = json.data.categories
         brandId = json.data.brand_id
+
+        $(".breadcrumbs > ul").find("li").eq(2).text(truncate(json.data.name))
 
         $(json.data.product_images).each(function (i, v) {
             switch (i) {
