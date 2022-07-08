@@ -37,9 +37,9 @@ $(document).ready(function () {
     if (token != null) {
         $("#recommender").html(`
         <div class="main_title">
-        <h2>Gợi ý dành cho bạn</h2>
-            <span>Dành cho bạn</span>
-            <p>Các sản phẩm có thể bạn quan tâm</p>
+        <h2>GỢI Ý DÀNH CHO BẠN</h2>
+            <span>DÀNH CHO BẠN</span>
+            <p>Những sản phẩm có thể bạn quan tâm</p>
         </div>
         <div class="row small-gutters" id=recommended>
 
