@@ -117,7 +117,7 @@
 
                     </div>
                 </div>
-            </li>         
+            </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
@@ -138,7 +138,7 @@
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
-            
+
 
         </ul>
         <!-- End of Sidebar -->
@@ -184,6 +184,13 @@
                                         </div>
                                     </div>
                                 </div>
+                                <a onclick="myFunction1()" href="index.html?view_order1">
+                                    <div class="card-footer">
+                                        <span class="fa-pull-left">
+                                            View Details
+                                        </span>
+                                    </div>
+                                </a>
                             </div>
                         </div>
 
@@ -202,6 +209,13 @@
                                         </div>
                                     </div>
                                 </div>
+                                <a onclick="myFunction2()" href="index.html?view_order2">
+                                    <div class="card-footer">
+                                        <span class="fa-pull-left">
+                                            View Details
+                                        </span>
+                                    </div>
+                                </a>
                             </div>
                         </div>
 
@@ -211,9 +225,10 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
+
                                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Orders
                                             </div>
-                                            <div class="row no-gutters align-items-center">                                   
+                                            <div class="row no-gutters align-items-center">
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800">1000</div>
                                             </div>
                                         </div>
@@ -222,6 +237,13 @@
                                         </div>
                                     </div>
                                 </div>
+                                <a onclick="myFunction()" id="order" href="index.html?view_order">
+                                    <div class="card-footer">
+                                        <span class="fa-pull-left">
+                                            View Details
+                                        </span>
+                                    </div>
+                                </a>
                             </div>
                         </div>
 
@@ -240,20 +262,55 @@
                                         </div>
                                     </div>
                                 </div>
+                                <a onclick="myFunction()" href="index.html?view_order4">
+                                    <div class="card-footer">
+                                        <span class="fa-pull-left">
+                                            View Details
+                                        </span>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Content Row -->
 
-                
+
 
                     <!-- Content Row -->
-               
+
 
                 </div>
                 <!-- /.container-fluid -->
+                <!-- <div class="col-xl-12 ">
+                    <div include-html="includes/view_order.html"></div>
+                </div> -->
+                <div id="test" class="col-xl-12" >
+                    <ul id="list">
+                        <li><a href="#">Item 1</a></li>
+                        <li><a href="#">Item 2</a></li>
+                        <li><a href="#">Item 3</a></li>
+                      </ul>
+                </div>
+                <script>
 
+                    function myFunction() {
+                        const list = document.getElementById("list");
+
+list.innerHTML += `<li><a href="#">Item ${list.children.length + 1}</a></li>`;
+
+                        let anchor = document.getElementById("order");
+                        let query = anchor.search;
+                        if (query === "?view_order") {
+                            alert("conga")
+                            var newDiv = document.createElement('div');
+                            newDiv.innerHTML=`<div include-html="includes/view_order.html"></div>`;
+                            document.getElementById("test").appendChild(newDiv);
+
+                        }
+                    }
+                    includeHTML();
+                </script>
             </div>
             <!-- End of Main Content -->
 
