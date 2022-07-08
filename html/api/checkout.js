@@ -66,7 +66,7 @@ $(document).ready(function () {
             var payment_method = $('input[name="payment"]:checked').val();
             var payment_method_id
             var order_id
-            var discounts = 5000
+            var discounts = 0
             var delivery_fee = 30000
 
             var email_notify = false
@@ -153,6 +153,10 @@ $(document).ready(function () {
 
                                         //Sau khi insert item cuối cùng trong giỏ
                                         if (i == json.data.cart_items.length - 1) {
+
+                                            if (sum > 300000 || sum == 0) {
+                                                delivery_fee = 0
+                                            }
 
                                             if (payment_method_id == 1) {
                                                 window.location.href = '/html/confirm.html'; //Chuyển hướng đến trang confirm
