@@ -151,19 +151,69 @@
             <!-- Main Content -->
             <div id="content">
 
-          <!-- Topbar -->
-          <div include-html="includes/topbar.html"></div>
-          <script>
-              includeHTML();
-          </script>
+                <!-- Topbar -->
+                <div include-html="includes/topbar.html"></div>
+                <script>
+                    includeHTML();
+                </script>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Slider</h1>
+                    <div class="row">
+                        <button  type='submit' class='btn btn-primary btn-fill s'>Update</button>
+                    </div>
+                    <style>
+                        button.s{
+                            margin-top: 10px;
+                            margin-bottom: 10px;
+                            margin-left: 15px;
+                        }
+                    </style>
+                    
+                    <div class="row">
 
+                        <div class="col-xl-6 col-lg-7">
+                            <!-- Area Chart -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Slide 1</h6>
+                                </div>
+                                <div class="card-body">
+                                    <img src="/html/img/banner/flashsale.jpg" name="avt" alt='' width="480">
+                                    <hr>
+                                    <span class="btn btn-rose btn-round btn-file">
+                                                         
+                                        <span class="fileinput-exists">Đổi ảnh</span>
+                                        <input type="file" name="img"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Donut Chart -->
+                        <div class="col-xl-6 col-lg-7">
+                            <!-- Area Chart -->
+                            <div class="card shadow mb-">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Slide 2</h6>
+                                </div>
+
+                                <div class="card-body">
+                                    <img src="/html/img/banner/flashsale.jpg" name="avt" alt='' width="480">
+
+                                    <hr>
+                                    <span class="btn btn-rose btn-round btn-file">
+            
+                                        <input   type="file" name="img" />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </div>
                 </div>
                 <!-- /.container-fluid -->
 
