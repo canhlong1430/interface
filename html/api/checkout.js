@@ -42,7 +42,7 @@ $(document).ready(function () {
                 delivery_fee = 0
             }
             var subtotal_price = json.data.subtotal_price
-            var total_price = json.data.subtotal_price + delivery_fee - discounts
+            var total_price = json.data.subtotal_price
             S = total_price
 
             $("#order-summary > ul").eq(0).append(html)
@@ -59,7 +59,7 @@ $(document).ready(function () {
 
         //Xử lí đặt hàng
         $('a[href="#confirm"]').click(function () {
-
+            $(this).text("Xin vui lòng chờ...")
             //Tạo đơn hàng
             var orderUrl = 'http://localhost:1323/sale/orders/create'
             var bearer = 'Bearer ' + token;
@@ -104,6 +104,7 @@ $(document).ready(function () {
 
             var host = window.location.host;
             var status
+            var sum = 0
             fetch(orderUrl, orderOptions)
                 .then((res) => {
                     console.log(res.status);
@@ -113,10 +114,9 @@ $(document).ready(function () {
                 .then(data => {
                     if (status == 200) {
                         order_id = data.data.id
-
-                        var sum = 0
                         //Thêm các items cho đơn hàng
                         $(json.data.cart_items).each(function (i, v) {
+
                             var product = v.product
                             var product_option = v.product_option
 
@@ -142,50 +142,21 @@ $(document).ready(function () {
 
                             var status1
                             fetch(itemUrl, itemOptions)
-                                .then((res) => {
-                                    console.log(res.status);
-                                    status1 = res.status
-                                    return res.json();
+                                .then((res1) => {
+                                    console.log(res1.status);
+                                    status1 = res1.status
+                                    return res1.json();
                                 })
-                                .then(data => {
+                                .then(data1 => {
                                     if (status1 == 200) {
+
                                         sum += product_option.price
 
+                                        // alert(i + "/" + json.data.cart_items.length)
                                         //Sau khi insert item cuối cùng trong giỏ
-                                        if (i == json.data.cart_items.length - 1) {
+                                        if (i === json.data.cart_items.length - 1) {
 
-                                            if (sum > 300000 || sum == 0) {
-                                                delivery_fee = 0
-                                            }
 
-                                            if (payment_method_id == 1) {
-                                                window.location.href = '/html/confirm.html'; //Chuyển hướng đến trang confirm
-                                            }
-
-                                            if (payment_method_id == 2) {
-                                                sum = sum + delivery_fee - discounts
-
-                                                var momoUrl = 'http://localhost:1323/sale/orders/momo_payment'
-
-                                                const momoOptions = {
-                                                    method: 'POST', //tùy chọn method GET hoặc POST, PUT, DELETE
-                                                    headers: {
-                                                        'Content-Type': 'application/json'
-                                                    },
-                                                    body: JSON.stringify({
-                                                        data:
-                                                        {
-                                                            host_name: host,
-                                                            amount: sum.toString(),
-                                                        }
-                                                    })
-                                                }
-                                                var momoStatus
-                                                fetch(momoUrl, momoOptions).then(res => res.text()).then(text => {
-                                                    console.log(text)
-                                                    window.location.href = text
-                                                });
-                                            }
                                         }
 
                                     }
@@ -204,7 +175,41 @@ $(document).ready(function () {
                 })
                 .catch(error => console.log('Error:', error));
 
+            setTimeout(function () {
+                if (sum > 300000) {
+                    delivery_fee = 0
+                }
 
+                if (payment_method_id == 1) {
+                    window.location.href = '/html/confirm.html'; //Chuyển hướng đến trang confirm
+                }
+
+                if (payment_method_id == 2) {
+
+                    sum += delivery_fee - discounts
+                    momoUrl = 'http://localhost:1323/sale/orders/momo_payment'
+
+                    momoOptions = {
+                        method: 'POST', //tùy chọn method GET hoặc POST, PUT, DELETE
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            data:
+                            {
+                                host_name: host,
+                                amount: sum.toString(),
+                            }
+                        })
+                    }
+                    var momoStatus
+                    fetch(momoUrl, momoOptions).then(res => res.text()).then(text => {
+                        console.log(text)
+                        window.location.href = text
+                    });
+
+                }
+            }, 7000);
         });
     });
 });
