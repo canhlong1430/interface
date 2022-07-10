@@ -33,7 +33,11 @@ $(document).ready(function () {
         $("#order-info").find("div").eq(0).find('br').after(json.data.created_at)
         $("#order-info").find("div").eq(1).find('br').after(json.data.shipping_address.specific_address)
         $("#order-info").find("div").eq(2).find('br').after(json.data.status)
-        $("#order-info").find("div").eq(3).find('br').after(toVND(json.data.total_price))
+        var isPaid = ""
+        if (json.data.pay_at != "") {
+            isPaid = " (Đã thanh toán)"
+        }
+        $("#order-info").find("div").eq(3).find('br').after(toVND(json.data.total_price) + isPaid)
 
         switch (json.data.status) {
             case "đang chờ":

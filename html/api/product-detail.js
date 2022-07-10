@@ -299,4 +299,21 @@ $(document).ready(function () {
             })
             .catch(error => console.log('Error:', error));
     });
+
+    //Check được phép rating
+    var validateratingurl = 'http://localhost:1323/sale/order/items/validate_rating?product_id=' + productId
+    var bearer = 'Bearer ' + token;
+    const validateratingoptions = {
+        method: 'GET', //tùy chọn method GET hoặc POST, PUT, DELETE
+        headers: {
+            'Authorization': bearer,
+            'Content-Type': 'application/json'
+        },
+    }
+
+    fetch(validateratingurl, validateratingoptions).then(res => res.json()).then(json => {
+        if (json.count < 1) {
+            $("#write-review").hide()
+        }
+    });
 });
