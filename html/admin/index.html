@@ -10,7 +10,7 @@
     <meta name="author" content="">
 
     <title>Electronic - Dashboard</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -115,7 +115,7 @@
                         <a class="collapse-item" href="cancelorder.html">Cancel</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Function:</h6>
-                        <a class="collapse-item" href="order.html">Show All</a>
+                        <a class="collapse-item" href="order.html">Delivered</a>
 
                     </div>
                 </div>
@@ -239,7 +239,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a  onclick="myFunction()"  href="index.html?view_order">
+                                <a onclick="myFunction()" href="index.html?view_order">
                                     <div class="card-footer">
                                         <span class="fa-pull-left">
                                             View Details
@@ -278,7 +278,7 @@
                     <!-- Content Row -->
 
                     <div id="test">
-                
+
                         <!-- hey -->
                     </div>
 
@@ -288,26 +288,26 @@
                 </div>
                 <!-- /.container-fluid -->
                 <script>
-                     $(document).ready(function(){
-                        if(window.location.search === "?view_order"){
+                    $(document).ready(function () {
+                        if (window.location.search === "?view_order") {
                             $("#test").html("<div include-html='includes/view_order.html'></div>");
                             includeHTML();
                         }
-                        if(window.location.search === "?view_pending"){
+                        if (window.location.search === "?view_pending") {
                             $("#test").html("<div include-html='includes/view_pending.html'></div>");
                             includeHTML();
                         }
-                        if(window.location.search === "?view_earningannual"){
+                        if (window.location.search === "?view_earningannual") {
                             $("#test").html("<div include-html='includes/view_annual.html'></div>");
                             includeHTML();
                         }
-                        if(window.location.search === "?view_earningmonth"){
+                        if (window.location.search === "?view_earningmonth") {
                             $("#test").html("<div include-html='includes/view_month.html'></div>");
                             includeHTML();
                         }
                     });
-                    
-                   
+
+
                 </script>
             </div>
             <!-- End of Main Content -->
@@ -355,22 +355,22 @@
 
     <!-- Bootstrap core JavaScript-->
 
-<!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
 
-<!-- Page level plugins -->
-<script src="vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-<!-- Page level custom scripts -->
-<script src="js/demo/datatables-demo.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
 
 
 </body>
