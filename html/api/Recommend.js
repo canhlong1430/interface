@@ -30,12 +30,24 @@ $(document).ready(function () {
     // Checking login để ẩn/hiện phầm Recommend
     var token = localStorage.getItem('token')
 
-    //Chưa đăng nhập
- 
+    //check user đủ 3 rating
+    var orderurl = 'http://localhost:1323/product/ratings?limit=50&page=1'
+    var bearer = 'Bearer ' + token;
+    const orderoptions = {
+        method: 'GET', //tùy chọn method GET hoặc POST, PUT, DELETE
+        headers: {
+            'Authorization': bearer,
+            'Content-Type': 'application/json'
+        },
+    }
 
-    // Đã đăng nhập
-    if (token != null) {
-        $("#recommender").html(`
+    var ratingCount = 0
+    fetch(orderurl, orderoptions).then(res => res.json()).then(json => {
+        ratingCount = json.count
+
+        // Đã đăng nhập
+        if (token != null && ratingCount >= 3) {
+            $("#recommender").html(`
         <div class="main_title">
         <h2>GỢI Ý DÀNH CHO BẠN</h2>
             <span>DÀNH CHO BẠN</span>
@@ -45,17 +57,17 @@ $(document).ready(function () {
 
             <!-- /col -->
         </div>`
-        )
+            )
 
-        //Gọi api => trả về dạng Json => chạy loop đổ json ra HTML
-        fetch(url, options).then(res => res.json()).then(json => {
-            for (var i = 0; i < json.data.length; i++) {
-                if (i < 8) {
-                    //Hiển thị tên sản phẩm mra HTML
-                    var obj = json.data[i];
-                    var newDiv = document.createElement('div');
-                    newDiv.className = 'col-6 col-md-4 col-xl-3'
-                    newDiv.innerHTML = `
+            //Gọi api => trả về dạng Json => chạy loop đổ json ra HTML
+            fetch(url, options).then(res => res.json()).then(json => {
+                for (var i = 0; i < json.data.length; i++) {
+                    if (i < 8) {
+                        //Hiển thị tên sản phẩm mra HTML
+                        var obj = json.data[i];
+                        var newDiv = document.createElement('div');
+                        newDiv.className = 'col-6 col-md-4 col-xl-3'
+                        newDiv.innerHTML = `
         						<div class="grid_item">
 								
         							<figure>
@@ -79,63 +91,67 @@ $(document).ready(function () {
         							</ul>
         						</div>     
         `;
-                    document.getElementById("recommended").appendChild(newDiv)
+                        document.getElementById("recommended").appendChild(newDiv)
+                    }
                 }
-            }
 
-            $('a[href="#add-to-cartrec"]').click(function () {
-                if (token == null) {
-                    var productId = $(this).parent().parent().parent().find("figure").find("a").attr("product_id")
-                    var quantity = 1
-                    localStorage.setItem('productId', data.productId);
-                    localStorage.setItem('quantity', data.quantity);
-                    window.location.href("account.html");
-                    
-                }
-                else{
-                    var productId = $(this).parent().parent().parent().find("figure").find("a").attr("product_id")
-                    var quantity = 1
-    
-                    var cartUrl = "http://localhost:1323/add_to_cart"
-                    var bearer = 'Bearer ' + token;
-    
-                    const cartOptions = {
-                        method: 'POST', //tùy chọn method GET hoặc POST, PUT, DELETE
-                        headers: {
-                            'Authorization': bearer,
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            data:
-                            {
-                                product_option_id: parseInt(productId),
-                                quantity: parseInt(quantity),
-                            }
-                        })
-                    };
-    
-                    var status2
-                    fetch(cartUrl, cartOptions)
-                        .then((res) => {
-                            console.log(res.status);
-                            status2 = res.status
-                            return res.json();
-                        })
-                        .then(data => {
-                            if (status2 == 200) {
-                                location.reload()
-                            }
-                            if (status2 != 200) {
-                            }
-                            if (status2 == 401) {
-                            }
-                        })
-                        .catch(error => console.log('Error:', error));
-                }
-               
+                $('a[href="#add-to-cartrec"]').click(function () {
+                    if (token == null) {
+                        var productId = $(this).parent().parent().parent().find("figure").find("a").attr("product_id")
+                        var quantity = 1
+                        localStorage.setItem('productId', data.productId);
+                        localStorage.setItem('quantity', data.quantity);
+                        window.location.href("account.html");
+
+                    }
+                    else {
+                        var productId = $(this).parent().parent().parent().find("figure").find("a").attr("product_id")
+                        var quantity = 1
+
+                        var cartUrl = "http://localhost:1323/add_to_cart"
+                        var bearer = 'Bearer ' + token;
+
+                        const cartOptions = {
+                            method: 'POST', //tùy chọn method GET hoặc POST, PUT, DELETE
+                            headers: {
+                                'Authorization': bearer,
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                data:
+                                {
+                                    product_option_id: parseInt(productId),
+                                    quantity: parseInt(quantity),
+                                }
+                            })
+                        };
+
+                        var status2
+                        fetch(cartUrl, cartOptions)
+                            .then((res) => {
+                                console.log(res.status);
+                                status2 = res.status
+                                return res.json();
+                            })
+                            .then(data => {
+                                if (status2 == 200) {
+                                    location.reload()
+                                }
+                                if (status2 != 200) {
+                                }
+                                if (status2 == 401) {
+                                }
+                            })
+                            .catch(error => console.log('Error:', error));
+                    }
+
+                });
             });
-        });
-    }
+        }
+    });
+
+
+
 
 
     // Tham khảo
