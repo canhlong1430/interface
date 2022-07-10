@@ -6,7 +6,7 @@ $(document).ready(function () {
     }
     // Truncate text nếu quá dài
     function truncate(source) {
-        return source.length > 70 ? source.slice(0, 70 - 1) + "…" : source;
+        return source.length > 65 ? source.slice(0, 65 - 1) + "…" : source;
     }
     // Convert từ số sang hiển thị dạng VND
     function toVND(x) {
