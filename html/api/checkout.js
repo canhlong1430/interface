@@ -181,7 +181,27 @@ $(document).ready(function () {
                 }
 
                 if (payment_method_id == 1) {
-                    window.location.href = '/html/confirm.html'; //Chuyển hướng đến trang confirm
+                    // Update giá order
+                    var url1 = 'http://localhost:1323/sale/orders/' + order_id + "/update"
+
+                    var options1 = {
+                        method: 'PUT', //tùy chọn method GET hoặc POST, PUT, DELETE
+                        headers: {
+                            'Authorization': bearer,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            data:
+                            {
+                                total_price: sum,
+                            }
+                        })
+                    }
+                    fetch(url1, options1).then(res => res.text()).then(json => {
+                        window.location.href = '/html/confirm.html'; //Chuyển hướng đến trang confirm
+                    });
+
+
                 }
 
                 if (payment_method_id == 2) {
@@ -208,7 +228,7 @@ $(document).ready(function () {
                         window.location.href = text
                     });
 
-                    //Update giá order
+                    // Update giá order
                     var url1 = 'http://localhost:1323/sale/orders/' + order_id + "/update"
 
                     var options1 = {
@@ -223,9 +243,8 @@ $(document).ready(function () {
                             }
                         })
                     }
-                    fetch(url1, options1).then(res => res.text()).then(text => {
+                    fetch(url1, options1).then(res => res.text()).then(json => {
                     });
-
                 }
             }, 7000);
         });
