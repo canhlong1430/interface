@@ -208,6 +208,24 @@ $(document).ready(function () {
                         window.location.href = text
                     });
 
+                    //Update giá order
+                    var url1 = 'http://localhost:1323/sale/orders/' + order_id + "/update"
+
+                    var options1 = {
+                        headers: {
+                            'Authorization': bearer,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            data:
+                            {
+                                total_price: sum,
+                            }
+                        })
+                    }
+                    fetch(url1, options1).then(res => res.text()).then(text => {
+                    });
+
                 }
             }, 7000);
         });
