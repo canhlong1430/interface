@@ -150,7 +150,7 @@ $(document).ready(function () {
                                 .then(data1 => {
                                     if (status1 == 200) {
 
-                                        sum += product_option.price
+                                        sum += product_option.price * v.quantity
 
                                         // alert(i + "/" + json.data.cart_items.length)
                                         //Sau khi insert item cuối cùng trong giỏ
